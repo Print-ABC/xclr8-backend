@@ -1,0 +1,23 @@
+application:
+  version: 1.2.1
+
+
+spring:
+  autoconfigure.exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+  data:
+    mongodb:
+        uri: ${DB:mongodb://localhost:27017/xclr8-api}
+
+---
+spring:
+  profiles: dev
+
+
+---
+spring:
+  profiles: sandbox
+
+
+---
+spring:
+  profiles: production
