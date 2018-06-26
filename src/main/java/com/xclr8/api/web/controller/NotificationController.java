@@ -1,7 +1,7 @@
 package com.xclr8.api.web.controller;
 
-import com.xclr8.api.model.Notification;
-import com.xclr8.api.repository.NotificationRepository;
+import com.xclr8.api.service.NotificationService;
+import com.xclr8.api.web.response.NotificationResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class NotificationController {
 
     @Autowired
-    NotificationRepository mNotificationRepository;
+    NotificationService mNotificationService;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public Iterable<Notification> notifications() {
-        return mNotificationRepository.findAll();
+    public Iterable<NotificationResponse> notifications() {
+        return mNotificationService.findAllChat();
     }
 }

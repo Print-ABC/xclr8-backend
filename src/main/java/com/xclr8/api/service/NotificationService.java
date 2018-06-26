@@ -4,9 +4,11 @@ import com.xclr8.api.model.Notification;
 import com.xclr8.api.repository.NotificationRepository;
 import com.xclr8.api.web.response.NotificationResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class NotificationService {
     @Autowired
     NotificationRepository notificationRepository;

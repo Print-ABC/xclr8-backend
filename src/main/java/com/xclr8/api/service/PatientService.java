@@ -4,9 +4,11 @@ import com.xclr8.api.model.Patient;
 import com.xclr8.api.repository.PatientRepository;
 import com.xclr8.api.web.response.PatientResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class PatientService {
     @Autowired
     PatientRepository patientRepository;

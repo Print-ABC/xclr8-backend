@@ -21,7 +21,7 @@ public class NotificationResponse {
             nR.setId(n.getId());
             nR.setHealthId(n.getHealthId());
             nR.setTimeStamp(n.getTimeStamp());
-            nR.setTimeStamp(n.getTitle());
+            nR.setTitle(n.getTitle());
             nR.setMessage(n.getMessage());
             nR.setStatus(n.getStatus());
             nRList.add(nR);

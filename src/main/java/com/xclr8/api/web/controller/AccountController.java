@@ -1,7 +1,5 @@
 package com.xclr8.api.web.controller;
 
-import com.xclr8.api.model.Account;
-import com.xclr8.api.repository.AccountRepository;
 import com.xclr8.api.service.AccountService;
 import com.xclr8.api.web.response.AccountResponse;
 import org.springframework.beans.factory.annotation.Autowired;
