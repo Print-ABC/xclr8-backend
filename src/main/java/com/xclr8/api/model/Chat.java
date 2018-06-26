@@ -5,6 +5,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.util.List;
+
 @Data
 @Document(collection = "Chat")
 public class Chat {
@@ -18,5 +20,5 @@ public class Chat {
     private String patient_healthId;
 
     @Field
-    private String chatLog;
+    private List<ChatLog> chatLog;
 }
