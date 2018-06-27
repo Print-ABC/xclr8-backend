@@ -14,7 +14,12 @@ public class NotificationResponse {
     private String message;
     private int status;
 
-    public static Iterable<NotificationResponse> toAllNotificationResponse(Iterable<Notification> nList){
+    /**
+     * Create a list of NotificationResponse from Notification objects and return it
+     * @param nList
+     * @return nRList
+     */
+    public Iterable<NotificationResponse> toAllNotificationResponse(Iterable<Notification> nList){
         ArrayList<NotificationResponse> nRList = new ArrayList<NotificationResponse>();
         for (Notification n : nList) {
             NotificationResponse nR = new NotificationResponse();

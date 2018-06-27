@@ -16,8 +16,30 @@ public class AccountResponse {
     private String firstName;
     private String lastName;
 
+    /**
+     * Create an AccountResponse from an Account object and return it
+     * @param account
+     * @return aR
+     */
+    public AccountResponse response(Account account) {
+        AccountResponse aR = new AccountResponse();
+        aR.setId(account.getId());
+        aR.setHealthId(account.getHealthId());
+        aR.setEmail(account.getEmail());
+        aR.setMobileNo(account.getMobileNo());
+        aR.setPassword(account.getPassword());
+        aR.setAccountType(account.getAccountType());
+        aR.setFirstName(account.getFirstName());
+        aR.setLastName(account.getLastName());
+        return aR;
+    }
 
-    public static Iterable<AccountResponse> toAllAccountResponse(Iterable<Account> aList){
+    /**
+     * Create a list of AccountResponse from Account objects and return it
+     * @param aList
+     * @return aRList
+     */
+    public Iterable<AccountResponse> toAllAccountResponse(Iterable<Account> aList){
         ArrayList<AccountResponse> aRList = new ArrayList<AccountResponse>();
         for (Account a : aList) {
             AccountResponse aR = new AccountResponse();

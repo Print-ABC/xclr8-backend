@@ -11,11 +11,24 @@ import java.util.List;
 @Service
 public class NotificationService {
     @Autowired
-    NotificationRepository notificationRepository;
+    NotificationRepository mNotificationRepository;
 
-    public Iterable<NotificationResponse> findAllChat(){
-        List<Notification> nList;
-        nList = notificationRepository.findAll();
-        return NotificationResponse.toAllNotificationResponse(nList);
+    /**
+     * Return all available notifications from database
+     * @return Iterable<NotificationResponse>
+     */
+    public Iterable<NotificationResponse> findAllNotification(){
+        List<Notification> notificationList = mNotificationRepository.findAll();
+        return new NotificationResponse().toAllNotificationResponse(notificationList);
+    }
+
+    /**
+     * Return all available notifications filtered by the recipient's health ID from database
+     * @param rhid
+     * @return Iterable<NotificationResponse>
+     */
+    public Iterable<NotificationResponse> findNotificationsByRecipientHealthId(String rhid){
+        List<Notification> notificationList = mNotificationRepository.findByHealthId(rhid);
+        return new NotificationResponse().toAllNotificationResponse(notificationList);
     }
 }

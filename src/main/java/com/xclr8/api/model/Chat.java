@@ -14,10 +14,10 @@ public class Chat {
     private String id;
 
     @Field
-    private String therapist_healthId;
+    private String therapistHealthId;
 
     @Field
-    private String patient_healthId;
+    private String patientHealthId;
 
     @Field
     private List<ChatLog> chatLog;

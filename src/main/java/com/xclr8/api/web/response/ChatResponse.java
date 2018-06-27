@@ -14,13 +14,18 @@ public class ChatResponse {
     private String patient_healthId;
     private List<ChatLog> chatLog;
 
-    public static Iterable<ChatResponse> toAllChatResponse(Iterable<Chat> cList){
+    /**
+     * Create a list of ChatResponse from Chat objects and return it
+     * @param cList
+     * @return Iterable<ChatResponse>
+     */
+    public Iterable<ChatResponse> toAllChatResponse(Iterable<Chat> cList){
         ArrayList<ChatResponse> cRList = new ArrayList<ChatResponse>();
         for (Chat c : cList) {
             ChatResponse cR = new ChatResponse();
             cR.setId(c.getId());
-            cR.setTherapist_healthId(c.getTherapist_healthId());
-            cR.setPatient_healthId(c.getPatient_healthId());
+            cR.setTherapist_healthId(c.getTherapistHealthId());
+            cR.setPatient_healthId(c.getPatientHealthId());
             cR.setChatLog(c.getChatLog());
             cRList.add(cR);
         }
