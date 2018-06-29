@@ -11,8 +11,8 @@ public class PatientResponse {
     private String healthId;
     private String firstName;
     private String lastName;
-    private String height;
-    private String weight;
+    private Double height;
+    private Double weight;
     private String gender;
     private String dob;
     private String streetAndBuildingName;
