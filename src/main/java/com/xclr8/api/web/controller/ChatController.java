@@ -1,12 +1,10 @@
 package com.xclr8.api.web.controller;
 
 import com.xclr8.api.service.ChatService;
+import com.xclr8.api.web.request.ChatRequest;
 import com.xclr8.api.web.response.ChatResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/chat")
@@ -43,5 +41,15 @@ public class ChatController {
     @RequestMapping(value = "/p/{pHid}", method = RequestMethod.GET)
     public Iterable<ChatResponse> chatsByPatientHealthId(@PathVariable String pHid) {
         return mChatService.findChatByPatientHealthId(pHid);
+    }
+
+    /**
+     * POST [url]:8080/chat/create
+     * Creates a chat log on the database
+     * @return boolean
+     */
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public boolean createText(@RequestBody ChatRequest Chat) {
+        return mChatService.createNewChat(Chat);
     }
 }

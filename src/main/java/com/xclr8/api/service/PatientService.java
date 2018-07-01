@@ -51,4 +51,5 @@ public class PatientService {
         List<Patient> patientList = mPatientRepository.findByLastName(lastName);
         return new PatientResponse().toAllPatientResponse(patientList);
     }
+
 }
