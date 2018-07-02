@@ -57,4 +57,14 @@ public class PatientController {
     public Iterable<PatientResponse> patientByLastName(@PathVariable String lname) {
         return mPatientService.findPatientByLastName(lname);
     }
+
+    /**
+     * DELETE [url]:8080/patient/delete/[health Id]
+     * @param hid
+     * @return
+     */
+    @RequestMapping(value = "/delete/{hid}", method = RequestMethod.DELETE)
+    public boolean deletePatientByHealthId(@PathVariable String hid) {
+        return mPatientService.deletePatientByHealthId(hid);
+    }
 }

@@ -23,12 +23,32 @@ public class NotificationService {
     }
 
     /**
-     * Return all available notifications filtered by the recipient's health ID from database
+     * Return all available notifications filtered by the given recipient health ID from database
      * @param rhid
      * @return Iterable<NotificationResponse>
      */
     public Iterable<NotificationResponse> findNotificationsByRecipientHealthId(String rhid){
         List<Notification> notificationList = mNotificationRepository.findByHealthId(rhid);
         return new NotificationResponse().toAllNotificationResponse(notificationList);
+    }
+
+    /**
+     * Delete all notifications filtered by the given docuemnt ID from database
+     * @param id
+     * @return true
+     */
+    public boolean deleteNotificationsById(String id) {
+        mNotificationRepository.deleteById(id);
+        return true;
+    }
+
+    /**
+     * Delete all notifications filtered by the given recipient health ID from database
+     * @param hid
+     * @return true
+     */
+    public boolean deleteNotificationsByRecipientHealthId(String hid) {
+        mNotificationRepository.deleteByHealthId(hid);
+        return true;
     }
 }

@@ -19,9 +19,8 @@ public class AccountController {
     @Autowired
     AccountService mAccountService;
 
-    /*
-    @Autowired
-    AccountRepository mAR;*/
+//    @Autowired
+//    AccountRepository mAR;
 
     /**
      * GET [url]:8080/account
@@ -61,6 +60,16 @@ public class AccountController {
     @RequestMapping(value = "/acc", method = RequestMethod.GET)
     public AccountResponse accByHealthIdAndPassword(String hid, String pw) {
         return mAccountService.findAccByHealthIdAndPassword(hid, pw);
+    }
+
+    /**
+     * DELETE [url]:8080/account/delete/[health Id]
+     * @param hid
+     * @return true
+     */
+    @RequestMapping(value = "/delete/{hid}", method = RequestMethod.DELETE)
+    public boolean delete(@PathVariable String hid) {
+        return mAccountService.deleteAccByHealthId(hid);
     }
 
     /*

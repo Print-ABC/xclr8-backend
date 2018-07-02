@@ -67,4 +67,34 @@ public class ChatService {
         chat = mChatRepository.save(chat);
         return false;
     }
+
+    /**
+     * Remove chats with matching document ids from database
+     * @param id
+     * @return true
+     */
+    public boolean deleteById(String id) {
+        mChatRepository.deleteById(id);
+        return true;
+    }
+
+    /**
+     * Remove chats with matching patient ids from database
+     * @param hid
+     * @return
+     */
+    public boolean deleteByPatientHealthId(String hid) {
+        mChatRepository.deleteByPatientHealthId(hid);
+        return true;
+    }
+
+    /**
+     * Remove chats with matching therapist ids from database
+     * @param hid
+     * @return
+     */
+    public boolean deleteByTherapistHealthId(String hid) {
+        mChatRepository.deleteByTherapistHealthId(hid);
+        return true;
+    }
 }

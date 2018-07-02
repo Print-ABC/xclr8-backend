@@ -27,11 +27,34 @@ public class NotificationController {
 
     /**
      * GET [url]:8080/notification/id/[recipient health id]
+     * Return all available notifications filtered by given recipient health id from database
      * @param rhid
      * @return Iterable<NotificationResponse>
      */
     @RequestMapping(value = "/id/{rhid}", method = RequestMethod.GET)
     public Iterable<NotificationResponse> notificationsByRecipientHealthId(@PathVariable String rhid) {
         return mNotificationService.findNotificationsByRecipientHealthId(rhid);
+    }
+
+    /**
+     * GET [url]:8080/notification/delete/id/[document id]
+     * Delete all notifications filtered by given document id from database
+     * @param id
+     * @return true
+     */
+    @RequestMapping(value = "/delete/id/{id}", method = RequestMethod.DELETE)
+    public boolean deleteNotificationsById(@PathVariable String id) {
+        return mNotificationService.deleteNotificationsById(id);
+    }
+
+    /**
+     * GET [url]:8080/notification/delete/hid/[recipient health id]
+     * Delete all notifications filtered by given recipient health id from database
+     * @param rhid
+     * @return true
+     */
+    @RequestMapping(value = "/delete/hid/{rhid}", method = RequestMethod.DELETE)
+    public boolean deleteNotificationsByRecipientHealthId(@PathVariable String rhid) {
+        return mNotificationService.deleteNotificationsByRecipientHealthId(rhid);
     }
 }

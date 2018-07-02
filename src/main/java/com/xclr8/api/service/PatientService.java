@@ -52,4 +52,8 @@ public class PatientService {
         return new PatientResponse().toAllPatientResponse(patientList);
     }
 
+    public boolean deletePatientByHealthId(String hid) {
+        mPatientRepository.deleteByHealthId(hid);
+        return true;
+    }
 }

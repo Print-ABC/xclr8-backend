@@ -8,4 +8,9 @@ import java.util.List;
 public interface NotificationRepository extends MongoRepository<Notification, String> {
 
     List<Notification> findByHealthId(String healthId);
+
+    @Override
+    void deleteById(String s);
+
+    void deleteByHealthId(String healthId);
 }

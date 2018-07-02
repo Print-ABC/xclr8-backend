@@ -12,6 +12,8 @@ public interface PatientRepository extends MongoRepository<Patient, String> {
     List<Patient> findByFirstName(String firstName);
 
     List<Patient> findByLastName(String lastName);
+
+    void deleteByHealthId(String healthId);
 }
 
 

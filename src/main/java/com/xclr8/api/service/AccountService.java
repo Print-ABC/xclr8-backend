@@ -52,4 +52,14 @@ public class AccountService {
         Account account = mAccountRepository.findByHealthIdAndPassword(hid, pw);
         return new AccountResponse().response(account);
     }
+
+    /**
+     * Delete an account with the given health ID
+     * @param hid
+     * @return true
+     */
+    public boolean deleteAccByHealthId(String hid) {
+        mAccountRepository.deleteByHealthId(hid);
+        return true;
+    }
 }
