@@ -1,5 +1,6 @@
 package com.xclr8.api.web.controller;
 
+import com.xclr8.api.model.Chat;
 import com.xclr8.api.service.ChatService;
 import com.xclr8.api.web.request.ChatRequest;
 import com.xclr8.api.web.response.ChatResponse;
@@ -46,11 +47,22 @@ public class ChatController {
     /**
      * POST [url]:8080/chat/create
      * Creates a chat log on the database
-     * @return boolean
+     * @return Chat
      */
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public boolean createText(@RequestBody ChatRequest Chat) {
-        return mChatService.createNewChat(Chat);
+    public Chat createText(@RequestBody ChatRequest chat) {
+        return mChatService.createNewChat(chat);
+    }
+
+    /**
+     * PUT [url]:8080/chat/send
+     * Adds a new message into a currently existing ChatLog in the database
+     * Only really uses chat objectID, sender, recipient and text to update the chatlog
+     * @return Chat
+     */
+    @RequestMapping(value = "/send", method = RequestMethod.PUT)
+    public Chat sendMessage(@RequestBody ChatRequest chat) {
+        return mChatService.sendMessage(chat);
     }
 
     /**

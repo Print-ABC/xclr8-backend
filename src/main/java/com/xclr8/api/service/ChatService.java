@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ChatService {
@@ -50,7 +51,7 @@ public class ChatService {
      * @param chatInstance
      * @return boolean
      */
-    public boolean createNewChat(ChatRequest chatInstance) {
+    public Chat createNewChat(ChatRequest chatInstance) {
         Chat chat = new Chat();
         chat.setPatientHealthId(chatInstance.getPatientHealthId());
         chat.setTherapistHealthId(chatInstance.getTherapistHealthId());
@@ -65,7 +66,7 @@ public class ChatService {
         chat.setChatLog(chatLogList);
 
         chat = mChatRepository.save(chat);
-        return false;
+        return chat;
     }
 
     /**
@@ -96,5 +97,32 @@ public class ChatService {
     public boolean deleteByTherapistHealthId(String hid) {
         mChatRepository.deleteByTherapistHealthId(hid);
         return true;
+    }
+
+    /**
+     * Creates a chat object in the database
+     * @param chatInstance
+     * @return boolean
+     */
+    public Chat sendMessage(ChatRequest chatInstance) {
+
+        Chat chat = new Chat();
+        chat.setId(chatInstance.getId());
+        Optional<Chat> check = mChatRepository.findById(chatInstance.getId());
+        if (check.isPresent()) {
+            chat = check.get();
+            ChatLog chatlog = new ChatLog();
+            chatlog.setRecipient(chatInstance.getRecipient());
+            chatlog.setSender(chatInstance.getSender());
+            chatlog.setText(chatInstance.getText());
+
+
+            ArrayList<ChatLog> chatLogList = new ArrayList<ChatLog>(chat.getChatLog());
+            chatLogList.add(chatlog);
+            chat.setChatLog(chatLogList);
+
+            chat = mChatRepository.save(chat);
+        }
+        return chat;
     }
 }

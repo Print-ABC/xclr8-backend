@@ -1,5 +1,6 @@
 package com.xclr8.api.model;
 
+import com.xclr8.api.nestedModel.Exercise;
 import com.xclr8.api.nestedModel.Summary;
 import lombok.Data;
 import org.springframework.data.annotation.Id;

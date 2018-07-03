@@ -1,4 +1,4 @@
-package com.xclr8.api.model;
+package com.xclr8.api.nestedModel;
 
 import com.xclr8.api.nestedModel.Exercise_Config;
 import com.xclr8.api.nestedModel.Exercise_Result;
