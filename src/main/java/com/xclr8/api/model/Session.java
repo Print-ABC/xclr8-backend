@@ -25,6 +25,7 @@ public class Session {
     String timestamp;
 
     @Field
+    //Uses diagnosis ID to set session group, used to do bulk changes to rehab programs in one go
     String sessionGroupId;
 
     @Field
