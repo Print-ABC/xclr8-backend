@@ -19,7 +19,7 @@ public class NotificationResponse {
      * @param nList
      * @return nRList
      */
-    public Iterable<NotificationResponse> toAllNotificationResponse(Iterable<Notification> nList){
+    public static Iterable<NotificationResponse> toAllNotificationResponse(Iterable<Notification> nList){
         ArrayList<NotificationResponse> nRList = new ArrayList<NotificationResponse>();
         for (Notification n : nList) {
             NotificationResponse nR = new NotificationResponse();
@@ -33,6 +33,22 @@ public class NotificationResponse {
         }
 
         return nRList;
+    }
+
+    /**
+     * Create a NotificationResponse from Notification objects and return it
+     * @param notification
+     * @return notificationResponse
+     */
+    public static NotificationResponse toNotificationResponse(Notification notification){
+        NotificationResponse notificationResponse = new NotificationResponse();
+        notificationResponse.setId(notification.getId());
+        notificationResponse.setHealthId(notification.getHealthId());
+        notificationResponse.setTimeStamp(notification.getTimeStamp());
+        notificationResponse.setTitle(notification.getTitle());
+        notificationResponse.setMessage(notification.getMessage());
+        notificationResponse.setStatus(notification.getStatus());
+        return notificationResponse;
     }
 
 }

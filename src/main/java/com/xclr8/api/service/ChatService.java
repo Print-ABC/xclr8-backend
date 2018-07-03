@@ -1,7 +1,7 @@
 package com.xclr8.api.service;
 
 import com.xclr8.api.model.Chat;
-import com.xclr8.api.model.ChatLog;
+import com.xclr8.api.nestedModel.ChatLog;
 import com.xclr8.api.repository.ChatRepository;
 import com.xclr8.api.web.request.ChatRequest;
 import com.xclr8.api.web.response.ChatResponse;

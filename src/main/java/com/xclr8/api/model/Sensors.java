@@ -1,6 +1,6 @@
 package com.xclr8.api.model;
 
-import com.xclr8.api.nestedModel.ChatLog;
+import com.xclr8.api.nestedModel.Sensor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,17 +9,14 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import java.util.List;
 
 @Data
-@Document(collection = "Chat")
-public class Chat {
+@Document(collection = "Sensors")
+public class Sensors {
     @Id
-    private String id;
+    String id;
 
     @Field
-    private String therapistHealthId;
+    String patientId;
 
     @Field
-    private String patientHealthId;
-
-    @Field
-    private List<ChatLog> chatLog;
+    List<Sensor> sensors;
 }

@@ -1,7 +1,7 @@
 package com.xclr8.api.web.response;
 
 import com.xclr8.api.model.Chat;
-import com.xclr8.api.model.ChatLog;
+import com.xclr8.api.nestedModel.ChatLog;
 import lombok.Data;
 
 import java.util.ArrayList;

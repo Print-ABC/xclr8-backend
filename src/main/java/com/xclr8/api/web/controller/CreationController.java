@@ -1,6 +1,5 @@
 package com.xclr8.api.web.controller;
 
-import com.xclr8.api.service.AccountService;
 import com.xclr8.api.service.CreationService;
 import com.xclr8.api.web.request.AccountPatientRequest;
 import com.xclr8.api.web.response.AccountPatientResponse;
@@ -18,7 +17,7 @@ public class CreationController {
     CreationService mCreateService;
 
     /**
-     * POST [url]:8080/create/patient/
+     * POST [url]:8080/create/patient
      * Creates a patient object in the database
      * @param patient
      * @return PatientResponse
