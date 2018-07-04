@@ -15,12 +15,21 @@ public class SessionController {
     @Autowired
     SessionService mSessionService;
 
+    /**
+     * GET [url]:8080/session/all
+     * Return all available sessions from database
+     * @return Iterable<SessionResponse>
+     */
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    public Iterable<SessionResponse> sessions() {
+        return mSessionService.findAllSessions();
+    }
 
     /**
      * POST [url]:8080/session/create
      * Creates a session object in the database
      * @param sessionRequest
-     * @return SessionResponse
+     * @return SessionResponse object
      */
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public SessionResponse createSession(@RequestBody SessionRequest sessionRequest) {

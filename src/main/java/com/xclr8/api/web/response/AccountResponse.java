@@ -53,7 +53,6 @@ public class AccountResponse {
             accountResponse.setLastName(a.getLastName());
             accountResponses.add(accountResponse);
         }
-
         return accountResponses;
     }
 }

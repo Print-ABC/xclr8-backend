@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
 @Document(collection = "Patient_statistics")
-public class Patient_statistics {
+public class PatientStatistics {
     @Id
     String id;
 

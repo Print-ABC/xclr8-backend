@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 @Data
 @Document(collection = "Exercise_default")
-public class Exercise_default {
+public class ExerciseDefault {
     @Id
     String id;
 

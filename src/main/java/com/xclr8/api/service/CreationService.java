@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -36,8 +35,8 @@ public class CreationService {
     public AccountPatientResponse createPatientAccount(AccountPatientRequest accountDetails){
         Account account = new Account();
         Patient patient = new Patient();
-        Patient_statistics patientStats = new Patient_statistics();
-        Patient_group patientGroup = new Patient_group();
+        PatientStatistics patientStats = new PatientStatistics();
+        PatientGroup patientGroup = new PatientGroup();
         Sensors sensorSet = new Sensors();
 
         account.setFirstName(accountDetails.getFirstName());
@@ -108,7 +107,7 @@ public class CreationService {
 
     public AccountTherapistResponse createTherapistAccount(AccountTherapistRequest accountDetails){
         Account account = new Account();
-        Patient_group patientGroup = new Patient_group();
+        PatientGroup patientGroup = new PatientGroup();
 
         account.setFirstName(accountDetails.getFirstName());
         account.setAccountType(accountDetails.getAccountType());

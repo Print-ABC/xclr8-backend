@@ -29,7 +29,6 @@ public class ChatResponse {
             chatResponse.setChatLog(c.getChatLog());
             chatResponses.add(chatResponse);
         }
-
         return chatResponses;
     }
 

@@ -9,7 +9,7 @@ import java.util.List;
 
 @Data
 @Document(collection = "Patient_group")
-public class Patient_group {
+public class PatientGroup {
     @Id
     String id;
 

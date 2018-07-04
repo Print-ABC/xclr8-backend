@@ -14,6 +14,20 @@ import org.springframework.web.bind.annotation.RestController;
 public class ExerciseDefaultController {
     @Autowired
     ExerciseDefaultService mExerciseDefaultService;
+
+    /**
+     * GET [url]:8080/exerciseDefault/all
+     * Return all available default exercises from database
+     * @return Iterable<ExerciseDefaultResponse>
+     */
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    public Iterable<ExerciseDefaultResponse> exerciseDefaults() {
+        return mExerciseDefaultService.findAllExerciseDefaults();
+    }
+
+    // GET [url]:8080/exerciseDefault/id/{id}
+    // GET [url]:8080/exerciseDefault/name/{name}
+
     /**
      * POST [url]:8080/exerciseDefault/create
      * Creates a Default exercise object in the database

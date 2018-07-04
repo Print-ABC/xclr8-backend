@@ -1,8 +1,8 @@
 package com.xclr8.api.repository;
 
-import com.xclr8.api.model.Patient_group;
+import com.xclr8.api.model.PatientGroup;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface PatientGroupRepository extends MongoRepository<Patient_group, String> {
-    Patient_group findByHealthId(String healthId);
+public interface PatientGroupRepository extends MongoRepository<PatientGroup, String> {
+    PatientGroup findByHealthId(String healthId);
 }

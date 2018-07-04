@@ -16,10 +16,19 @@ public class DiagnosisController {
     @Autowired
     DiagnosisService mDiagnosisService;
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    /**
+     * GET [url]:8080/diagnosis/all
+     * Return all available diagnoses from database
+     * @return Iterable<DiagnosisResponse>
+     */
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     public Iterable<DiagnosisResponse> diagnoses() {
         return mDiagnosisService.findAllDiagnoses();
     }
+
+    // GET [url]:8080/diagnosis/id/{id}
+    // GET [url]:8080/diagnosis/patient/{id}
+
     /**
      * POST [url]:8080/diagnosis/create
      * Creates a diagnosis object in the database

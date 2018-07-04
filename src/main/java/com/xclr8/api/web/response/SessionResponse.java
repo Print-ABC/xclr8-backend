@@ -5,6 +5,7 @@ import com.xclr8.api.nestedModel.Exercise;
 import com.xclr8.api.nestedModel.Summary;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -34,5 +35,26 @@ public class SessionResponse {
         sessionResponse.setReplayPath(session.getReplayPath());
         sessionResponse.setNotes(session.getNotes());
         return sessionResponse;
+    }
+
+    /**
+     * Create a list of SessionResponse from Session objects and return it
+     * @param sessions
+     * @return
+     */
+    public Iterable<SessionResponse> sessionResponseIterable(Iterable<Session> sessions) {
+        ArrayList<SessionResponse> sessionResponses = new ArrayList<SessionResponse>();
+        for (Session s : sessions) {
+            SessionResponse sessionResponse = new SessionResponse();
+            sessionResponse.setPatientId(s.getPatientId());
+            sessionResponse.setTherapistId(s.getTherapistId());
+            sessionResponse.setTimestamp(s.getTimestamp());
+            sessionResponse.setSessionGroupId(s.getSessionGroupId());
+            sessionResponse.setSessionSummary(s.getSessionSummary());
+            sessionResponse.setExercises(s.getExercises());
+            sessionResponse.setReplayPath(s.getReplayPath());
+            sessionResponse.setNotes(s.getNotes());
+        }
+        return sessionResponses;
     }
 }

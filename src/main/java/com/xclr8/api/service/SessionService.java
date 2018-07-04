@@ -7,10 +7,22 @@ import com.xclr8.api.web.response.SessionResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SessionService {
+
     @Autowired
     SessionRepository mSessionRespository;
+
+    /**
+     * Return all available sessions from database
+     * @return
+     */
+    public Iterable<SessionResponse> findAllSessions() {
+        List<Session> sessionList = mSessionRespository.findAll();
+        return new SessionResponse().sessionResponseIterable(sessionList);
+    }
 
     /**
      * Return a SessionResponse based on the given SessionRequest
