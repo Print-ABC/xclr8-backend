@@ -23,11 +23,11 @@ public class AccountController {
 //    AccountRepository mAR;
 
     /**
-     * GET [url]:8080/account
+     * GET [url]:8080/account/all
      * Return all available accounts from database
      * @return Iterable<AccountResponse>
      */
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     public Iterable<AccountResponse> accounts() {
         return mAccountService.findAllAccounts();
     }

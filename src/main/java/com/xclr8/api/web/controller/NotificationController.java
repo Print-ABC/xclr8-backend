@@ -18,7 +18,7 @@ public class NotificationController {
     NotificationService mNotificationService;
 
     /**
-     * GET [url]:8080/notification
+     * GET [url]:8080/notification/all
      * Return all available notifications from database
      * @return Iterable<NotificationResponse>
      */

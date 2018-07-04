@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/exerciseDefault")
+@RequestMapping("/exercise")
 public class ExerciseDefaultController {
     @Autowired
     ExerciseDefaultService mExerciseDefaultService;
 
     /**
-     * GET [url]:8080/exerciseDefault/all
+     * GET [url]:8080/exercise/all
      * Return all available default exercises from database
      * @return Iterable<ExerciseDefaultResponse>
      */
@@ -25,11 +25,11 @@ public class ExerciseDefaultController {
         return mExerciseDefaultService.findAllExerciseDefaults();
     }
 
-    // GET [url]:8080/exerciseDefault/id/{id}
-    // GET [url]:8080/exerciseDefault/name/{name}
+    // GET [url]:8080/exercise/id/{id}
+    // GET [url]:8080/exercise/name/{name}
 
     /**
-     * POST [url]:8080/exerciseDefault/create
+     * POST [url]:8080/exercise/create
      * Creates a Default exercise object in the database
      * @param exerciseDefaultRequest
      * @return ExerciseDefaultResponse

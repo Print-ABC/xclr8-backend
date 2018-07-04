@@ -15,11 +15,11 @@ public class ChatController {
     ChatService mChatService;
 
     /**
-     * GET [url]:8080/chat
+     * GET [url]:8080/chat/all
      * Return all available chats from database
      * @return Iterable<ChatResponse>
      */
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     public Iterable<ChatResponse> chats() {
         return mChatService.findAllChat();
     }

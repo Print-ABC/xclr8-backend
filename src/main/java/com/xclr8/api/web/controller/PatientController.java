@@ -16,11 +16,11 @@ public class PatientController {
     PatientService mPatientService;
 
     /**
-     * GET [url]:8080/patient
+     * GET [url]:8080/patient/all
      * Return information of all patients from database
      * @return Iterable<PatientResponse>
      */
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     public Iterable<PatientResponse> patients() {
         return mPatientService.findAllPatients();
     }
