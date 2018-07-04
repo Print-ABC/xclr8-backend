@@ -7,25 +7,41 @@ import com.xclr8.api.web.response.DiagnosisResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DiagnosisService {
     @Autowired
     DiagnosisRepository mDiagnosisRepository;
 
-    public DiagnosisResponse createDiagnosis(DiagnosisRequest dr){
-        Diagnosis d = new Diagnosis();
-        d.setAssessment(dr.getAssessment());
-        d.setComplianceThreshold(dr.getComplianceThreshold());
-        d.setSubjective(dr.getSubjective());
-        d.setStatus(dr.getStatus());
-        d.setPatientId(dr.getPatientId());
-        d.setObjective(dr.getObjective());
-        d.setNotes(dr.getNotes());
-        d.setPlan(dr.getPlan());
-        d.setDiagnosisDate(dr.getDiagnosisDate());
+    /**
+     * Return all available diagnoses from database
+     * @return Iterable<DiagnosisResponse>
+     */
+    public Iterable<DiagnosisResponse> findAllDiagnoses() {
+        List<Diagnosis> diagnosisList = mDiagnosisRepository.findAll();
+        return new DiagnosisResponse().diagnosisResponseIterable(diagnosisList);
+    }
 
-        d = mDiagnosisRepository.save(d);
+    /**
+     * Create and save ...
+     * @param diagnosisRequest
+     * @return DiagnosisResponse object
+     */
+    public DiagnosisResponse createDiagnosis(DiagnosisRequest diagnosisRequest){
+        Diagnosis diagnosis = new Diagnosis();
+        diagnosis.setAssessment(diagnosisRequest.getAssessment());
+        diagnosis.setComplianceThreshold(diagnosisRequest.getComplianceThreshold());
+        diagnosis.setSubjective(diagnosisRequest.getSubjective());
+        diagnosis.setStatus(diagnosisRequest.getStatus());
+        diagnosis.setPatientId(diagnosisRequest.getPatientId());
+        diagnosis.setObjective(diagnosisRequest.getObjective());
+        diagnosis.setNotes(diagnosisRequest.getNotes());
+        diagnosis.setPlan(diagnosisRequest.getPlan());
+        diagnosis.setDiagnosisDate(diagnosisRequest.getDiagnosisDate());
 
-        return DiagnosisResponse.toDiagnosisResponse(d);
+        diagnosis = mDiagnosisRepository.save(diagnosis);
+
+        return new DiagnosisResponse().diagnosisResponse(diagnosis);
     }
 }

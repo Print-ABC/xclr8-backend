@@ -15,17 +15,21 @@ public class ExerciseDefaultResponse {
     double defaultSensitivity;
     String bodyPart;
 
-    public static ExerciseDefaultResponse toExerciseDefaultResponse(Exercise_default ed){
-        ExerciseDefaultResponse edr = new ExerciseDefaultResponse();
-        edr.setExerciseName(ed.getExerciseName());
-        edr.setDefaultSides(ed.getDefaultSides());
-        edr.setDefaultReps(ed.getDefaultReps());
-        edr.setDefaultSets(ed.getDefaultSets());
-        edr.setDefaultFrequency(ed.getDefaultFrequency());
-        edr.setDefaultMinAngle(ed.getDefaultMinAngle());
-        edr.setDefaultMaxAngle(ed.getDefaultMaxAngle());
-        edr.setDefaultSensitivity(ed.getDefaultSensitivity());
-
-        return edr;
+    /**
+     * Create an ExerciseDefaultResponse from an Exercise_default object and return it
+     * @param exerciseDefault
+     * @return exerciseDefaultResponse
+     */
+    public ExerciseDefaultResponse exerciseDefaultResponse(Exercise_default exerciseDefault){
+        ExerciseDefaultResponse exerciseDefaultResponse = new ExerciseDefaultResponse();
+        exerciseDefaultResponse.setExerciseName(exerciseDefault.getExerciseName());
+        exerciseDefaultResponse.setDefaultSides(exerciseDefault.getDefaultSides());
+        exerciseDefaultResponse.setDefaultReps(exerciseDefault.getDefaultReps());
+        exerciseDefaultResponse.setDefaultSets(exerciseDefault.getDefaultSets());
+        exerciseDefaultResponse.setDefaultFrequency(exerciseDefault.getDefaultFrequency());
+        exerciseDefaultResponse.setDefaultMinAngle(exerciseDefault.getDefaultMinAngle());
+        exerciseDefaultResponse.setDefaultMaxAngle(exerciseDefault.getDefaultMaxAngle());
+        exerciseDefaultResponse.setDefaultSensitivity(exerciseDefault.getDefaultSensitivity());
+        return exerciseDefaultResponse;
     }
 }

@@ -30,64 +30,63 @@ public class PatientResponse {
     /**
      * Create an PatientResponse from an Patient object and return it
      * @param patient
-     * @return pR
+     * @return patientResponse
      */
-    public PatientResponse response(Patient patient) {
-        PatientResponse pR = new PatientResponse();
-        pR.setId(patient.getId());
-        pR.setHealthId(patient.getHealthId());
-        pR.setFirstName(patient.getFirstName());
-        pR.setLastName(patient.getLastName());
-        pR.setHeight(patient.getHeight());
-        pR.setWeight(patient.getWeight());
-        pR.setGender(patient.getGender());
-        pR.setDob(patient.getDob());
-        pR.setStreetAndBuildingName(patient.getStreetAndBuildingName());
-        pR.setPostalCode(patient.getPostalCode());
-        pR.setCity(patient.getCity());
-        pR.setCountry(patient.getCountry());
-        pR.setEmail(patient.getEmail());
-        pR.setMobileNo(patient.getMobileNo());
-        pR.setFixedLineNo(patient.getFixedLineNo());
-        pR.setEmergencyNo(patient.getEmergencyNo());
-        pR.setInsuranceCompany(patient.getInsuranceCompany());
-        pR.setInsurancePolicyNo(patient.getInsurancePolicyNo());
-        pR.setTherapistId(patient.getTherapistId());
-        return pR;
+    public PatientResponse patientResponse(Patient patient) {
+        PatientResponse patientResponse = new PatientResponse();
+        patientResponse.setId(patient.getId());
+        patientResponse.setHealthId(patient.getHealthId());
+        patientResponse.setFirstName(patient.getFirstName());
+        patientResponse.setLastName(patient.getLastName());
+        patientResponse.setHeight(patient.getHeight());
+        patientResponse.setWeight(patient.getWeight());
+        patientResponse.setGender(patient.getGender());
+        patientResponse.setDob(patient.getDob());
+        patientResponse.setStreetAndBuildingName(patient.getStreetAndBuildingName());
+        patientResponse.setPostalCode(patient.getPostalCode());
+        patientResponse.setCity(patient.getCity());
+        patientResponse.setCountry(patient.getCountry());
+        patientResponse.setEmail(patient.getEmail());
+        patientResponse.setMobileNo(patient.getMobileNo());
+        patientResponse.setFixedLineNo(patient.getFixedLineNo());
+        patientResponse.setEmergencyNo(patient.getEmergencyNo());
+        patientResponse.setInsuranceCompany(patient.getInsuranceCompany());
+        patientResponse.setInsurancePolicyNo(patient.getInsurancePolicyNo());
+        patientResponse.setTherapistId(patient.getTherapistId());
+        return patientResponse;
     }
 
     /**
      * Create a list of PatientResponse from Patient objects and return it
-     * @param pList
-     * @return pRList
+     * @param patients
+     * @return patientResponses
      */
-    public Iterable<PatientResponse> toAllPatientResponse(Iterable<Patient> pList){
-        ArrayList<PatientResponse> pRList = new ArrayList<PatientResponse>();
-        for (Patient p : pList) {
-            PatientResponse pR = new PatientResponse();
-            pR.setId(p.getId());
-            pR.setHealthId(p.getHealthId());
-            pR.setFirstName(p.getFirstName());
-            pR.setLastName(p.getLastName());
-            pR.setHeight(p.getHeight());
-            pR.setWeight(p.getWeight());
-            pR.setGender(p.getGender());
-            pR.setDob(p.getDob());
-            pR.setStreetAndBuildingName(p.getStreetAndBuildingName());
-            pR.setPostalCode(p.getPostalCode());
-            pR.setCity(p.getCity());
-            pR.setCountry(p.getCountry());
-            pR.setEmail(p.getEmail());
-            pR.setMobileNo(p.getMobileNo());
-            pR.setFixedLineNo(p.getFixedLineNo());
-            pR.setEmergencyNo(p.getEmergencyNo());
-            pR.setInsuranceCompany(p.getInsuranceCompany());
-            pR.setInsurancePolicyNo(p.getInsurancePolicyNo());
-            pR.setTherapistId(p.getTherapistId());
-            pRList.add(pR);
+    public Iterable<PatientResponse> patientResponseIterable(Iterable<Patient> patients){
+        ArrayList<PatientResponse> patientResponses = new ArrayList<PatientResponse>();
+        for (Patient p : patients) {
+            PatientResponse patientResponse = new PatientResponse();
+            patientResponse.setId(p.getId());
+            patientResponse.setHealthId(p.getHealthId());
+            patientResponse.setFirstName(p.getFirstName());
+            patientResponse.setLastName(p.getLastName());
+            patientResponse.setHeight(p.getHeight());
+            patientResponse.setWeight(p.getWeight());
+            patientResponse.setGender(p.getGender());
+            patientResponse.setDob(p.getDob());
+            patientResponse.setStreetAndBuildingName(p.getStreetAndBuildingName());
+            patientResponse.setPostalCode(p.getPostalCode());
+            patientResponse.setCity(p.getCity());
+            patientResponse.setCountry(p.getCountry());
+            patientResponse.setEmail(p.getEmail());
+            patientResponse.setMobileNo(p.getMobileNo());
+            patientResponse.setFixedLineNo(p.getFixedLineNo());
+            patientResponse.setEmergencyNo(p.getEmergencyNo());
+            patientResponse.setInsuranceCompany(p.getInsuranceCompany());
+            patientResponse.setInsurancePolicyNo(p.getInsurancePolicyNo());
+            patientResponse.setTherapistId(p.getTherapistId());
+            patientResponses.add(patientResponse);
         }
-
-        return pRList;
+        return patientResponses;
     }
 
 }

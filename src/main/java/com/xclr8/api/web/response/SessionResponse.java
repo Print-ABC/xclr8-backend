@@ -18,17 +18,21 @@ public class SessionResponse {
     String replayPath;
     String notes;
 
-    public static SessionResponse toSessionResponse(Session s){
-        SessionResponse sr = new SessionResponse();
-        sr.setPatientId(s.getPatientId());
-        sr.setTherapistId(s.getTherapistId());
-        sr.setTimestamp(s.getTimestamp());
-        sr.setSessionGroupId(s.getSessionGroupId());
-        sr.setSessionSummary(s.getSessionSummary());
-        sr.setExercises(s.getExercises());
-        sr.setReplayPath(s.getReplayPath());
-        sr.setNotes(s.getNotes());
-
-        return sr;
+    /**
+     * Create an SessionResponse from an Session object and return it
+     * @param session
+     * @return sessionResponse
+     */
+    public SessionResponse sessionResponse(Session session){
+        SessionResponse sessionResponse = new SessionResponse();
+        sessionResponse.setPatientId(session.getPatientId());
+        sessionResponse.setTherapistId(session.getTherapistId());
+        sessionResponse.setTimestamp(session.getTimestamp());
+        sessionResponse.setSessionGroupId(session.getSessionGroupId());
+        sessionResponse.setSessionSummary(session.getSessionSummary());
+        sessionResponse.setExercises(session.getExercises());
+        sessionResponse.setReplayPath(session.getReplayPath());
+        sessionResponse.setNotes(session.getNotes());
+        return sessionResponse;
     }
 }

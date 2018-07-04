@@ -12,17 +12,21 @@ public class SessionService {
     @Autowired
     SessionRepository mSessionRespository;
 
-    public SessionResponse createSession(SessionRequest sr){
-        Session s = new Session();
-        s.setPatientId(sr.getPatientId());
-        s.setTherapistId(sr.getTherapistId());
-        s.setTimestamp(sr.getTimestamp());
-        s.setSessionGroupId(sr.getSessionGroupId());
-        s.setSessionSummary(sr.getSessionSummary());
-        s.setExercises(sr.getExercises());
-        s.setReplayPath(sr.getReplayPath());
-        s.setNotes(sr.getNotes());
-
-        return SessionResponse.toSessionResponse(s);
+    /**
+     * Return a SessionResponse based on the given SessionRequest
+     * @param sessionRequest
+     * @return
+     */
+    public SessionResponse createSession(SessionRequest sessionRequest){
+        Session session = new Session();
+        session.setPatientId(sessionRequest.getPatientId());
+        session.setTherapistId(sessionRequest.getTherapistId());
+        session.setTimestamp(sessionRequest.getTimestamp());
+        session.setSessionGroupId(sessionRequest.getSessionGroupId());
+        session.setSessionSummary(sessionRequest.getSessionSummary());
+        session.setExercises(sessionRequest.getExercises());
+        session.setReplayPath(sessionRequest.getReplayPath());
+        session.setNotes(sessionRequest.getNotes());
+        return new SessionResponse().sessionResponse(session);
     }
 }

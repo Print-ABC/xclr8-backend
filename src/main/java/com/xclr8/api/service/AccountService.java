@@ -19,7 +19,7 @@ public class AccountService {
      */
     public Iterable<AccountResponse> findAllAccounts(){
         List<Account> accountList = mAccountRepository.findAll();
-        return new AccountResponse().toAllAccountResponse(accountList);
+        return new AccountResponse().accountResponseIterable(accountList);
     }
 
     /**
@@ -29,7 +29,7 @@ public class AccountService {
      */
     public AccountResponse findAccByHealthId(String hid) {
         Account account = mAccountRepository.findByHealthId(hid);
-        return new AccountResponse().response(account);
+        return new AccountResponse().accountResponse(account);
     }
 
     /**
@@ -39,7 +39,7 @@ public class AccountService {
      */
     public AccountResponse findAccByEmail(String email) {
         Account account = mAccountRepository.findByEmail(email);
-        return new AccountResponse().response(account);
+        return new AccountResponse().accountResponse(account);
     }
 
     /**
@@ -50,7 +50,7 @@ public class AccountService {
      */
     public AccountResponse findAccByHealthIdAndPassword(String hid, String pw) {
         Account account = mAccountRepository.findByHealthIdAndPassword(hid, pw);
-        return new AccountResponse().response(account);
+        return new AccountResponse().accountResponse(account);
     }
 
     /**

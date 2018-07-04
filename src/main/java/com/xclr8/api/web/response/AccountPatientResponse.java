@@ -27,27 +27,33 @@ public class AccountPatientResponse {
     private String insurancePolicyNo;
     private String therapistId;
 
-    public static AccountPatientResponse createCheck(Account a, Patient p){
+    /**
+     * Create an AccountPatientResponse from an Account and Patient object and return it
+     * @param account
+     * @param patient
+     * @return accountPatientResponse
+     */
+    public AccountPatientResponse accountPatientResponse(Account account, Patient patient){
         AccountPatientResponse accountPatientResponse = new AccountPatientResponse();
-        accountPatientResponse.setPassword(a.getPassword());
+        accountPatientResponse.setPassword(account.getPassword());
         accountPatientResponse.setAccountType(1);
-        accountPatientResponse.setHealthId(a.getHealthId());
-        accountPatientResponse.setFirstName(a.getFirstName());
-        accountPatientResponse.setLastName(a.getLastName());
-        accountPatientResponse.setEmail(a.getEmail());
-        accountPatientResponse.setMobileNo(a.getMobileNo());
-        accountPatientResponse.setHeight(p.getHeight());
-        accountPatientResponse.setWeight(p.getWeight());
-        accountPatientResponse.setGender(p.getGender());
-        accountPatientResponse.setDob(p.getDob());
-        accountPatientResponse.setStreetAndBuildingName(p.getStreetAndBuildingName());
-        accountPatientResponse.setPostalCode(p.getPostalCode());
-        accountPatientResponse.setCity(p.getCity());
-        accountPatientResponse.setCountry(p.getCountry());
-        accountPatientResponse.setFixedLineNo(p.getFixedLineNo());
-        accountPatientResponse.setInsuranceCompany(p.getInsuranceCompany());
-        accountPatientResponse.setInsurancePolicyNo(p.getInsurancePolicyNo());
-        accountPatientResponse.setTherapistId(p.getTherapistId());
+        accountPatientResponse.setHealthId(account.getHealthId());
+        accountPatientResponse.setFirstName(account.getFirstName());
+        accountPatientResponse.setLastName(account.getLastName());
+        accountPatientResponse.setEmail(account.getEmail());
+        accountPatientResponse.setMobileNo(account.getMobileNo());
+        accountPatientResponse.setHeight(patient.getHeight());
+        accountPatientResponse.setWeight(patient.getWeight());
+        accountPatientResponse.setGender(patient.getGender());
+        accountPatientResponse.setDob(patient.getDob());
+        accountPatientResponse.setStreetAndBuildingName(patient.getStreetAndBuildingName());
+        accountPatientResponse.setPostalCode(patient.getPostalCode());
+        accountPatientResponse.setCity(patient.getCity());
+        accountPatientResponse.setCountry(patient.getCountry());
+        accountPatientResponse.setFixedLineNo(patient.getFixedLineNo());
+        accountPatientResponse.setInsuranceCompany(patient.getInsuranceCompany());
+        accountPatientResponse.setInsurancePolicyNo(patient.getInsurancePolicyNo());
+        accountPatientResponse.setTherapistId(patient.getTherapistId());
 
         return accountPatientResponse;
     }

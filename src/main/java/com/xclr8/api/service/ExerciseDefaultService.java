@@ -12,20 +12,25 @@ public class ExerciseDefaultService {
     @Autowired
     ExerciseDefaultRepository mExerciseDefaultRepository;
 
-    public ExerciseDefaultResponse createDefaultExercise(ExerciseDefaultRequest edr){
-        Exercise_default ed = new Exercise_default();
-        ed.setExerciseName(edr.getExerciseName());
-        ed.setDefaultSides(edr.getDefaultSides());
-        ed.setDefaultSets(edr.getDefaultSets());
-        ed.setDefaultSensitivity(edr.getDefaultSensitivity());
-        ed.setDefaultReps(edr.getDefaultReps());
-        ed.setDefaultMinAngle(edr.getDefaultMinAngle());
-        ed.setDefaultMaxAngle(edr.getDefaultMaxAngle());
-        ed.setDefaultFrequency(edr.getDefaultFrequency());
-        ed.setBodyPart(edr.getBodyPart());
+    /**
+     * Create and save ...
+     * @param exerciseDefaultRequest
+     * @return ExerciseDefaultResponse object
+     */
+    public ExerciseDefaultResponse createDefaultExercise(ExerciseDefaultRequest exerciseDefaultRequest){
+        Exercise_default exerciseDefault = new Exercise_default();
+        exerciseDefault.setExerciseName(exerciseDefaultRequest.getExerciseName());
+        exerciseDefault.setDefaultSides(exerciseDefaultRequest.getDefaultSides());
+        exerciseDefault.setDefaultSets(exerciseDefaultRequest.getDefaultSets());
+        exerciseDefault.setDefaultSensitivity(exerciseDefaultRequest.getDefaultSensitivity());
+        exerciseDefault.setDefaultReps(exerciseDefaultRequest.getDefaultReps());
+        exerciseDefault.setDefaultMinAngle(exerciseDefaultRequest.getDefaultMinAngle());
+        exerciseDefault.setDefaultMaxAngle(exerciseDefaultRequest.getDefaultMaxAngle());
+        exerciseDefault.setDefaultFrequency(exerciseDefaultRequest.getDefaultFrequency());
+        exerciseDefault.setBodyPart(exerciseDefaultRequest.getBodyPart());
 
-        ed = mExerciseDefaultRepository.save(ed);
+        exerciseDefault = mExerciseDefaultRepository.save(exerciseDefault);
 
-        return ExerciseDefaultResponse.toExerciseDefaultResponse(ed);
+        return new ExerciseDefaultResponse().exerciseDefaultResponse(exerciseDefault);
     }
 }

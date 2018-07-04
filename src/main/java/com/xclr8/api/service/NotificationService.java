@@ -21,7 +21,7 @@ public class NotificationService {
      */
     public Iterable<NotificationResponse> findAllNotification(){
         List<Notification> notificationList = mNotificationRepository.findAll();
-        return new NotificationResponse().toAllNotificationResponse(notificationList);
+        return new NotificationResponse().notificationResponseIterable(notificationList);
     }
 
     /**
@@ -31,7 +31,7 @@ public class NotificationService {
      */
     public Iterable<NotificationResponse> findNotificationsByRecipientHealthId(String rhid){
         List<Notification> notificationList = mNotificationRepository.findByHealthId(rhid);
-        return new NotificationResponse().toAllNotificationResponse(notificationList);
+        return new NotificationResponse().notificationResponseIterable(notificationList);
     }
 
     /**
@@ -68,7 +68,7 @@ public class NotificationService {
         notification.setStatus(notificationRequest.getStatus());
 
         mNotificationRepository.save(notification);
-        return NotificationResponse.toNotificationResponse(notification);
+        return new NotificationResponse().notificationResponse(notification);
     }
 
     /**
@@ -89,7 +89,7 @@ public class NotificationService {
             //Return error message
         }
 
-        return NotificationResponse.toNotificationResponse(notification);
+        return new NotificationResponse().notificationResponse(notification);
     }
 
     /**
@@ -108,6 +108,6 @@ public class NotificationService {
 
         mNotificationRepository.saveAll(notificationsList);
 
-        return NotificationResponse.toAllNotificationResponse(notificationsList);
+        return new NotificationResponse().notificationResponseIterable(notificationsList);
     }
 }

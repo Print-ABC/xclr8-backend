@@ -16,23 +16,22 @@ public class NotificationResponse {
 
     /**
      * Create a list of NotificationResponse from Notification objects and return it
-     * @param nList
-     * @return nRList
+     * @param notifications
+     * @return notificationResponses
      */
-    public static Iterable<NotificationResponse> toAllNotificationResponse(Iterable<Notification> nList){
-        ArrayList<NotificationResponse> nRList = new ArrayList<NotificationResponse>();
-        for (Notification n : nList) {
-            NotificationResponse nR = new NotificationResponse();
-            nR.setId(n.getId());
-            nR.setHealthId(n.getHealthId());
-            nR.setTimeStamp(n.getTimeStamp());
-            nR.setTitle(n.getTitle());
-            nR.setMessage(n.getMessage());
-            nR.setStatus(n.getStatus());
-            nRList.add(nR);
+    public Iterable<NotificationResponse> notificationResponseIterable(Iterable<Notification> notifications){
+        ArrayList<NotificationResponse> notificationResponses = new ArrayList<NotificationResponse>();
+        for (Notification n : notifications) {
+            NotificationResponse notificationResponse = new NotificationResponse();
+            notificationResponse.setId(n.getId());
+            notificationResponse.setHealthId(n.getHealthId());
+            notificationResponse.setTimeStamp(n.getTimeStamp());
+            notificationResponse.setTitle(n.getTitle());
+            notificationResponse.setMessage(n.getMessage());
+            notificationResponse.setStatus(n.getStatus());
+            notificationResponses.add(notificationResponse);
         }
-
-        return nRList;
+        return notificationResponses;
     }
 
     /**
@@ -40,7 +39,7 @@ public class NotificationResponse {
      * @param notification
      * @return notificationResponse
      */
-    public static NotificationResponse toNotificationResponse(Notification notification){
+    public NotificationResponse notificationResponse(Notification notification){
         NotificationResponse notificationResponse = new NotificationResponse();
         notificationResponse.setId(notification.getId());
         notificationResponse.setHealthId(notification.getHealthId());

@@ -19,7 +19,7 @@ public class PatientService {
      */
     public Iterable<PatientResponse> findAllPatients(){
         List<Patient> patientList = mPatientRepository.findAll();
-        return new PatientResponse().toAllPatientResponse(patientList);
+        return new PatientResponse().patientResponseIterable(patientList);
     }
 
     /**
@@ -29,7 +29,7 @@ public class PatientService {
      */
     public PatientResponse findPatientByHealthId(String hid) {
         Patient patient = mPatientRepository.findByHealthId(hid);
-        return new PatientResponse().response(patient);
+        return new PatientResponse().patientResponse(patient);
     }
 
     /**
@@ -39,7 +39,7 @@ public class PatientService {
      */
     public Iterable<PatientResponse> findPatientByFirstName(String firstName) {
         List<Patient> patientList = mPatientRepository.findByFirstName(firstName);
-        return new PatientResponse().toAllPatientResponse(patientList);
+        return new PatientResponse().patientResponseIterable(patientList);
     }
 
     /**
@@ -49,9 +49,14 @@ public class PatientService {
      */
     public Iterable<PatientResponse> findPatientByLastName(String lastName) {
         List<Patient> patientList = mPatientRepository.findByLastName(lastName);
-        return new PatientResponse().toAllPatientResponse(patientList);
+        return new PatientResponse().patientResponseIterable(patientList);
     }
 
+    /**
+     * Delete a patient with the given health ID
+     * @param hid
+     * @return true
+     */
     public boolean deletePatientByHealthId(String hid) {
         mPatientRepository.deleteByHealthId(hid);
         return true;

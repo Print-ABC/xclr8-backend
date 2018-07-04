@@ -23,7 +23,7 @@ public class ChatService {
      */
     public Iterable<ChatResponse> findAllChat(){
         List<Chat> chatList = mChatRepository.findAll();
-        return new ChatResponse().toAllChatResponse(chatList);
+        return new ChatResponse().chatResponseIterable(chatList);
     }
 
     /**
@@ -33,7 +33,7 @@ public class ChatService {
      */
     public Iterable<ChatResponse> findChatByTherapistHealthId(String tHid) {
         List<Chat> chatList = mChatRepository.findByTherapistHealthId(tHid);
-        return new ChatResponse().toAllChatResponse(chatList);
+        return new ChatResponse().chatResponseIterable(chatList);
     }
 
     /**
@@ -43,7 +43,7 @@ public class ChatService {
      */
     public Iterable<ChatResponse> findChatByPatientHealthId(String pHid) {
         List<Chat> chatList = mChatRepository.findByPatientHealthId(pHid);
-        return new ChatResponse().toAllChatResponse(chatList);
+        return new ChatResponse().chatResponseIterable(chatList);
     }
 
     /**

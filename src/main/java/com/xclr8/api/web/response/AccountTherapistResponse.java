@@ -13,16 +13,20 @@ public class AccountTherapistResponse {
     private String email;
     private int mobileNo;
 
-    public static AccountTherapistResponse toTherapistAccount(Account a){
+    /**
+     * Create an AccountTherapistResponse from an Account object and return it
+     * @param account
+     * @return accountTherapistResponse
+     */
+    public AccountTherapistResponse accountTherapistResponse(Account account){
         AccountTherapistResponse accountTherapistResponse = new AccountTherapistResponse();
-        accountTherapistResponse.setPassword(a.getPassword());
+        accountTherapistResponse.setPassword(account.getPassword());
         accountTherapistResponse.setAccountType(2);
-        accountTherapistResponse.setHealthId(a.getHealthId());
-        accountTherapistResponse.setFirstName(a.getFirstName());
-        accountTherapistResponse.setLastName(a.getLastName());
-        accountTherapistResponse.setEmail(a.getEmail());
-        accountTherapistResponse.setMobileNo(a.getMobileNo());
-
+        accountTherapistResponse.setHealthId(account.getHealthId());
+        accountTherapistResponse.setFirstName(account.getFirstName());
+        accountTherapistResponse.setLastName(account.getLastName());
+        accountTherapistResponse.setEmail(account.getEmail());
+        accountTherapistResponse.setMobileNo(account.getMobileNo());
         return accountTherapistResponse;
     }
 }

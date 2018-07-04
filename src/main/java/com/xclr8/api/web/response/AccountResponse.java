@@ -19,41 +19,41 @@ public class AccountResponse {
     /**
      * Create an AccountResponse from an Account object and return it
      * @param account
-     * @return aR
+     * @return accountResponse
      */
-    public AccountResponse response(Account account) {
-        AccountResponse aR = new AccountResponse();
-        aR.setId(account.getId());
-        aR.setHealthId(account.getHealthId());
-        aR.setEmail(account.getEmail());
-        aR.setMobileNo(account.getMobileNo());
-        aR.setPassword(account.getPassword());
-        aR.setAccountType(account.getAccountType());
-        aR.setFirstName(account.getFirstName());
-        aR.setLastName(account.getLastName());
-        return aR;
+    public AccountResponse accountResponse(Account account) {
+        AccountResponse accountResponse = new AccountResponse();
+        accountResponse.setId(account.getId());
+        accountResponse.setHealthId(account.getHealthId());
+        accountResponse.setEmail(account.getEmail());
+        accountResponse.setMobileNo(account.getMobileNo());
+        accountResponse.setPassword(account.getPassword());
+        accountResponse.setAccountType(account.getAccountType());
+        accountResponse.setFirstName(account.getFirstName());
+        accountResponse.setLastName(account.getLastName());
+        return accountResponse;
     }
 
     /**
      * Create a list of AccountResponse from Account objects and return it
-     * @param aList
-     * @return aRList
+     * @param accounts
+     * @return accountResponses
      */
-    public Iterable<AccountResponse> toAllAccountResponse(Iterable<Account> aList){
-        ArrayList<AccountResponse> aRList = new ArrayList<AccountResponse>();
-        for (Account a : aList) {
-            AccountResponse aR = new AccountResponse();
-            aR.setId(a.getId());
-            aR.setHealthId(a.getHealthId());
-            aR.setEmail(a.getEmail());
-            aR.setMobileNo(a.getMobileNo());
-            aR.setPassword(a.getPassword());
-            aR.setAccountType(a.getAccountType());
-            aR.setFirstName(a.getFirstName());
-            aR.setLastName(a.getLastName());
-            aRList.add(aR);
+    public Iterable<AccountResponse> accountResponseIterable(Iterable<Account> accounts){
+        ArrayList<AccountResponse> accountResponses = new ArrayList<AccountResponse>();
+        for (Account a : accounts) {
+            AccountResponse accountResponse = new AccountResponse();
+            accountResponse.setId(a.getId());
+            accountResponse.setHealthId(a.getHealthId());
+            accountResponse.setEmail(a.getEmail());
+            accountResponse.setMobileNo(a.getMobileNo());
+            accountResponse.setPassword(a.getPassword());
+            accountResponse.setAccountType(a.getAccountType());
+            accountResponse.setFirstName(a.getFirstName());
+            accountResponse.setLastName(a.getLastName());
+            accountResponses.add(accountResponse);
         }
 
-        return aRList;
+        return accountResponses;
     }
 }

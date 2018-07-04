@@ -28,6 +28,11 @@ public class CreationService {
     @Autowired
     SensorsRepository mSensorsRepository;
 
+    /**
+     * ...
+     * @param accountDetails
+     * @return AccountPatientResponse
+     */
     public AccountPatientResponse createPatientAccount(AccountPatientRequest accountDetails){
         Account account = new Account();
         Patient patient = new Patient();
@@ -98,7 +103,7 @@ public class CreationService {
         patientGroup = mPatientGroupRepository.save(patientGroup);
         sensorSet = mSensorsRepository.save(sensorSet);
 
-       return AccountPatientResponse.createCheck(account, patient);
+       return new AccountPatientResponse().accountPatientResponse(account, patient);
     }
 
     public AccountTherapistResponse createTherapistAccount(AccountTherapistRequest accountDetails){
@@ -129,6 +134,6 @@ public class CreationService {
             return null;
         }
 
-        return AccountTherapistResponse.toTherapistAccount(account);
+        return new AccountTherapistResponse().accountTherapistResponse(account);
     }
 }
