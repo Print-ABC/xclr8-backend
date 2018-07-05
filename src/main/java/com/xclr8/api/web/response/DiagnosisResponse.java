@@ -9,6 +9,7 @@ import java.util.List;
 
 @Data
 public class DiagnosisResponse {
+    String id;
     String patientId;
     String subjective;
     String objective;
@@ -26,6 +27,7 @@ public class DiagnosisResponse {
      */
     public DiagnosisResponse diagnosisResponse(Diagnosis diagnosis){
         DiagnosisResponse diagnosisResponse = new DiagnosisResponse();
+        diagnosisResponse.setId(diagnosis.getId());
         diagnosisResponse.setPatientId(diagnosis.getPatientId());
         diagnosisResponse.setSubjective(diagnosis.getSubjective());
         diagnosisResponse.setObjective(diagnosis.getObjective());
@@ -47,6 +49,7 @@ public class DiagnosisResponse {
         ArrayList<DiagnosisResponse> diagnosisResponses = new ArrayList<DiagnosisResponse>();
         for (Diagnosis d : diagnoses) {
             DiagnosisResponse diagnosisResponse = new DiagnosisResponse();
+            diagnosisResponse.setId(d.getId());
             diagnosisResponse.setPatientId(d.getPatientId());
             diagnosisResponse.setSubjective(d.getSubjective());
             diagnosisResponse.setObjective(d.getObjective());

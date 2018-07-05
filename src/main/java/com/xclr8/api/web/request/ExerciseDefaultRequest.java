@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class ExerciseDefaultRequest {
+    String id;
     String exerciseName;
     String defaultSides;
     int defaultReps;

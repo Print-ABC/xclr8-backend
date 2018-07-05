@@ -8,6 +8,7 @@ import java.util.List;
 
 @Data
 public class ExerciseDefaultResponse {
+    String id;
     String exerciseName;
     String defaultSides;
     int defaultReps;
@@ -25,6 +26,7 @@ public class ExerciseDefaultResponse {
      */
     public ExerciseDefaultResponse exerciseDefaultResponse(ExerciseDefault exerciseDefault){
         ExerciseDefaultResponse exerciseDefaultResponse = new ExerciseDefaultResponse();
+        exerciseDefaultResponse.setId(exerciseDefault.getId());
         exerciseDefaultResponse.setExerciseName(exerciseDefault.getExerciseName());
         exerciseDefaultResponse.setDefaultSides(exerciseDefault.getDefaultSides());
         exerciseDefaultResponse.setDefaultReps(exerciseDefault.getDefaultReps());
@@ -45,6 +47,7 @@ public class ExerciseDefaultResponse {
         ArrayList<ExerciseDefaultResponse> exerciseDefaultResponses = new ArrayList<ExerciseDefaultResponse>();
         for (ExerciseDefault ed : exerciseDefaults) {
             ExerciseDefaultResponse exerciseDefaultResponse = new ExerciseDefaultResponse();
+            exerciseDefaultResponse.setId(ed.getId());
             exerciseDefaultResponse.setExerciseName(ed.getExerciseName());
             exerciseDefaultResponse.setDefaultSides(ed.getDefaultSides());
             exerciseDefaultResponse.setDefaultReps(ed.getDefaultReps());
