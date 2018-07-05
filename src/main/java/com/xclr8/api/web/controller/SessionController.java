@@ -4,12 +4,12 @@ import com.xclr8.api.service.SessionService;
 import com.xclr8.api.web.request.SessionRequest;
 import com.xclr8.api.web.response.SessionResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequestMapping("/session")
 public class SessionController {
     @Autowired

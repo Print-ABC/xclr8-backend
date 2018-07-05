@@ -54,6 +54,8 @@ public class SessionResponse {
             sessionResponse.setExercises(s.getExercises());
             sessionResponse.setReplayPath(s.getReplayPath());
             sessionResponse.setNotes(s.getNotes());
+
+            sessionResponses.add(sessionResponse);
         }
         return sessionResponses;
     }
