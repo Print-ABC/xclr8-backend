@@ -54,6 +54,46 @@ public class PatientService {
     }
 
     /**
+     * Return information of a patient with the given street and building name from database
+     * @param streetBuildingName
+     * @return PatientResponse
+     */
+    public Iterable<PatientResponse> findPatientByStreetBuildingName(String streetBuildingName) {
+        List<Patient> patientList = mPatientRepository.findByStreetBuildingName(streetBuildingName);
+        return new PatientResponse().patientResponseIterable(patientList);
+    }
+
+    /**
+     * Return information of a patient with the given postal code from database
+     * @param postalCode
+     * @return PatientResponse
+     */
+    public Iterable<PatientResponse> findPatientByPostalCode(int postalCode) {
+        List<Patient> patientList = mPatientRepository.findByPostalCode(postalCode);
+        return new PatientResponse().patientResponseIterable(patientList);
+    }
+
+    /**
+     * Return information of a patient with the given city from database
+     * @param city
+     * @return PatientResponse
+     */
+    public Iterable<PatientResponse> findPatientByCity(String city) {
+        List<Patient> patientList = mPatientRepository.findByCity(city);
+        return new PatientResponse().patientResponseIterable(patientList);
+    }
+
+    /**
+     * Return information of a patient with the given country from database
+     * @param country
+     * @return PatientResponse
+     */
+    public Iterable<PatientResponse> findPatientByCountry(String country) {
+        List<Patient> patientList = mPatientRepository.findByCountry(country);
+        return new PatientResponse().patientResponseIterable(patientList);
+    }
+
+    /**
      * Delete a patient with the given health ID
      * @param hid
      * @return true

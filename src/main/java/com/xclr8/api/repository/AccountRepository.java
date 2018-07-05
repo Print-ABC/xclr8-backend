@@ -12,13 +12,5 @@ public interface AccountRepository extends MongoRepository<Account, String> {
 
     Account findByEmail(String email);
 
-    @Query(value = "{ 'healthId' : ?0, 'password' : ?1 }")
-    Account findByHealthIdAndPassword(String healthId, String password);
-
     void deleteByHealthId(String healthId);
-
-    /*
-    Account findOneByFirstName(String firstName);
-
-    List<Account> findAllByFirstName(String firstName);*/
 }

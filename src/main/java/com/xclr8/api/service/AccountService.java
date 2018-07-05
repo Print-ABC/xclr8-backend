@@ -44,17 +44,6 @@ public class AccountService {
     }
 
     /**
-     * Return an account with the given health ID and password from database
-     * @param hid
-     * @param pw
-     * @return AccountResponse
-     */
-    public AccountResponse findAccByHealthIdAndPassword(String hid, String pw) {
-        Account account = mAccountRepository.findByHealthIdAndPassword(hid, pw);
-        return new AccountResponse().accountResponse(account);
-    }
-
-    /**
      * Delete an account with the given health ID
      * @param hid
      * @return true

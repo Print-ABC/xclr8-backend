@@ -15,7 +15,7 @@ public class PatientResponse {
     private Double weight;
     private String gender;
     private String dob;
-    private String streetAndBuildingName;
+    private String streetBuildingName;
     private int postalCode;
     private String city;
     private String country;
@@ -42,7 +42,7 @@ public class PatientResponse {
         patientResponse.setWeight(patient.getWeight());
         patientResponse.setGender(patient.getGender());
         patientResponse.setDob(patient.getDob());
-        patientResponse.setStreetAndBuildingName(patient.getStreetAndBuildingName());
+        patientResponse.setStreetBuildingName(patient.getStreetBuildingName());
         patientResponse.setPostalCode(patient.getPostalCode());
         patientResponse.setCity(patient.getCity());
         patientResponse.setCountry(patient.getCountry());
@@ -73,7 +73,7 @@ public class PatientResponse {
             patientResponse.setWeight(p.getWeight());
             patientResponse.setGender(p.getGender());
             patientResponse.setDob(p.getDob());
-            patientResponse.setStreetAndBuildingName(p.getStreetAndBuildingName());
+            patientResponse.setStreetBuildingName(p.getStreetBuildingName());
             patientResponse.setPostalCode(p.getPostalCode());
             patientResponse.setCity(p.getCity());
             patientResponse.setCountry(p.getCountry());

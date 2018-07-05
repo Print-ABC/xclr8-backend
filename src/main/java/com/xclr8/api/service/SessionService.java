@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SessionService {
@@ -17,10 +18,33 @@ public class SessionService {
 
     /**
      * Return all available sessions from database
-     * @return
+     * @return Iterable<SessionResponse>
      */
     public Iterable<SessionResponse> findAllSessions() {
         List<Session> sessionList = mSessionRespository.findAll();
+        return new SessionResponse().sessionResponseIterable(sessionList);
+    }
+
+    /**
+     * Return a session with the matching document id from database
+     * @param id
+     * @return SessionResponse
+     */
+    public SessionResponse findSessionById(String id) {
+        Optional<Session> session = mSessionRespository.findById(id); // Could not override findById() in SessionRepository.java
+        Session s = new Session();
+        if(session.isPresent())
+            s = session.get();
+        return new SessionResponse().sessionResponse(s);
+    }
+
+    /**
+     * Return all sessions with the given session group id from database
+     * @param sessionGroupId
+     * @return Iterable<SessionResponse>
+     */
+    public Iterable<SessionResponse> findSessionsBySessionGroupId(String sessionGroupId) {
+        List<Session> sessionList = mSessionRespository.findBySessionGroupId(sessionGroupId);
         return new SessionResponse().sessionResponseIterable(sessionList);
     }
 

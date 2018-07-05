@@ -13,6 +13,14 @@ public interface PatientRepository extends MongoRepository<Patient, String> {
 
     List<Patient> findByLastName(String lastName);
 
+    List<Patient> findByStreetBuildingName(String streetBuildingName);
+
+    List<Patient> findByPostalCode(int postalCode);
+
+    List<Patient> findByCity(String city);
+
+    List<Patient> findByCountry(String country);
+
     void deleteByHealthId(String healthId);
 }
 

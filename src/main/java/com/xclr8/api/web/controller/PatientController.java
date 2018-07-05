@@ -58,6 +58,50 @@ public class PatientController {
         return mPatientService.findPatientByLastName(lname);
     }
 
+//    /**
+//     * GET [url]:8080/patient/sbn/[street and building name]
+//     * Return information of all patients filtered by street and building name from database
+//     * @param streetBuildingName
+//     * @return Iterable<PatientResponse>
+//     */
+//    @RequestMapping(value = "/sbn/{streetBuildingName}", method = RequestMethod.GET)
+//    public Iterable<PatientResponse> patientByStreetBuildingName(@PathVariable String streetBuildingName) {
+//        return mPatientService.findPatientByStreetBuildingName(streetBuildingName);
+//    }
+
+    /**
+     * GET [url]:8080/patient/pcode/[postal code]
+     * Return information of all patients filtered by postal code from database
+     * @param postalCode
+     * @return Iterable<PatientResponse>
+     */
+    @RequestMapping(value = "/pcode/{postalCode}", method = RequestMethod.GET)
+    public Iterable<PatientResponse> patientByPostalCode(@PathVariable int postalCode) {
+        return mPatientService.findPatientByPostalCode(postalCode);
+    }
+
+    /**
+     * GET [url]:8080/patient/city/[city]
+     * Return information of all patients filtered by city from database
+     * @param city
+     * @return Iterable<PatientResponse>
+     */
+    @RequestMapping(value = "/city/{city}", method = RequestMethod.GET)
+    public Iterable<PatientResponse> patientByCity(@PathVariable String city) {
+        return mPatientService.findPatientByCity(city);
+    }
+
+    /**
+     * GET [url]:8080/patient/country/[country]
+     * Return information of all patients filtered by country from database
+     * @param country
+     * @return Iterable<PatientResponse>
+     */
+    @RequestMapping(value = "/country/{country}", method = RequestMethod.GET)
+    public Iterable<PatientResponse> patientByCountry(@PathVariable String country) {
+        return mPatientService.findPatientByCountry(country);
+    }
+
     /**
      * DELETE [url]:8080/patient/delete/[health Id]
      * @param hid

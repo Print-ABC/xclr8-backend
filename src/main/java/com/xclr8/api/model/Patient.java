@@ -33,7 +33,7 @@ public class Patient {
     private String dob;
 
     @Field
-    private String streetAndBuildingName;
+    private String streetBuildingName;
 
     @Field
     private int postalCode;

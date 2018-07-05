@@ -13,6 +13,18 @@ public class SensorsResponse {
     List<Sensor> sensors;
 
     /**
+     * Create a SensorsResponse from a Sensors object and return it
+     * @param sensors
+     * @return SensorsResponse
+     */
+    public SensorsResponse sensorsResponse(Sensors sensors) {
+        SensorsResponse sensorsResponse = new SensorsResponse();
+        sensorsResponse.setPatientId(sensors.getPatientId());
+        sensorsResponse.setSensors(sensors.getSensors());
+        return sensorsResponse;
+    }
+
+    /**
      * Create a list of SensorsResponse from Sensors objects and return it
      * @param sensors
      * @return sensorsResponses

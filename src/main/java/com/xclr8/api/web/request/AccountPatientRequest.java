@@ -13,7 +13,7 @@ public class AccountPatientRequest {
     private Double weight;
     private String gender;
     private String dob;
-    private String streetAndBuildingName;
+    private String streetBuildingName;
     private int postalCode;
     private String city;
     private String country;

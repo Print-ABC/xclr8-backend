@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DiagnosisService {
@@ -21,6 +22,45 @@ public class DiagnosisService {
      */
     public Iterable<DiagnosisResponse> findAllDiagnoses() {
         List<Diagnosis> diagnosisList = mDiagnosisRepository.findAll();
+        return new DiagnosisResponse().diagnosisResponseIterable(diagnosisList);
+    }
+
+    public DiagnosisResponse findDiagnosisById(String id) {
+        Optional<Diagnosis> diagnosis = mDiagnosisRepository.findById(id); // Could not override findById() in DiagnosisRepository.java
+        Diagnosis d = new Diagnosis();
+        if(diagnosis.isPresent())
+            d = diagnosis.get();
+        return new DiagnosisResponse().diagnosisResponse(d);
+    }
+
+    /**
+     * Return all available diagnoses with the given patient health ID from database
+     * @param hid
+     * @return Iterable<DiagnosisResponse>
+     */
+    public Iterable<DiagnosisResponse> findDiagnosisByPatientId(String hid) {
+        List<Diagnosis> diagnosisList = mDiagnosisRepository.findByPatientId(hid);
+        return new DiagnosisResponse().diagnosisResponseIterable(diagnosisList);
+    }
+
+    /**
+     * Return either active or inactive diagnoses from database
+     * @param status
+     * @return Iterable<DiagnosisResponse>
+     */
+    public Iterable<DiagnosisResponse> findDiagnosisByStatus(int status) {
+        List<Diagnosis> diagnosisList = mDiagnosisRepository.findByStatus(status);
+        return new DiagnosisResponse().diagnosisResponseIterable(diagnosisList);
+    }
+
+    /**
+     * Return either active or inactive diagnoses filtered by given patient health ID from database
+     * @param hid
+     * @param status
+     * @return Iterable<DiagnosisResponse>
+     */
+    public Iterable<DiagnosisResponse> findDiagnosisByPatientIdAndStatus(String hid, int status) {
+        List<Diagnosis> diagnosisList = mDiagnosisRepository.findByPatientIdAndStatus(hid, status);
         return new DiagnosisResponse().diagnosisResponseIterable(diagnosisList);
     }
 

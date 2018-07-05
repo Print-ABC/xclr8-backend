@@ -25,9 +25,6 @@ public class ExerciseDefaultController {
         return mExerciseDefaultService.findAllExerciseDefaults();
     }
 
-    // GET [url]:8080/exercise/id/{id}
-    // GET [url]:8080/exercise/name/{name}
-
     /**
      * POST [url]:8080/exercise/create
      * Creates a Default exercise object in the database

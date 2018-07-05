@@ -12,6 +12,18 @@ public class PatientGroupResponse {
     List<String> patientIdList;
 
     /**
+     * Create a PatientGroupResponse from a PatientGroup object and return it
+     * @param patientGroup
+     * @return patientGroupResponse
+     */
+    public PatientGroupResponse patientGroupResponse(PatientGroup patientGroup) {
+        PatientGroupResponse patientGroupResponse = new PatientGroupResponse();
+        patientGroupResponse.setHealthId(patientGroup.getHealthId());
+        patientGroupResponse.setPatientIdList(patientGroup.getPatientIdList());
+        return patientGroupResponse;
+    }
+
+    /**
      * Create a list of PatientGroupResponse from PatientGroup objects and return it
      * @param patientGroups
      * @return patientGroupResponses

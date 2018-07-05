@@ -22,4 +22,14 @@ public class PatientGroupService {
         List<PatientGroup> patientGroupResponseList = mPatientGroupRepository.findAll();
         return new PatientGroupResponse().patientGroupResponseIterable(patientGroupResponseList);
     }
+
+    /**
+     * Return a PatientGroup with the given patient health Id from database
+     * @param hid
+     * @return PatientGroupResponse
+     */
+    public PatientGroupResponse findPatientGroupByPatientHealthId(String hid) {
+        PatientGroup patientGroup = mPatientGroupRepository.findByHealthId(hid);
+        return new PatientGroupResponse().patientGroupResponse(patientGroup);
+    }
 }

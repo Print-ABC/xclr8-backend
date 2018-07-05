@@ -15,11 +15,21 @@ public class SensorsService {
     SensorsRepository mSensorsRepository;
 
     /**
-     *
-     * @return
+     * Return all sensors information from database
+     * @return Iterable<SensorsResponse>
      */
     public Iterable<SensorsResponse> findAllSensors() {
         List<Sensors> sensorsResponseList = mSensorsRepository.findAll();
         return new SensorsResponse().sensorsResponseIterable(sensorsResponseList);
+    }
+
+    /**
+     * Return all sensors information associated with the given patient health id from database
+     * @param pid
+     * @return SensorsResponse
+     */
+    public SensorsResponse findSensorsByPatientHealthId(String pid) {
+        Sensors sensors = mSensorsRepository.findByPatientId(pid);
+        return new SensorsResponse().sensorsResponse(sensors);
     }
 }

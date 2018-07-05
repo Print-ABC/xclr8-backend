@@ -60,7 +60,7 @@ public class CreationService {
         patient.setWeight(accountDetails.getWeight());
         patient.setFirstName(accountDetails.getFirstName());
         patient.setLastName(accountDetails.getLastName());
-        patient.setStreetAndBuildingName(accountDetails.getStreetAndBuildingName());
+        patient.setStreetBuildingName(accountDetails.getStreetBuildingName());
         patient.setInsuranceCompany(accountDetails.getInsuranceCompany());
         patient.setInsurancePolicyNo(accountDetails.getInsurancePolicyNo());
         patient.setMobileNo(accountDetails.getMobileNo());

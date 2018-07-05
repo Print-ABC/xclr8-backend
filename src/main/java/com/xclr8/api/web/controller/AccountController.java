@@ -1,7 +1,5 @@
 package com.xclr8.api.web.controller;
 
-import com.xclr8.api.model.Account;
-import com.xclr8.api.repository.AccountRepository;
 import com.xclr8.api.service.AccountService;
 import com.xclr8.api.web.response.AccountResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +16,6 @@ public class AccountController {
 
     @Autowired
     AccountService mAccountService;
-
-//    @Autowired
-//    AccountRepository mAR;
 
     /**
      * GET [url]:8080/account/all
@@ -53,16 +48,6 @@ public class AccountController {
     }
 
     /**
-     * GET [url]:8080/acc?hid=[health ID]&email=[email]
-     * Return all available accounts filtered by email address from database
-     * @return Iterable<AccountResponse>
-     */
-    @RequestMapping(value = "/acc", method = RequestMethod.GET)
-    public AccountResponse accByHealthIdAndPassword(String hid, String pw) {
-        return mAccountService.findAccByHealthIdAndPassword(hid, pw);
-    }
-
-    /**
      * DELETE [url]:8080/account/delete/[health Id]
      * @param hid
      * @return true
@@ -71,15 +56,4 @@ public class AccountController {
     public boolean delete(@PathVariable String hid) {
         return mAccountService.deleteAccByHealthId(hid);
     }
-
-    /*
-    // Keep for temporary reference
-    @RequestMapping(value = "/1", method = RequestMethod.GET)
-    public Account existTest(String name) {
-        return mAR.findOneByFirstName(name);
-    }
-    @RequestMapping(value = "/2", method = RequestMethod.GET)
-    public List<Account> existsTest(String name) {
-        return mAR.findAllByFirstName(name);
-    }*/
 }

@@ -13,6 +13,20 @@ public class PatientStatisticsResponse {
     double complianceRating;
 
     /**
+     * Create an PatientStatisticsResponse from an PatientStatistics object and return it
+     * @param patientStatistics
+     * @return patientStatisticsResponse
+     */
+    public PatientStatisticsResponse patientStatisticsResponse(PatientStatistics patientStatistics) {
+        PatientStatisticsResponse patientStatisticsResponse = new PatientStatisticsResponse();
+        patientStatisticsResponse.setPatientId(patientStatistics.getPatientId());
+        patientStatisticsResponse.setImprovementROM(patientStatistics.getImprovementROM());
+        patientStatisticsResponse.setComplianceStatus(patientStatistics.getComplianceStatus());
+        patientStatisticsResponse.setComplianceRating(patientStatistics.getComplianceRating());
+        return patientStatisticsResponse;
+    }
+
+    /**
      * Create a list of PatientStatisticsResponse from PatientStatistics objects and return it
      * @param patientStatistics
      * @return patientStatisticsResponses

@@ -50,7 +50,7 @@ public class NotificationController {
     }
 
     /**
-     * GET [url]:8080/notification/delete/hid/[recipient health id]
+     * DELETE [url]:8080/notification/delete/hid/[recipient health id]
      * Delete all notifications filtered by given recipient health id from database
      * @param rhid
      * @return true
