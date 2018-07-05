@@ -10,6 +10,7 @@ import java.util.List;
 
 @Data
 public class SessionResponse {
+    String id;
     String patientId;
     String therapistId;
     String timestamp;

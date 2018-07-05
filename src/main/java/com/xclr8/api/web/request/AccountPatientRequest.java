@@ -6,7 +6,6 @@ import lombok.Data;
 public class AccountPatientRequest {
     private String password;
     private int accountType = 1;
-    private String healthId;
     private String firstName;
     private String lastName;
     private Double height;
@@ -23,5 +22,10 @@ public class AccountPatientRequest {
     private int emergencyNo;
     private String insuranceCompany;
     private String insurancePolicyNo;
+
+    //Data not obtained from create patient screen! Therapist ID is the health id of the therapist that's creating the patient account.
     private String therapistId;
+
+    //Data has to generated on the android side before putting in here
+    private String healthId;
 }

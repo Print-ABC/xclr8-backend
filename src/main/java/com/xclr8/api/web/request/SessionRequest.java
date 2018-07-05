@@ -8,6 +8,7 @@ import java.util.List;
 
 @Data
 public class SessionRequest {
+    String id;
     String patientId;
     String therapistId;
     String timestamp;

@@ -7,6 +7,7 @@ import java.util.List;
 
 @Data
 public class DiagnosisRequest {
+    String id;
     String patientId;
     String subjective;
     String objective;

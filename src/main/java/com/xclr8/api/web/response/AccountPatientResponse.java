@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 public class AccountPatientResponse {
+    private String id;
     private String password;
     private int accountType = 1;
     private String healthId;
@@ -58,4 +59,33 @@ public class AccountPatientResponse {
         return accountPatientResponse;
     }
 
+    /**
+     * Create an AccountPatientResponse from an Account and Patient object and return it but with the patient ID, for editing patient details
+     * @param account
+     * @param patient
+     * @return accountPatientResponse
+     */
+    public AccountPatientResponse accountPatientEditResponse(Account account, Patient patient){
+        AccountPatientResponse accountPatientResponse = new AccountPatientResponse();
+        accountPatientResponse.setId(patient.getId());
+        accountPatientResponse.setPassword(account.getPassword());
+        accountPatientResponse.setHealthId(account.getHealthId());
+        accountPatientResponse.setFirstName(account.getFirstName());
+        accountPatientResponse.setLastName(account.getLastName());
+        accountPatientResponse.setEmail(account.getEmail());
+        accountPatientResponse.setMobileNo(account.getMobileNo());
+        accountPatientResponse.setHeight(patient.getHeight());
+        accountPatientResponse.setWeight(patient.getWeight());
+        accountPatientResponse.setGender(patient.getGender());
+        accountPatientResponse.setDob(patient.getDob());
+        accountPatientResponse.setStreetAndBuildingName(patient.getStreetAndBuildingName());
+        accountPatientResponse.setPostalCode(patient.getPostalCode());
+        accountPatientResponse.setCity(patient.getCity());
+        accountPatientResponse.setCountry(patient.getCountry());
+        accountPatientResponse.setFixedLineNo(patient.getFixedLineNo());
+        accountPatientResponse.setInsuranceCompany(patient.getInsuranceCompany());
+        accountPatientResponse.setInsurancePolicyNo(patient.getInsurancePolicyNo());
+
+        return accountPatientResponse;
+    }
 }
