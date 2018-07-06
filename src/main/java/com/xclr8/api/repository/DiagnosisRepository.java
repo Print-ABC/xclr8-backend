@@ -12,4 +12,6 @@ public interface DiagnosisRepository extends MongoRepository<Diagnosis, String> 
     List<Diagnosis> findByStatus(int status);
 
     List<Diagnosis> findByPatientIdAndStatus(String patientId, int status);
+
+    void deleteByPatientId(String patientId);
 }

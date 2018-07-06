@@ -97,4 +97,15 @@ public class DiagnosisController {
     public DiagnosisResponse createDiagnosis(@RequestBody DiagnosisRequest diagnosisRequest) {
         return mDiagnosisService.createDiagnosis(diagnosisRequest);
     }
+
+    /**
+     * DELETE [url]:8080/diagnosis/del/[patient health Id]
+     * Remove diagnoses with the given patient health id from database
+     * @param hid
+     * @return
+     */
+    @RequestMapping(value = "/del/{hid}", method = RequestMethod.DELETE)
+    public boolean deleteByPatientId(@PathVariable String hid) {
+        return mDiagnosisService.deleteDiagnosisByPatientId(hid);
+    }
 }

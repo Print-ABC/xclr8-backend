@@ -10,4 +10,6 @@ public interface PatientStatisticsRepository extends MongoRepository<PatientStat
     PatientStatistics findByPatientId(String patientId);
 
     List<PatientStatistics> findByComplianceStatus(int complianceStatus);
+
+    void deleteByPatientId(String patientId);
 }

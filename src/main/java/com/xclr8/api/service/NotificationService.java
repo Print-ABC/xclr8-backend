@@ -36,26 +36,6 @@ public class NotificationService {
     }
 
     /**
-     * Delete all notifications filtered by the given docuemnt ID from database
-     * @param id
-     * @return true
-     */
-    public boolean deleteNotificationsById(String id) {
-        mNotificationRepository.deleteById(id);
-        return true;
-    }
-
-    /**
-     * Delete all notifications filtered by the given recipient health ID from database
-     * @param hid
-     * @return true
-     */
-    public boolean deleteNotificationsByRecipientHealthId(String hid) {
-        mNotificationRepository.deleteByHealthId(hid);
-        return true;
-    }
-
-    /**
      * Creates a Notification object in the database
      * @param notificationRequest
      * @return NotificationResponse
@@ -110,5 +90,25 @@ public class NotificationService {
         mNotificationRepository.saveAll(notificationsList);
 
         return new NotificationResponse().notificationResponseIterable(notificationsList);
+    }
+
+    /**
+     * Delete all notifications filtered by the given docuemnt ID from database
+     * @param id
+     * @return true
+     */
+    public boolean deleteNotificationsById(String id) {
+        mNotificationRepository.deleteById(id);
+        return true;
+    }
+
+    /**
+     * Delete all notifications filtered by the given recipient health ID from database
+     * @param hid
+     * @return true
+     */
+    public boolean deleteNotificationsByRecipientHealthId(String hid) {
+        mNotificationRepository.deleteByHealthId(hid);
+        return true;
     }
 }

@@ -32,4 +32,14 @@ public class PatientGroupService {
         PatientGroup patientGroup = mPatientGroupRepository.findByHealthId(hid);
         return new PatientGroupResponse().patientGroupResponse(patientGroup);
     }
+
+    /**
+     * Remove a PatientGroup with the given patient health Id from database
+     * @param hid
+     * @return true
+     */
+    public boolean deletePatientGroupByPatientHealthId(String hid) {
+        mPatientGroupRepository.deleteByHealthId(hid);
+        return true;
+    }
 }

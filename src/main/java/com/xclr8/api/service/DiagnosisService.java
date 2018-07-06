@@ -85,4 +85,14 @@ public class DiagnosisService {
 
         return new DiagnosisResponse().diagnosisResponse(diagnosis);
     }
+
+    /**
+     * Remove diagnoses with the given patient health ID from database
+     * @param hid
+     * @return true
+     */
+    public boolean deleteDiagnosisByPatientId(String hid) {
+        mDiagnosisRepository.deleteByPatientId(hid);
+        return true;
+    }
 }

@@ -78,7 +78,7 @@ public class AccountPatientResponse {
         accountPatientResponse.setWeight(patient.getWeight());
         accountPatientResponse.setGender(patient.getGender());
         accountPatientResponse.setDob(patient.getDob());
-        accountPatientResponse.setStreetAndBuildingName(patient.getStreetAndBuildingName());
+        accountPatientResponse.setStreetBuildingName(patient.getStreetBuildingName());
         accountPatientResponse.setPostalCode(patient.getPostalCode());
         accountPatientResponse.setCity(patient.getCity());
         accountPatientResponse.setCountry(patient.getCountry());

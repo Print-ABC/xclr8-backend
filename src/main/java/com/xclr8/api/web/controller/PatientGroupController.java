@@ -18,7 +18,7 @@ public class PatientGroupController {
     /**
      * GET [url]:8080/patientGroup/all
      * Return all available patient groups from database
-     * @return
+     * @return Iterable<PatientGroupResponse>
      */
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public Iterable<PatientGroupResponse> patientGroups() {
@@ -29,10 +29,21 @@ public class PatientGroupController {
      * GET [url]:8080/patientGroup/hid/[patient health Id]
      * Return a PatientGroup with the given patient health Id from database
      * @param hid
-     * @return
+     * @return PatientGroupResponse
      */
     @RequestMapping(value = "/hid/{hid}", method = RequestMethod.GET)
     public PatientGroupResponse patientGroupByPatientHealthId(@PathVariable String hid) {
         return mPatientGroupService.findPatientGroupByPatientHealthId(hid);
+    }
+
+    /**
+     * DELETE [url]:8080/patientGroup/del/[patient health Id]
+     * Remove a PatientGroup with the given patient health Id from database
+     * @param hid
+     * @return true
+     */
+    @RequestMapping(value = "/del/{hid}", method = RequestMethod.DELETE)
+    public boolean deletePatientGroupByPatientHealthId(@PathVariable String hid) {
+        return mPatientGroupService.deletePatientGroupByPatientHealthId(hid);
     }
 }

@@ -42,4 +42,14 @@ public class PatientStatisticsService {
         List<PatientStatistics> patientStatisticsList = mPatientStatisticsRepository.findByComplianceStatus(status);
         return new PatientStatisticsResponse().patientStatisticsResponseIterable(patientStatisticsList);
     }
+
+    /**
+     * Remove patient statistics with the given patient health ID from database
+     * @param pid
+     * @return true
+     */
+    public boolean deletePatientStatisticsByPatientId(String pid) {
+        mPatientStatisticsRepository.deleteByPatientId(pid);
+        return true;
+    }
 }

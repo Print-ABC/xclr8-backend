@@ -32,4 +32,14 @@ public class SensorsService {
         Sensors sensors = mSensorsRepository.findByPatientId(pid);
         return new SensorsResponse().sensorsResponse(sensors);
     }
+
+    /**
+     * Remove all sensors information associated with the given patient health id from database
+     * @param pid
+     * @return true
+     */
+    public boolean deleteSensorsByPatientHealthId(String pid) {
+        mSensorsRepository.deleteByPatientId(pid);
+        return true;
+    }
 }

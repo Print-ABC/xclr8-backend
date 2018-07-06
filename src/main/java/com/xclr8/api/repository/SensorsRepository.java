@@ -6,4 +6,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 public interface SensorsRepository extends MongoRepository<Sensors, String> {
 
     Sensors findByPatientId(String patientId);
+
+    void deleteByPatientId(String patientId);
 }

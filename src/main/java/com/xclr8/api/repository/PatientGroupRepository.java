@@ -6,4 +6,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 public interface PatientGroupRepository extends MongoRepository<PatientGroup, String> {
 
     PatientGroup findByHealthId(String healthId);
+
+    void deleteByHealthId(String healthId);
 }

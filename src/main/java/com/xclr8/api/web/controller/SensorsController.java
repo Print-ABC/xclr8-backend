@@ -35,4 +35,15 @@ public class SensorsController {
     public SensorsResponse sensorsByPatientHealthId(@PathVariable String phid) {
         return mSensorsService.findSensorsByPatientHealthId(phid);
     }
+
+    /**
+     * DELETE [url]:8080/sensors/del/[patient health Id]
+     * Remove all sensors information associated with the given patient health id from database
+     * @param phid
+     * @return true
+     */
+    @RequestMapping(value = "/del/{phid}", method = RequestMethod.DELETE)
+    public boolean deleteSensorsByPatientHealthId(@PathVariable String phid) {
+        return mSensorsService.deleteSensorsByPatientHealthId(phid);
+    }
 }

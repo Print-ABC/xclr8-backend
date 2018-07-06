@@ -56,4 +56,15 @@ public class PatientStatisticsController {
     public Iterable<PatientStatisticsResponse> patientStatisticsByCompliance() {
         return mPatientStatisticsService.findPatientStatisticsByComplianceStatus(1);
     }
+
+    /**
+     * DELETE [url]:8080/stats/del/[patient health id]
+     * Remove patient statistics with given patient health id from database
+     * @param pid
+     * @return true
+     */
+    @RequestMapping(value = "/del/{pid}", method = RequestMethod.DELETE)
+    public boolean deletePatientStatisticsByPatientId(@PathVariable String pid) {
+        return mPatientStatisticsService.deletePatientStatisticsByPatientId(pid);
+    }
 }

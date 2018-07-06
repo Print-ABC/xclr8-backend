@@ -48,12 +48,13 @@ public class AccountController {
     }
 
     /**
-     * DELETE [url]:8080/account/delete/[health Id]
+     * DELETE [url]:8080/account/del/[health Id]
+     * Remove an account with the given health id from database
      * @param hid
      * @return true
      */
-    @RequestMapping(value = "/delete/{hid}", method = RequestMethod.DELETE)
-    public boolean delete(@PathVariable String hid) {
+    @RequestMapping(value = "/del/{hid}", method = RequestMethod.DELETE)
+    public boolean deleteByHealthId(@PathVariable String hid) {
         return mAccountService.deleteAccByHealthId(hid);
     }
 }

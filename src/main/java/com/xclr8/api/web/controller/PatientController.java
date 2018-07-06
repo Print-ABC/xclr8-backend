@@ -103,11 +103,11 @@ public class PatientController {
     }
 
     /**
-     * DELETE [url]:8080/patient/delete/[health Id]
+     * DELETE [url]:8080/patient/del/[health Id]
      * @param hid
      * @return
      */
-    @RequestMapping(value = "/delete/{hid}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/del/{hid}", method = RequestMethod.DELETE)
     public boolean deletePatientByHealthId(@PathVariable String hid) {
         return mPatientService.deletePatientByHealthId(hid);
     }

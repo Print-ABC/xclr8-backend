@@ -55,4 +55,26 @@ public class SessionController {
     public SessionResponse createSession(@RequestBody SessionRequest sessionRequest) {
         return mSessionService.createSession(sessionRequest);
     }
+
+    /**
+     * DELETE [url]:8080/session/del/id/[document id]
+     * Remove a session with the given document id from database
+     * @param id
+     * @return true
+     */
+    @RequestMapping(value = "/del/id/{id}", method = RequestMethod.DELETE)
+    public boolean deleteById(@PathVariable String id) {
+        return mSessionService.deleteSessionsById(id);
+    }
+
+    /**
+     * DELETE [url]:8080/session/del/gid/[session group id]
+     * Remove all sessions with the given session group id from database
+     * @param gid
+     * @return true
+     */
+    @RequestMapping(value = "/del/gid/{gid}", method = RequestMethod.DELETE)
+    public boolean deleteBySessionGroupId(@PathVariable String gid) {
+        return mSessionService.deleteSessionsBySessionGroupId(gid);
+    }
 }

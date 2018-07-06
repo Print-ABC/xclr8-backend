@@ -44,4 +44,24 @@ public class ExerciseDefaultService {
 
         return new ExerciseDefaultResponse().exerciseDefaultResponse(exerciseDefault);
     }
+
+    /**
+     * Remove a exercise by its document id from database
+     * @param id
+     * @return true
+     */
+    public boolean deleteExerciseById(String id) {
+        mExerciseDefaultRepository.deleteById(id);
+        return true;
+    }
+
+    /**
+     * Remove a exercise by its name from database
+     * @param name
+     * @return true
+     */
+    public boolean deleteExerciseByExerciseName(String name) {
+        mExerciseDefaultRepository.deleteByExerciseName(name);
+        return true;
+    }
 }
