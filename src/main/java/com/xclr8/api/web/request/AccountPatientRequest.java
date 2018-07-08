@@ -4,8 +4,8 @@ import lombok.Data;
 
 @Data
 public class AccountPatientRequest {
-    private String password;
     private int accountType = 1;
+    private String password;
     private String firstName;
     private String lastName;
     private Double height;

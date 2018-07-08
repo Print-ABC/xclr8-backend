@@ -2,6 +2,7 @@ package com.xclr8.api.web.controller;
 
 import com.xclr8.api.service.DiagnosisService;
 import com.xclr8.api.web.request.DiagnosisRequest;
+import com.xclr8.api.web.request.NoteRequest;
 import com.xclr8.api.web.response.DiagnosisResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -94,7 +95,7 @@ public class DiagnosisController {
      * @return DiagnosisResponse
      */
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public DiagnosisResponse createDiagnosis(@RequestBody DiagnosisRequest diagnosisRequest) {
+    public DiagnosisResponse createDiagnosis( DiagnosisRequest diagnosisRequest) {
         return mDiagnosisService.createDiagnosis(diagnosisRequest);
     }
 
@@ -107,5 +108,38 @@ public class DiagnosisController {
     @RequestMapping(value = "/del/{hid}", method = RequestMethod.DELETE)
     public boolean deleteByPatientId(@PathVariable String hid) {
         return mDiagnosisService.deleteDiagnosisByPatientId(hid);
+    }
+
+    /**
+     * PUT [url]:8080/diagnosis/edit
+     * Edits a diagnosis object in the database
+     * @param diagnosisRequest
+     * @return DiagnosisResponse
+     */
+    @RequestMapping(value = "/edit", method = RequestMethod.PUT)
+    public DiagnosisResponse editDiagnosis(@RequestBody DiagnosisRequest diagnosisRequest) {
+        return mDiagnosisService.editDiagnosis(diagnosisRequest);
+    }
+
+    /**
+     * POST [url]:8080/diagnosis/note/add
+     * Creates a note object in a specific diagnosis in the database
+     * @param noteRequest
+     * @return DiagnosisResponse
+     */
+    @RequestMapping(value = "/note/add", method = RequestMethod.POST)
+    public DiagnosisResponse addNote(@RequestBody NoteRequest noteRequest) {
+        return mDiagnosisService.addNote(noteRequest);
+    }
+
+    /**
+     * PUT [url]:8080/diagnosis/note/edit
+     * Edits a note object in a specific diagnosis in the database
+     * @param noteRequest
+     * @return DiagnosisResponse
+     */
+    @RequestMapping(value = "/note/edit", method = RequestMethod.PUT)
+    public DiagnosisResponse editNote(@RequestBody NoteRequest noteRequest) {
+        return mDiagnosisService.editNote(noteRequest);
     }
 }

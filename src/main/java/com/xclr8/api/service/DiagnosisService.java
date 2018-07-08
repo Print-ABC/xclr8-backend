@@ -1,8 +1,10 @@
 package com.xclr8.api.service;
 
 import com.xclr8.api.model.Diagnosis;
+import com.xclr8.api.nestedModel.Note;
 import com.xclr8.api.repository.DiagnosisRepository;
 import com.xclr8.api.web.request.DiagnosisRequest;
+import com.xclr8.api.web.request.NoteRequest;
 import com.xclr8.api.web.response.DiagnosisResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -82,6 +84,85 @@ public class DiagnosisService {
         diagnosis.setDiagnosisDate(diagnosisRequest.getDiagnosisDate());
 
         diagnosis = mDiagnosisRepository.save(diagnosis);
+
+        return new DiagnosisResponse().diagnosisResponse(diagnosis);
+    }
+
+
+    /**
+     * Edit and save ...
+     * @param diagnosisRequest
+     * @return DiagnosisResponse object
+     */
+    public DiagnosisResponse editDiagnosis(DiagnosisRequest diagnosisRequest){
+        Diagnosis diagnosis = new Diagnosis();
+        Optional<Diagnosis> diagnosisCheck = mDiagnosisRepository.findById(diagnosisRequest.getId());
+
+        if(diagnosisCheck.isPresent()){
+            diagnosis = diagnosisCheck.get();
+            diagnosis.setAssessment(diagnosisRequest.getAssessment());
+            diagnosis.setComplianceThreshold(diagnosisRequest.getComplianceThreshold());
+            diagnosis.setSubjective(diagnosisRequest.getSubjective());
+            diagnosis.setStatus(diagnosisRequest.getStatus());
+            diagnosis.setObjective(diagnosisRequest.getObjective());
+            diagnosis.setPlan(diagnosisRequest.getPlan());
+            diagnosis.setDiagnosisDate(diagnosisRequest.getDiagnosisDate());
+
+            diagnosis = mDiagnosisRepository.save(diagnosis);
+        } else {
+            //Return error
+        }
+
+        return new DiagnosisResponse().diagnosisResponse(diagnosis);
+    }
+
+    /**
+     * Creates a new Note for a Diagnosis object in the database
+     * @param noteRequest
+     * @return DiagnosisResponse object
+     */
+    public DiagnosisResponse addNote(NoteRequest noteRequest){
+        Diagnosis diagnosis = new Diagnosis();
+        Optional<Diagnosis> diagnosisCheck = mDiagnosisRepository.findById(noteRequest.getDiagnosisId());
+
+        if(diagnosisCheck.isPresent()){
+            diagnosis = diagnosisCheck.get();
+
+            Note note = new Note();
+            note.setNoteId(diagnosis.getNotes().size());
+            note.setDate(noteRequest.getDate());
+            note.setText(noteRequest.getText());
+
+            diagnosis.getNotes().add(note);
+            diagnosis = mDiagnosisRepository.save(diagnosis);
+        } else {
+            //Return error
+        }
+
+        return new DiagnosisResponse().diagnosisResponse(diagnosis);
+    }
+
+    /**
+     * Edit a Note for a Diagnosis object in the database
+     * @param noteRequest
+     * @return DiagnosisResponse object
+     */
+    public DiagnosisResponse editNote(NoteRequest noteRequest){
+        Diagnosis diagnosis = new Diagnosis();
+        Optional<Diagnosis> diagnosisCheck = mDiagnosisRepository.findById(noteRequest.getDiagnosisId());
+
+        if(diagnosisCheck.isPresent()){
+            diagnosis = diagnosisCheck.get();
+
+            Note note =diagnosis.getNotes().get(noteRequest.getNoteId());
+            note.setDate(noteRequest.getDate());
+            note.setText(noteRequest.getText());
+
+
+            diagnosis = mDiagnosisRepository.save(diagnosis);
+        } else {
+            //Return error
+        }
 
         return new DiagnosisResponse().diagnosisResponse(diagnosis);
     }

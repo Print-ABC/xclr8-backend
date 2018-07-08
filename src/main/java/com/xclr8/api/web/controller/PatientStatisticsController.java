@@ -1,12 +1,10 @@
 package com.xclr8.api.web.controller;
 
 import com.xclr8.api.service.PatientStatisticsService;
+import com.xclr8.api.web.request.PatientStatisticsRequest;
 import com.xclr8.api.web.response.PatientStatisticsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/stats")
@@ -66,5 +64,16 @@ public class PatientStatisticsController {
     @RequestMapping(value = "/del/{pid}", method = RequestMethod.DELETE)
     public boolean deletePatientStatisticsByPatientId(@PathVariable String pid) {
         return mPatientStatisticsService.deletePatientStatisticsByPatientId(pid);
+    }
+
+    /**
+     * PUT [url]:8080/stats/edit/
+     * Edits patient statistics with given patient statistics object into database
+     * @param psr
+     * @return PatientStatisticsResponse
+     */
+    @RequestMapping(value = "/edit", method = RequestMethod.PUT)
+    public PatientStatisticsResponse editPatientStatistics(@RequestBody PatientStatisticsRequest psr) {
+        return mPatientStatisticsService.editPatientStatistics(psr);
     }
 }

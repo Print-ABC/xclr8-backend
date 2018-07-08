@@ -27,6 +27,7 @@ public class SessionResponse {
      */
     public SessionResponse sessionResponse(Session session){
         SessionResponse sessionResponse = new SessionResponse();
+        sessionResponse.setId(session.getId());
         sessionResponse.setPatientId(session.getPatientId());
         sessionResponse.setTherapistId(session.getTherapistId());
         sessionResponse.setTimestamp(session.getTimestamp());
@@ -47,6 +48,7 @@ public class SessionResponse {
         ArrayList<SessionResponse> sessionResponses = new ArrayList<SessionResponse>();
         for (Session s : sessions) {
             SessionResponse sessionResponse = new SessionResponse();
+            sessionResponse.setId(s.getId());
             sessionResponse.setPatientId(s.getPatientId());
             sessionResponse.setTherapistId(s.getTherapistId());
             sessionResponse.setTimestamp(s.getTimestamp());

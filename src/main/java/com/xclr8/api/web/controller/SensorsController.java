@@ -1,12 +1,10 @@
 package com.xclr8.api.web.controller;
 
 import com.xclr8.api.service.SensorsService;
+import com.xclr8.api.web.request.SensorRequest;
 import com.xclr8.api.web.response.SensorsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/sensors")
@@ -27,7 +25,7 @@ public class SensorsController {
 
     /**
      * GET [url]:8080/sensors/p/[patient health Id]
-     * Return all sensors information associated with the given patient health id from database
+     * Return all sensor information associated with the given patient health id from database
      * @param phid
      * @return SensorsResponse
      */
@@ -38,12 +36,23 @@ public class SensorsController {
 
     /**
      * DELETE [url]:8080/sensors/del/[patient health Id]
-     * Remove all sensors information associated with the given patient health id from database
+     * Remove all sensor information associated with the given patient health id from database
      * @param phid
      * @return true
      */
     @RequestMapping(value = "/del/{phid}", method = RequestMethod.DELETE)
     public boolean deleteSensorsByPatientHealthId(@PathVariable String phid) {
         return mSensorsService.deleteSensorsByPatientHealthId(phid);
+    }
+
+    /**
+     * PUT [url]:8080/sensors/edit/
+     * Edits all sensor information associated with the given patient health id from database
+     * @param sensorRequest
+     * @return SensorsResponse
+     */
+    @RequestMapping(value = "/edit", method = RequestMethod.PUT)
+    public SensorsResponse editSensors(@RequestBody SensorRequest sensorRequest) {
+        return mSensorsService.editSensors(sensorRequest);
     }
 }

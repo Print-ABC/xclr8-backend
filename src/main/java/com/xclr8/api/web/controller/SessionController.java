@@ -77,4 +77,37 @@ public class SessionController {
     public boolean deleteBySessionGroupId(@PathVariable String gid) {
         return mSessionService.deleteSessionsBySessionGroupId(gid);
     }
+
+    /**
+     * PUT [url]:8080/session/edit/summary
+     * Updates session summary for the selected session in the database
+     * @param sessionRequest
+     * @return SensorsResponse
+     */
+    @RequestMapping(value = "/edit/summary", method = RequestMethod.PUT)
+    public SessionResponse editSessionSummary(@RequestBody SessionRequest sessionRequest) {
+        return mSessionService.editSessionSummary(sessionRequest);
+    }
+
+    /**
+     * PUT [url]:8080/session/edit/exercises
+     * Updates session exercises for the selected session in the database
+     * @param sessionRequest
+     * @return SensorsResponse
+     */
+    @RequestMapping(value = "/edit/exercises", method = RequestMethod.PUT)
+    public SessionResponse editSessionExercises(@RequestBody SessionRequest sessionRequest) {
+        return mSessionService.editSessionExercises(sessionRequest);
+    }
+
+    /**
+     * PUT [url]:8080/session/edit/notes
+     * Updates session notes for the selected session in the database
+     * @param sessionRequest
+     * @return SensorsResponse
+     */
+    @RequestMapping(value = "/edit/notes", method = RequestMethod.PUT)
+    public SessionResponse editSessionNotes(@RequestBody SessionRequest sessionRequest) {
+        return mSessionService.editSessionNotes(sessionRequest);
+    }
 }
