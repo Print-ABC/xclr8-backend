@@ -1,7 +1,5 @@
 package com.xclr8.api.web.controller;
 
-import com.xclr8.api.model.Account;
-import com.xclr8.api.repository.AccountRepository;
 import com.xclr8.api.service.AccountService;
 import com.xclr8.api.web.response.AccountResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,16 +17,12 @@ public class AccountController {
     @Autowired
     AccountService mAccountService;
 
-    /*
-    @Autowired
-    AccountRepository mAR;*/
-
     /**
-     * GET [url]:8080/account
+     * GET [url]:8080/account/all
      * Return all available accounts from database
      * @return Iterable<AccountResponse>
      */
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
     public Iterable<AccountResponse> accounts() {
         return mAccountService.findAllAccounts();
     }
@@ -54,23 +48,13 @@ public class AccountController {
     }
 
     /**
-     * GET [url]:8080/acc?hid=[health ID]&email=[email]
-     * Return all available accounts filtered by email address from database
-     * @return Iterable<AccountResponse>
+     * DELETE [url]:8080/account/del/[health Id]
+     * Remove an account with the given health id from database
+     * @param hid
+     * @return true
      */
-    @RequestMapping(value = "/acc", method = RequestMethod.GET)
-    public AccountResponse accByHealthIdAndPassword(String hid, String pw) {
-        return mAccountService.findAccByHealthIdAndPassword(hid, pw);
+    @RequestMapping(value = "/del/{hid}", method = RequestMethod.DELETE)
+    public boolean deleteByHealthId(@PathVariable String hid) {
+        return mAccountService.deleteAccByHealthId(hid);
     }
-
-    /*
-    // Keep for temporary reference
-    @RequestMapping(value = "/1", method = RequestMethod.GET)
-    public Account existTest(String name) {
-        return mAR.findOneByFirstName(name);
-    }
-    @RequestMapping(value = "/2", method = RequestMethod.GET)
-    public List<Account> existsTest(String name) {
-        return mAR.findAllByFirstName(name);
-    }*/
 }

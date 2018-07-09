@@ -21,10 +21,10 @@ public class Patient {
     private String lastName;
 
     @Field
-    private String height;
+    private Double height;
 
     @Field
-    private String weight;
+    private Double weight;
 
     @Field
     private String gender;
@@ -33,10 +33,10 @@ public class Patient {
     private String dob;
 
     @Field
-    private String streetAndBuildingName;
+    private String streetBuildingName;
 
     @Field
-    private int postalCode;
+    private String postalCode;
 
     @Field
     private String city;
@@ -48,13 +48,13 @@ public class Patient {
     private String email;
 
     @Field
-    private int mobileNo;
+    private String mobileNo;
 
     @Field
-    private int fixedLineNo;
+    private String fixedLineNo;
 
     @Field
-    private int emergencyNo;
+    private String emergencyNo;
 
     @Field
     private String insuranceCompany;

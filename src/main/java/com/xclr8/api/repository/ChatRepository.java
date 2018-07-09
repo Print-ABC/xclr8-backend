@@ -7,7 +7,14 @@ import java.util.List;
 
 public interface ChatRepository extends MongoRepository<Chat, String> {
 
-    List<Chat> findByTherapistHealthId(String therapist_healthId);
+    List<Chat> findByTherapistHealthId(String therapistHealthId);
 
-    List<Chat> findByPatientHealthId(String patient_healthId);
+    List<Chat> findByPatientHealthId(String patientHealthId);
+
+    @Override
+    void deleteById(String id);
+
+    void deleteByPatientHealthId(String patientHealthId);
+
+    void deleteByTherapistHealthId(String therapistHealthId);
 }

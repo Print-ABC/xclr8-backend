@@ -10,6 +10,7 @@ import java.util.List;
 
 @Service
 public class AccountService {
+
     @Autowired
     AccountRepository mAccountRepository;
 
@@ -19,7 +20,7 @@ public class AccountService {
      */
     public Iterable<AccountResponse> findAllAccounts(){
         List<Account> accountList = mAccountRepository.findAll();
-        return new AccountResponse().toAllAccountResponse(accountList);
+        return new AccountResponse().accountResponseIterable(accountList);
     }
 
     /**
@@ -29,7 +30,7 @@ public class AccountService {
      */
     public AccountResponse findAccByHealthId(String hid) {
         Account account = mAccountRepository.findByHealthId(hid);
-        return new AccountResponse().response(account);
+        return new AccountResponse().accountResponse(account);
     }
 
     /**
@@ -39,17 +40,16 @@ public class AccountService {
      */
     public AccountResponse findAccByEmail(String email) {
         Account account = mAccountRepository.findByEmail(email);
-        return new AccountResponse().response(account);
+        return new AccountResponse().accountResponse(account);
     }
 
     /**
-     * Return an account with the given health ID and password from database
+     * Delete an account with the given health ID
      * @param hid
-     * @param pw
-     * @return AccountResponse
+     * @return true
      */
-    public AccountResponse findAccByHealthIdAndPassword(String hid, String pw) {
-        Account account = mAccountRepository.findByHealthIdAndPassword(hid, pw);
-        return new AccountResponse().response(account);
+    public boolean deleteAccByHealthId(String hid) {
+        mAccountRepository.deleteByHealthId(hid);
+        return true;
     }
 }

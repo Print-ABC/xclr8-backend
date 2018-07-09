@@ -18,7 +18,7 @@ public class Account {
     private String email;
 
     @Field
-    private int mobileNo;
+    private String mobileNo;
 
     @Field
     private String password;

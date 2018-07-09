@@ -10,6 +10,7 @@ import java.util.List;
 
 @Service
 public class PatientService {
+
     @Autowired
     PatientRepository mPatientRepository;
 
@@ -19,7 +20,7 @@ public class PatientService {
      */
     public Iterable<PatientResponse> findAllPatients(){
         List<Patient> patientList = mPatientRepository.findAll();
-        return new PatientResponse().toAllPatientResponse(patientList);
+        return new PatientResponse().patientResponseIterable(patientList);
     }
 
     /**
@@ -29,26 +30,56 @@ public class PatientService {
      */
     public PatientResponse findPatientByHealthId(String hid) {
         Patient patient = mPatientRepository.findByHealthId(hid);
-        return new PatientResponse().response(patient);
+        return new PatientResponse().patientResponse(patient);
     }
 
     /**
-     * Return information of a patient with the given first name from database
-     * @param firstName
-     * @return PatientResponse
+     * Return patients based on string search of first and last names from database
+     * @param nameRegex
+     * @return Iterable<PatientResponse>
      */
-    public Iterable<PatientResponse> findPatientByFirstName(String firstName) {
-        List<Patient> patientList = mPatientRepository.findByFirstName(firstName);
-        return new PatientResponse().toAllPatientResponse(patientList);
+    public Iterable<PatientResponse> findPatientByName(String nameRegex) {
+        List<Patient> patientList = mPatientRepository.findPatientByName(nameRegex);
+        return new PatientResponse().patientResponseIterable(patientList);
     }
 
     /**
-     * Return information of a patient with the given last name from database
-     * @param lastName
+     * Return patients based on string search of first name from database
+     * @param fNameRegex
      * @return PatientResponse
      */
-    public Iterable<PatientResponse> findPatientByLastName(String lastName) {
-        List<Patient> patientList = mPatientRepository.findByLastName(lastName);
-        return new PatientResponse().toAllPatientResponse(patientList);
+    public Iterable<PatientResponse> findPatientByFirstName(String fNameRegex) {
+        List<Patient> patientList = mPatientRepository.findPatientByFirstName(fNameRegex);
+        return new PatientResponse().patientResponseIterable(patientList);
+    }
+
+    /**
+     * Return patients based on string search of last name from database
+     * @param lNameRegex
+     * @return PatientResponse
+     */
+    public Iterable<PatientResponse> findPatientByLastName(String lNameRegex) {
+        List<Patient> patientList = mPatientRepository.findPatientByLastName(lNameRegex);
+        return new PatientResponse().patientResponseIterable(patientList);
+    }
+
+    /**
+     * Return patients based on string search of street and building name, postal code, city, and country from database
+     * @param locationRegex
+     * @return Iterable<PatientResponse>
+     */
+    public Iterable<PatientResponse> findPatientByLocation(String locationRegex) {
+        List<Patient> patientList = mPatientRepository.findPatientByLocation(locationRegex);
+        return new PatientResponse().patientResponseIterable(patientList);
+    }
+
+    /**
+     * Delete a patient with the given health ID
+     * @param hid
+     * @return true
+     */
+    public boolean deletePatientByHealthId(String hid) {
+        mPatientRepository.deleteByHealthId(hid);
+        return true;
     }
 }
