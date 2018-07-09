@@ -10,7 +10,7 @@ public class AccountResponse {
     private String id;
     private String healthId;
     private String email;
-    private int mobileNo;
+    private String mobileNo;
     private String password;
     private int accountType;
     private String firstName;

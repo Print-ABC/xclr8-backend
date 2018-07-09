@@ -16,13 +16,13 @@ public class PatientResponse {
     private String gender;
     private String dob;
     private String streetBuildingName;
-    private int postalCode;
+    private String postalCode;
     private String city;
     private String country;
     private String email;
-    private int mobileNo;
-    private int fixedLineNo;
-    private int emergencyNo;
+    private String mobileNo;
+    private String fixedLineNo;
+    private String emergencyNo;
     private String insuranceCompany;
     private String insurancePolicyNo;
     private String therapistId;

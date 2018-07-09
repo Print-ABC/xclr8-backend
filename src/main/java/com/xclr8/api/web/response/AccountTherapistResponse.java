@@ -11,7 +11,7 @@ public class AccountTherapistResponse {
     private String firstName;
     private String lastName;
     private String email;
-    private int mobileNo;
+    private String mobileNo;
 
     /**
      * Create an AccountTherapistResponse from an Account object and return it

@@ -36,7 +36,7 @@ public class Patient {
     private String streetBuildingName;
 
     @Field
-    private int postalCode;
+    private String postalCode;
 
     @Field
     private String city;
@@ -48,13 +48,13 @@ public class Patient {
     private String email;
 
     @Field
-    private int mobileNo;
+    private String mobileNo;
 
     @Field
-    private int fixedLineNo;
+    private String fixedLineNo;
 
     @Field
-    private int emergencyNo;
+    private String emergencyNo;
 
     @Field
     private String insuranceCompany;
