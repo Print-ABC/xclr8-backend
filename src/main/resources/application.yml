@@ -6,7 +6,7 @@ spring:
   autoconfigure.exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
   data:
     mongodb:
-        uri: ${DB:mongodb://public:pass123@ds123171.mlab.com:23171/heroku_rsdc1cd0}
+        uri: ${DB:mongodb://anon:pass123@ds123171.mlab.com:23171/heroku_rsdc1cd0}
 
 ---
 spring:
