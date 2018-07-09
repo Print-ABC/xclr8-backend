@@ -2,6 +2,7 @@ package com.xclr8.api.repository;
 
 import com.xclr8.api.model.Patient;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 
 import java.util.List;
 
@@ -9,17 +10,17 @@ public interface PatientRepository extends MongoRepository<Patient, String> {
 
     Patient findByHealthId(String healthId);
 
-    List<Patient> findByFirstName(String firstName);
+    @Query("{$or : [ {'firstName': { $regex: ?0, $options:'is'}}, {'lastName': { $regex: ?0, $options:'is'}} ] }")
+    List<Patient> findPatientByName(String nameRegex);
 
-    List<Patient> findByLastName(String lastName);
+    @Query("{'firstName': { $regex: ?0, $options:'is'}}")
+    List<Patient> findPatientByFirstName(String firstNameRegex);
 
-    List<Patient> findByStreetBuildingName(String streetBuildingName);
+    @Query("{'lastName': { $regex: ?0, $options:'is'}}")
+    List<Patient> findPatientByLastName(String lastNameRegex);
 
-    List<Patient> findByPostalCode(int postalCode);
-
-    List<Patient> findByCity(String city);
-
-    List<Patient> findByCountry(String country);
+    @Query("{$or : [ {'streetBuildingName': { $regex: ?0, $options:'is'}}, { 'postalCode': { $regex: ?0, $options:'is'}}, {'city': { $regex: ?0, $options:'is'}} , {'country': { $regex: ?0, $options:'is'}} ] }")
+    List<Patient> findPatientByLocation(String locationRegex);
 
     void deleteByHealthId(String healthId);
 }

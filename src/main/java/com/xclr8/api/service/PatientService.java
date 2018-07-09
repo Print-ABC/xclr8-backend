@@ -34,62 +34,42 @@ public class PatientService {
     }
 
     /**
-     * Return information of a patient with the given first name from database
-     * @param firstName
-     * @return PatientResponse
+     * Return patients based on string search of first and last names from database
+     * @param nameRegex
+     * @return Iterable<PatientResponse>
      */
-    public Iterable<PatientResponse> findPatientByFirstName(String firstName) {
-        List<Patient> patientList = mPatientRepository.findByFirstName(firstName);
+    public Iterable<PatientResponse> findPatientByName(String nameRegex) {
+        List<Patient> patientList = mPatientRepository.findPatientByName(nameRegex);
         return new PatientResponse().patientResponseIterable(patientList);
     }
 
     /**
-     * Return information of a patient with the given last name from database
-     * @param lastName
+     * Return patients based on string search of first name from database
+     * @param fNameRegex
      * @return PatientResponse
      */
-    public Iterable<PatientResponse> findPatientByLastName(String lastName) {
-        List<Patient> patientList = mPatientRepository.findByLastName(lastName);
+    public Iterable<PatientResponse> findPatientByFirstName(String fNameRegex) {
+        List<Patient> patientList = mPatientRepository.findPatientByFirstName(fNameRegex);
         return new PatientResponse().patientResponseIterable(patientList);
     }
 
     /**
-     * Return information of a patient with the given street and building name from database
-     * @param streetBuildingName
+     * Return patients based on string search of last name from database
+     * @param lNameRegex
      * @return PatientResponse
      */
-    public Iterable<PatientResponse> findPatientByStreetBuildingName(String streetBuildingName) {
-        List<Patient> patientList = mPatientRepository.findByStreetBuildingName(streetBuildingName);
+    public Iterable<PatientResponse> findPatientByLastName(String lNameRegex) {
+        List<Patient> patientList = mPatientRepository.findPatientByLastName(lNameRegex);
         return new PatientResponse().patientResponseIterable(patientList);
     }
 
     /**
-     * Return information of a patient with the given postal code from database
-     * @param postalCode
-     * @return PatientResponse
+     * Return patients based on string search of street and building name, postal code, city, and country from database
+     * @param locationRegex
+     * @return Iterable<PatientResponse>
      */
-    public Iterable<PatientResponse> findPatientByPostalCode(int postalCode) {
-        List<Patient> patientList = mPatientRepository.findByPostalCode(postalCode);
-        return new PatientResponse().patientResponseIterable(patientList);
-    }
-
-    /**
-     * Return information of a patient with the given city from database
-     * @param city
-     * @return PatientResponse
-     */
-    public Iterable<PatientResponse> findPatientByCity(String city) {
-        List<Patient> patientList = mPatientRepository.findByCity(city);
-        return new PatientResponse().patientResponseIterable(patientList);
-    }
-
-    /**
-     * Return information of a patient with the given country from database
-     * @param country
-     * @return PatientResponse
-     */
-    public Iterable<PatientResponse> findPatientByCountry(String country) {
-        List<Patient> patientList = mPatientRepository.findByCountry(country);
+    public Iterable<PatientResponse> findPatientByLocation(String locationRegex) {
+        List<Patient> patientList = mPatientRepository.findPatientByLocation(locationRegex);
         return new PatientResponse().patientResponseIterable(patientList);
     }
 

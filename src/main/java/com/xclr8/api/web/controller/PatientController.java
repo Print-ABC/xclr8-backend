@@ -37,73 +37,50 @@ public class PatientController {
     }
 
     /**
+     * Return information of patients based on a string search of first and last names from database
+     * @param name
+     * @return Iterable<PatientResponse>
+     */
+    @RequestMapping(value = "/name/{name}", method = RequestMethod.GET)
+    public Iterable<PatientResponse> patientByName(@PathVariable String name) {
+        return mPatientService.findPatientByName(".*" + name + ".*");
+    }
+
+    /**
      * GET [url]:8080/patient/fname/[first name]
-     * Return information of all patients with the given first name from database
+     * Return patients based on string search of first name from database
      * @param fname
      * @return PatientResponse
      */
     @RequestMapping(value = "/fname/{fname}", method = RequestMethod.GET)
     public Iterable<PatientResponse> patientByFirstName(@PathVariable String fname) {
-        return mPatientService.findPatientByFirstName(fname);
+        return mPatientService.findPatientByFirstName(".*" + fname + ".*");
     }
 
     /**
      * GET [url]:8080/patient/lname/[last name]
-     * Return information of all patients with the given last name from database
+     * Return patients based on string search of last name from database
      * @param lname
      * @return PatientResponse
      */
     @RequestMapping(value = "/lname/{lname}", method = RequestMethod.GET)
     public Iterable<PatientResponse> patientByLastName(@PathVariable String lname) {
-        return mPatientService.findPatientByLastName(lname);
-    }
-
-//    /**
-//     * GET [url]:8080/patient/sbn/[street and building name]
-//     * Return information of all patients filtered by street and building name from database
-//     * @param streetBuildingName
-//     * @return Iterable<PatientResponse>
-//     */
-//    @RequestMapping(value = "/sbn/{streetBuildingName}", method = RequestMethod.GET)
-//    public Iterable<PatientResponse> patientByStreetBuildingName(@PathVariable String streetBuildingName) {
-//        return mPatientService.findPatientByStreetBuildingName(streetBuildingName);
-//    }
-
-    /**
-     * GET [url]:8080/patient/pcode/[postal code]
-     * Return information of all patients filtered by postal code from database
-     * @param postalCode
-     * @return Iterable<PatientResponse>
-     */
-    @RequestMapping(value = "/pcode/{postalCode}", method = RequestMethod.GET)
-    public Iterable<PatientResponse> patientByPostalCode(@PathVariable int postalCode) {
-        return mPatientService.findPatientByPostalCode(postalCode);
+        return mPatientService.findPatientByLastName(".*" + lname + ".*");
     }
 
     /**
-     * GET [url]:8080/patient/city/[city]
-     * Return information of all patients filtered by city from database
-     * @param city
+     * Return patients based on string search of street and building name, postal code, city, and country from database
+     * @param str
      * @return Iterable<PatientResponse>
      */
-    @RequestMapping(value = "/city/{city}", method = RequestMethod.GET)
-    public Iterable<PatientResponse> patientByCity(@PathVariable String city) {
-        return mPatientService.findPatientByCity(city);
-    }
-
-    /**
-     * GET [url]:8080/patient/country/[country]
-     * Return information of all patients filtered by country from database
-     * @param country
-     * @return Iterable<PatientResponse>
-     */
-    @RequestMapping(value = "/country/{country}", method = RequestMethod.GET)
-    public Iterable<PatientResponse> patientByCountry(@PathVariable String country) {
-        return mPatientService.findPatientByCountry(country);
+    @RequestMapping(value = "/location/{str}", method = RequestMethod.GET)
+    public Iterable<PatientResponse> patientByLocation(@PathVariable String str) {
+        return mPatientService.findPatientByLocation(".*" + str + ".*");
     }
 
     /**
      * DELETE [url]:8080/patient/del/[health Id]
+     * Delete a patient with the given health ID
      * @param hid
      * @return
      */
