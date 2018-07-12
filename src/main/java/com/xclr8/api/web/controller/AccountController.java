@@ -18,11 +18,11 @@ public class AccountController {
     AccountService mAccountService;
 
     /**
-     * GET [url]:8080/account/all
+     * GET [url]:8080/account
      * Return all available accounts from database
      * @return Iterable<AccountResponse>
      */
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public Iterable<AccountResponse> accounts() {
         return mAccountService.findAllAccounts();
     }
@@ -48,12 +48,12 @@ public class AccountController {
     }
 
     /**
-     * DELETE [url]:8080/account/del/[health Id]
+     * DELETE [url]:8080/account/[health Id]
      * Remove an account with the given health id from database
      * @param hid
      * @return true
      */
-    @RequestMapping(value = "/del/{hid}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{hid}", method = RequestMethod.DELETE)
     public boolean deleteByHealthId(@PathVariable String hid) {
         return mAccountService.deleteAccByHealthId(hid);
     }

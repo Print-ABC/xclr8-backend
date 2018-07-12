@@ -14,44 +14,44 @@ public class SensorsController {
     SensorsService mSensorsService;
 
     /**
-     * GET [url]:8080/sensors/all
+     * GET [url]:8080/sensors
      * Return information of all available sensors from database
      * @return
      */
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public Iterable<SensorsResponse> sensors() {
         return mSensorsService.findAllSensors();
     }
 
     /**
-     * GET [url]:8080/sensors/p/[patient health Id]
+     * GET [url]:8080/sensors/[patient health Id]
      * Return all sensor information associated with the given patient health id from database
      * @param phid
      * @return SensorsResponse
      */
-    @RequestMapping(value = "/p/{phid}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{phid}", method = RequestMethod.GET)
     public SensorsResponse sensorsByPatientHealthId(@PathVariable String phid) {
         return mSensorsService.findSensorsByPatientHealthId(phid);
     }
 
     /**
-     * DELETE [url]:8080/sensors/del/[patient health Id]
+     * DELETE [url]:8080/sensors/[patient health Id]
      * Remove all sensor information associated with the given patient health id from database
      * @param phid
      * @return true
      */
-    @RequestMapping(value = "/del/{phid}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{phid}", method = RequestMethod.DELETE)
     public boolean deleteSensorsByPatientHealthId(@PathVariable String phid) {
         return mSensorsService.deleteSensorsByPatientHealthId(phid);
     }
 
     /**
-     * PUT [url]:8080/sensors/edit/
+     * PUT [url]:8080/sensors
      * Edits all sensor information associated with the given patient health id from database
      * @param sensorRequest
      * @return SensorsResponse
      */
-    @RequestMapping(value = "/edit", method = RequestMethod.PUT)
+    @RequestMapping(value = "", method = RequestMethod.PUT)
     public SensorsResponse editSensors(@RequestBody SensorRequest sensorRequest) {
         return mSensorsService.editSensors(sensorRequest);
     }

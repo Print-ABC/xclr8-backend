@@ -1,4 +1,4 @@
-package com.xclr8.api.nestedModel;
+package com.xclr8.api.model.nestedModel;
 
 
 import lombok.Data;

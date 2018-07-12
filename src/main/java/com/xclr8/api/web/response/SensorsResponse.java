@@ -1,7 +1,7 @@
 package com.xclr8.api.web.response;
 
 import com.xclr8.api.model.Sensors;
-import com.xclr8.api.nestedModel.Sensor;
+import com.xclr8.api.model.nestedModel.Sensor;
 import lombok.Data;
 
 import java.util.ArrayList;

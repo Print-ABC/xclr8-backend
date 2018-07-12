@@ -19,12 +19,12 @@ public class MixedController {
     MixedService mCreateService;
 
     /**
-     * POST [url]:8080/mixed/create/patient
+     * POST [url]:8080/mixed/patient
      * Creates a patient, account, patient statistics object in the database and updates patient group for the related therapist accordingly
      * @param patient
      * @return AccountPatientResponse
      */
-    @RequestMapping(value = "create/patient", method = RequestMethod.POST)
+    @RequestMapping(value = "/patient", method = RequestMethod.POST)
     public AccountPatientResponse createPatient(@RequestBody AccountPatientRequest patient) {
 //        if (mAccountService.findAccByHealthId(patient.getHealthId()) != null) {
 //            AccountPatientResponse errorMsg = new AccountPatientResponse();
@@ -37,12 +37,12 @@ public class MixedController {
     }
 
     /**
-     * POST [url]:8080/mixed/create/therapist
+     * POST [url]:8080/mixed/therapist
      * Creates a therapist and a patient group object in the database
      * @param therapist
      * @return AccountTherapistResponse
      */
-    @RequestMapping(value = "create/therapist", method = RequestMethod.POST)
+    @RequestMapping(value = "/therapist", method = RequestMethod.POST)
     public AccountTherapistResponse createTherapist(@RequestBody AccountTherapistRequest therapist) {
 //        if (mAccountService.findAccByHealthId(patient.getHealthId()) != null) {
 //            AccountPatientResponse errorMsg = new AccountPatientResponse();
@@ -55,12 +55,12 @@ public class MixedController {
     }
 
     /**
-     * PUT [url]:8080/mixed/edit/patient
+     * PUT [url]:8080/mixed/patient
      * Creates a therapist object in the database
      * @param patient
      * @return AccountPatientResponse
      */
-    @RequestMapping(value = "/edit/patient", method = RequestMethod.PUT)
+    @RequestMapping(value = "/patient", method = RequestMethod.PUT)
     public AccountPatientResponse editPatient(@RequestBody AccountPatientRequest patient) {
 //        if (mAccountService.findAccByHealthId(patient.getHealthId()) != null) {
 //            AccountPatientResponse errorMsg = new AccountPatientResponse();

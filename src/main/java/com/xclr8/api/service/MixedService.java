@@ -2,7 +2,7 @@ package com.xclr8.api.service;
 
 
 import com.xclr8.api.model.*;
-import com.xclr8.api.nestedModel.Sensor;
+import com.xclr8.api.model.nestedModel.Sensor;
 import com.xclr8.api.repository.*;
 import com.xclr8.api.web.request.AccountPatientRequest;
 import com.xclr8.api.web.request.AccountTherapistRequest;
@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class MixedService {

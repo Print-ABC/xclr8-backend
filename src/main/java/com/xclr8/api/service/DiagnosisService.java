@@ -1,7 +1,7 @@
 package com.xclr8.api.service;
 
 import com.xclr8.api.model.Diagnosis;
-import com.xclr8.api.nestedModel.Note;
+import com.xclr8.api.model.nestedModel.Note;
 import com.xclr8.api.repository.DiagnosisRepository;
 import com.xclr8.api.web.request.DiagnosisRequest;
 import com.xclr8.api.web.request.NoteRequest;

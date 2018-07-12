@@ -64,6 +64,8 @@ public class SessionService {
         session.setExercises(sessionRequest.getExercises());
         session.setReplayPath(sessionRequest.getReplayPath());
         session.setNotes(sessionRequest.getNotes());
+
+        session = mSessionRespository.save(session);
         return new SessionResponse().sessionResponse(session);
     }
 

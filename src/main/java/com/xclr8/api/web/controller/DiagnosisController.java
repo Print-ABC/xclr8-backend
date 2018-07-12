@@ -15,22 +15,22 @@ public class DiagnosisController {
     DiagnosisService mDiagnosisService;
 
     /**
-     * GET [url]:8080/diagnosis/all
+     * GET [url]:8080/diagnosis
      * Return all available diagnoses from database
      * @return Iterable<DiagnosisResponse>
      */
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public Iterable<DiagnosisResponse> diagnoses() {
         return mDiagnosisService.findAllDiagnoses();
     }
 
     /**
-     * GET [url]:8080/diagnosis/id/{id}
+     * GET [url]:8080/diagnosis/{id}
      * Return all a diagnosis with given document id from database
      * @param id
      * @return
      */
-    @RequestMapping(value = "/id/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public DiagnosisResponse diagnosisById(@PathVariable String id) {
         return mDiagnosisService.findDiagnosisById(id);
     }
@@ -89,56 +89,56 @@ public class DiagnosisController {
     }
 
     /**
-     * POST [url]:8080/diagnosis/create
+     * POST [url]:8080/diagnosis
      * Creates a diagnosis object in the database
      * @param diagnosisRequest
      * @return DiagnosisResponse
      */
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequestMapping(value = "", method = RequestMethod.POST)
     public DiagnosisResponse createDiagnosis( DiagnosisRequest diagnosisRequest) {
         return mDiagnosisService.createDiagnosis(diagnosisRequest);
     }
 
     /**
-     * DELETE [url]:8080/diagnosis/del/[patient health Id]
+     * DELETE [url]:8080/diagnosis/[patient health Id]
      * Remove diagnoses with the given patient health id from database
      * @param hid
      * @return
      */
-    @RequestMapping(value = "/del/{hid}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{hid}", method = RequestMethod.DELETE)
     public boolean deleteByPatientId(@PathVariable String hid) {
         return mDiagnosisService.deleteDiagnosisByPatientId(hid);
     }
 
     /**
-     * PUT [url]:8080/diagnosis/edit
+     * PUT [url]:8080/diagnosis
      * Edits a diagnosis object in the database
      * @param diagnosisRequest
      * @return DiagnosisResponse
      */
-    @RequestMapping(value = "/edit", method = RequestMethod.PUT)
+    @RequestMapping(value = "", method = RequestMethod.PUT)
     public DiagnosisResponse editDiagnosis(@RequestBody DiagnosisRequest diagnosisRequest) {
         return mDiagnosisService.editDiagnosis(diagnosisRequest);
     }
 
     /**
-     * POST [url]:8080/diagnosis/note/add
+     * POST [url]:8080/diagnosis/note
      * Creates a note object in a specific diagnosis in the database
      * @param noteRequest
      * @return DiagnosisResponse
      */
-    @RequestMapping(value = "/note/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/note", method = RequestMethod.POST)
     public DiagnosisResponse addNote(@RequestBody NoteRequest noteRequest) {
         return mDiagnosisService.addNote(noteRequest);
     }
 
     /**
-     * PUT [url]:8080/diagnosis/note/edit
+     * PUT [url]:8080/diagnosis/note
      * Edits a note object in a specific diagnosis in the database
      * @param noteRequest
      * @return DiagnosisResponse
      */
-    @RequestMapping(value = "/note/edit", method = RequestMethod.PUT)
+    @RequestMapping(value = "/note", method = RequestMethod.PUT)
     public DiagnosisResponse editNote(@RequestBody NoteRequest noteRequest) {
         return mDiagnosisService.editNote(noteRequest);
     }

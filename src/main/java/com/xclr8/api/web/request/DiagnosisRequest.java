@@ -1,6 +1,6 @@
 package com.xclr8.api.web.request;
 
-import com.xclr8.api.nestedModel.Note;
+import com.xclr8.api.model.nestedModel.Note;
 import lombok.Data;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.xclr8.api.model;
 
-import com.xclr8.api.nestedModel.Sensor;
+import com.xclr8.api.model.nestedModel.Sensor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

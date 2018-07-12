@@ -14,11 +14,11 @@ public class PatientStatisticsController {
     PatientStatisticsService mPatientStatisticsService;
 
     /**
-     * GET [url]:8080/stats/all
+     * GET [url]:8080/stats
      * Return all available patient statistics from database
      * @return
      */
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public Iterable<PatientStatisticsResponse> patientStatistics() {
         return mPatientStatisticsService.findAllPatientStatistics();
     }
@@ -56,23 +56,23 @@ public class PatientStatisticsController {
     }
 
     /**
-     * DELETE [url]:8080/stats/del/[patient health id]
+     * DELETE [url]:8080/stats/[patient health id]
      * Remove patient statistics with given patient health id from database
      * @param pid
      * @return true
      */
-    @RequestMapping(value = "/del/{pid}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{pid}", method = RequestMethod.DELETE)
     public boolean deletePatientStatisticsByPatientId(@PathVariable String pid) {
         return mPatientStatisticsService.deletePatientStatisticsByPatientId(pid);
     }
 
     /**
-     * PUT [url]:8080/stats/edit/
+     * PUT [url]:8080/stats
      * Edits patient statistics with given patient statistics object into database
      * @param psr
      * @return PatientStatisticsResponse
      */
-    @RequestMapping(value = "/edit", method = RequestMethod.PUT)
+    @RequestMapping(value = "", method = RequestMethod.PUT)
     public PatientStatisticsResponse editPatientStatistics(@RequestBody PatientStatisticsRequest psr) {
         return mPatientStatisticsService.editPatientStatistics(psr);
     }

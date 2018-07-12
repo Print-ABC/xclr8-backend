@@ -16,11 +16,11 @@ public class PatientController {
     PatientService mPatientService;
 
     /**
-     * GET [url]:8080/patient/all
+     * GET [url]:8080/patient
      * Return information of all patients from database
      * @return Iterable<PatientResponse>
      */
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public Iterable<PatientResponse> patients() {
         return mPatientService.findAllPatients();
     }
@@ -69,6 +69,7 @@ public class PatientController {
     }
 
     /**
+     * GET [url]:8080/patient/location/[str]
      * Return patients based on string search of street and building name, postal code, city, and country from database
      * @param str
      * @return Iterable<PatientResponse>
@@ -79,12 +80,12 @@ public class PatientController {
     }
 
     /**
-     * DELETE [url]:8080/patient/del/[health Id]
+     * DELETE [url]:8080/patient/[health Id]
      * Delete a patient with the given health ID
      * @param hid
      * @return
      */
-    @RequestMapping(value = "/del/{hid}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{hid}", method = RequestMethod.DELETE)
     public boolean deletePatientByHealthId(@PathVariable String hid) {
         return mPatientService.deletePatientByHealthId(hid);
     }
