@@ -3,8 +3,10 @@ package com.xclr8.api.service;
 import com.xclr8.api.model.Diagnosis;
 import com.xclr8.api.model.nestedModel.Note;
 import com.xclr8.api.repository.DiagnosisRepository;
+import com.xclr8.api.web.request.DiagnosisEditRequest;
 import com.xclr8.api.web.request.DiagnosisRequest;
 import com.xclr8.api.web.request.NoteRequest;
+import com.xclr8.api.web.response.DiagnosisEditResponse;
 import com.xclr8.api.web.response.DiagnosisResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -92,9 +94,9 @@ public class DiagnosisService {
     /**
      * Edit and save ...
      * @param diagnosisRequest
-     * @return DiagnosisResponse object
+     * @return DiagnosisEditResponse object
      */
-    public DiagnosisResponse editDiagnosis(DiagnosisRequest diagnosisRequest){
+    public DiagnosisEditResponse editDiagnosis(DiagnosisEditRequest diagnosisRequest){
         Diagnosis diagnosis = new Diagnosis();
         Optional<Diagnosis> diagnosisCheck = mDiagnosisRepository.findById(diagnosisRequest.getId());
 
@@ -113,7 +115,7 @@ public class DiagnosisService {
             //Return error
         }
 
-        return new DiagnosisResponse().diagnosisResponse(diagnosis);
+        return new DiagnosisEditResponse().diagnosisEditResponse(diagnosis);
     }
 
     /**

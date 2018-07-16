@@ -10,14 +10,13 @@ import java.util.List;
 public class ExerciseDefaultResponse {
     String id;
     String exerciseName;
-    String defaultSides;
     int defaultReps;
     int defaultSets;
     int defaultFrequency;
     double defaultMinAngle;
     double defaultMaxAngle;
     double defaultSensitivity;
-    String bodyPart;
+    List<String> bodyPart;
 
     /**
      * Create an ExerciseDefaultResponse from an ExerciseDefault object and return it
@@ -28,7 +27,6 @@ public class ExerciseDefaultResponse {
         ExerciseDefaultResponse exerciseDefaultResponse = new ExerciseDefaultResponse();
         exerciseDefaultResponse.setId(exerciseDefault.getId());
         exerciseDefaultResponse.setExerciseName(exerciseDefault.getExerciseName());
-        exerciseDefaultResponse.setDefaultSides(exerciseDefault.getDefaultSides());
         exerciseDefaultResponse.setDefaultReps(exerciseDefault.getDefaultReps());
         exerciseDefaultResponse.setDefaultSets(exerciseDefault.getDefaultSets());
         exerciseDefaultResponse.setDefaultFrequency(exerciseDefault.getDefaultFrequency());
@@ -49,7 +47,6 @@ public class ExerciseDefaultResponse {
             ExerciseDefaultResponse exerciseDefaultResponse = new ExerciseDefaultResponse();
             exerciseDefaultResponse.setId(ed.getId());
             exerciseDefaultResponse.setExerciseName(ed.getExerciseName());
-            exerciseDefaultResponse.setDefaultSides(ed.getDefaultSides());
             exerciseDefaultResponse.setDefaultReps(ed.getDefaultReps());
             exerciseDefaultResponse.setDefaultSets(ed.getDefaultSets());
             exerciseDefaultResponse.setDefaultFrequency(ed.getDefaultFrequency());

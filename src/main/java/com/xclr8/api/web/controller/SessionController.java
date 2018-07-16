@@ -1,8 +1,14 @@
 package com.xclr8.api.web.controller;
 
 import com.xclr8.api.service.SessionService;
+import com.xclr8.api.web.request.SessionExerciseRequest;
+import com.xclr8.api.web.request.SessionNotesRequest;
 import com.xclr8.api.web.request.SessionRequest;
+import com.xclr8.api.web.request.SessionSummaryRequest;
+import com.xclr8.api.web.response.SessionExerciseResponse;
+import com.xclr8.api.web.response.SessionNotesResponse;
 import com.xclr8.api.web.response.SessionResponse;
+import com.xclr8.api.web.response.SessionSummaryResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -81,33 +87,33 @@ public class SessionController {
     /**
      * PUT [url]:8080/session/summary
      * Updates session summary for the selected session in the database
-     * @param sessionRequest
+     * @param sessionSummaryRequest
      * @return SensorsResponse
      */
     @RequestMapping(value = "/summary", method = RequestMethod.PUT)
-    public SessionResponse editSessionSummary(@RequestBody SessionRequest sessionRequest) {
-        return mSessionService.editSessionSummary(sessionRequest);
+    public SessionSummaryResponse editSessionSummary(@RequestBody SessionSummaryRequest sessionSummaryRequest) {
+        return mSessionService.editSessionSummary(sessionSummaryRequest);
     }
 
     /**
      * PUT [url]:8080/session/exercises
      * Updates session exercises for the selected session in the database
-     * @param sessionRequest
-     * @return SensorsResponse
+     * @param sessionExerciseRequest
+     * @return SessionExerciseResponse
      */
     @RequestMapping(value = "/exercises", method = RequestMethod.PUT)
-    public SessionResponse editSessionExercises(@RequestBody SessionRequest sessionRequest) {
-        return mSessionService.editSessionExercises(sessionRequest);
+    public SessionExerciseResponse editSessionExercises(@RequestBody SessionExerciseRequest sessionExerciseRequest) {
+        return mSessionService.editSessionExercises(sessionExerciseRequest);
     }
 
     /**
      * PUT [url]:8080/session/notes
      * Updates session notes for the selected session in the database
-     * @param sessionRequest
-     * @return SensorsResponse
+     * @param sessionNotesRequest
+     * @return SessionNotesResponse
      */
     @RequestMapping(value = "/notes", method = RequestMethod.PUT)
-    public SessionResponse editSessionNotes(@RequestBody SessionRequest sessionRequest) {
-        return mSessionService.editSessionNotes(sessionRequest);
+    public SessionNotesResponse editSessionNotes(@RequestBody SessionNotesRequest sessionNotesRequest) {
+        return mSessionService.editSessionNotes(sessionNotesRequest);
     }
 }

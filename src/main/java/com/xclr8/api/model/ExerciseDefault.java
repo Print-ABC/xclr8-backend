@@ -4,6 +4,9 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+
+import java.util.List;
+
 @Data
 @Document(collection = "Exercise_default")
 public class ExerciseDefault {
@@ -12,10 +15,6 @@ public class ExerciseDefault {
 
     @Field
     String exerciseName;
-
-    @Field
-    //Left side, right side
-    String defaultSides;
 
     @Field
     int defaultReps;
@@ -36,7 +35,7 @@ public class ExerciseDefault {
     double defaultSensitivity;
 
     @Field
-    String bodyPart;
+    List<String> bodyPart;
 
 //    Maybe in the future the defaults could be stored offline
 //    @Field

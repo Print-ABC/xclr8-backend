@@ -2,8 +2,14 @@ package com.xclr8.api.service;
 
 import com.xclr8.api.model.Session;
 import com.xclr8.api.repository.SessionRepository;
+import com.xclr8.api.web.request.SessionExerciseRequest;
+import com.xclr8.api.web.request.SessionNotesRequest;
 import com.xclr8.api.web.request.SessionRequest;
+import com.xclr8.api.web.request.SessionSummaryRequest;
+import com.xclr8.api.web.response.SessionExerciseResponse;
+import com.xclr8.api.web.response.SessionNotesResponse;
 import com.xclr8.api.web.response.SessionResponse;
+import com.xclr8.api.web.response.SessionSummaryResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -92,9 +98,9 @@ public class SessionService {
     /**
      * Updates the session summary for the selected session in the database
      * @param sessionRequest
-     * @return SessionResponse
+     * @return SessionSummaryResponse
      */
-    public SessionResponse editSessionSummary(@RequestBody SessionRequest sessionRequest) {
+    public SessionSummaryResponse editSessionSummary(@RequestBody SessionSummaryRequest sessionRequest) {
         Session session = new Session();
         Optional<Session> check = mSessionRespository.findById(sessionRequest.getId());
         if(check.isPresent()){
@@ -104,15 +110,15 @@ public class SessionService {
             mSessionRespository.save(session);
         }
 
-        return new SessionResponse().sessionResponse(session) ;
+        return new SessionSummaryResponse().sessionResponse(session) ;
     }
 
     /**
      * Updates the exercises for the selected session in the database
      * @param sessionRequest
-     * @return SessionResponse
+     * @return SessionExerciseResponse
      */
-    public SessionResponse editSessionExercises(@RequestBody SessionRequest sessionRequest) {
+    public SessionExerciseResponse editSessionExercises(@RequestBody SessionExerciseRequest sessionRequest) {
         Session session = new Session();
         Optional<Session> check = mSessionRespository.findById(sessionRequest.getId());
         if(check.isPresent()){
@@ -122,15 +128,15 @@ public class SessionService {
             mSessionRespository.save(session);
         }
 
-        return new SessionResponse().sessionResponse(session) ;
+        return new SessionExerciseResponse().sessionResponse(session) ;
     }
 
     /**
      * Updates session notes for the selected session in the database
      * @param sessionRequest
-     * @return SessionResponse
+     * @return SessionNotesResponse
      */
-    public SessionResponse editSessionNotes(@RequestBody SessionRequest sessionRequest) {
+    public SessionNotesResponse editSessionNotes(@RequestBody SessionNotesRequest sessionRequest) {
         Session session = new Session();
         Optional<Session> check = mSessionRespository.findById(sessionRequest.getId());
         if(check.isPresent()){
@@ -140,6 +146,6 @@ public class SessionService {
             mSessionRespository.save(session);
         }
 
-        return new SessionResponse().sessionResponse(session) ;
+        return new SessionNotesResponse().sessionResponse(session) ;
     }
 }

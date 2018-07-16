@@ -25,7 +25,7 @@ public class MixedController {
      * @return AccountPatientResponse
      */
     @RequestMapping(value = "/patient", method = RequestMethod.POST)
-    public AccountPatientResponse createPatient(@RequestBody AccountPatientRequest patient) {
+    public AccountPatientResponse createPatient(AccountPatientRequest patient) {
 //        if (mAccountService.findAccByHealthId(patient.getHealthId()) != null) {
 //            AccountPatientResponse errorMsg = new AccountPatientResponse();
 //            errorMsg.setHealthId("Health ID already exists");

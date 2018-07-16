@@ -1,8 +1,10 @@
 package com.xclr8.api.web.controller;
 
 import com.xclr8.api.service.DiagnosisService;
+import com.xclr8.api.web.request.DiagnosisEditRequest;
 import com.xclr8.api.web.request.DiagnosisRequest;
 import com.xclr8.api.web.request.NoteRequest;
+import com.xclr8.api.web.response.DiagnosisEditResponse;
 import com.xclr8.api.web.response.DiagnosisResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -95,7 +97,7 @@ public class DiagnosisController {
      * @return DiagnosisResponse
      */
     @RequestMapping(value = "", method = RequestMethod.POST)
-    public DiagnosisResponse createDiagnosis( DiagnosisRequest diagnosisRequest) {
+    public DiagnosisResponse createDiagnosis(@RequestBody DiagnosisRequest diagnosisRequest) {
         return mDiagnosisService.createDiagnosis(diagnosisRequest);
     }
 
@@ -113,12 +115,12 @@ public class DiagnosisController {
     /**
      * PUT [url]:8080/diagnosis
      * Edits a diagnosis object in the database
-     * @param diagnosisRequest
-     * @return DiagnosisResponse
+     * @param diagnosisEditRequest
+     * @return DiagnosisEditResponse
      */
     @RequestMapping(value = "", method = RequestMethod.PUT)
-    public DiagnosisResponse editDiagnosis(@RequestBody DiagnosisRequest diagnosisRequest) {
-        return mDiagnosisService.editDiagnosis(diagnosisRequest);
+    public DiagnosisEditResponse editDiagnosis(@RequestBody DiagnosisEditRequest diagnosisEditRequest) {
+        return mDiagnosisService.editDiagnosis(diagnosisEditRequest);
     }
 
     /**
