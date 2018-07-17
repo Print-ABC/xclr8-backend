@@ -25,21 +25,21 @@ public class ChatController {
     }
 
     /**
-     * GET [url]:8080/chat/t/[therapist health id]
+     * GET [url]:8080/chat/therapist/[therapist health id]
      * Return all chat logs filtered by given therapist health ID from database
      * @return Iterable<ChatResponse>
      */
-    @RequestMapping(value = "/t/{tHid}", method = RequestMethod.GET)
+    @RequestMapping(value = "/therapist/{tHid}", method = RequestMethod.GET)
     public Iterable<ChatResponse> chatsByTherapistHealthId(@PathVariable String tHid) {
         return mChatService.findChatByTherapistHealthId(tHid);
     }
 
     /**
-     * GET [url]:8080/chat/p/[patient health id]
+     * GET [url]:8080/chat/patient/[patient health id]
      * Return all chat logs filtered by given patient health ID from database
      * @return Iterable<ChatResponse>
      */
-    @RequestMapping(value = "/p/{pHid}", method = RequestMethod.GET)
+    @RequestMapping(value = "/patient/{pHid}", method = RequestMethod.GET)
     public Iterable<ChatResponse> chatsByPatientHealthId(@PathVariable String pHid) {
         return mChatService.findChatByPatientHealthId(pHid);
     }
@@ -76,22 +76,22 @@ public class ChatController {
     }
 
     /**
-     * DELETE [url]:8080/chat/p/[patient health id]
-     * Delete all chat logs filtered by given patient health ID from database
-     * @return true
-     */
-    @RequestMapping(value = "/p/{phid}", method = RequestMethod.DELETE)
-    public boolean deleteChatByPatientHealthId(@PathVariable String phid) {
-        return mChatService.deleteByPatientHealthId(phid);
-    }
-
-    /**
-     * DELETE [url]:8080/chat/t/[therapist health id]
+     * DELETE [url]:8080/chat/therapist/[therapist health id]
      * Delete all chat logs filtered by given therapist health ID from database
      * @return true
      */
-    @RequestMapping(value = "/t/{thid}", method = RequestMethod.DELETE)
-    public boolean deleteChatByTherapistHealthId(@PathVariable String thid) {
-        return mChatService.deleteByTherapistHealthId(thid);
+    @RequestMapping(value = "/therapist/{tHid}", method = RequestMethod.DELETE)
+    public boolean deleteChatByTherapistHealthId(@PathVariable String tHid) {
+        return mChatService.deleteByTherapistHealthId(tHid);
+    }
+
+    /**
+     * DELETE [url]:8080/chat/patient/[patient health id]
+     * Delete all chat logs filtered by given patient health ID from database
+     * @return true
+     */
+    @RequestMapping(value = "/patient/{pHid}", method = RequestMethod.DELETE)
+    public boolean deleteChatByPatientHealthId(@PathVariable String pHid) {
+        return mChatService.deleteByPatientHealthId(pHid);
     }
 }

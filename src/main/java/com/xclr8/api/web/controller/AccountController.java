@@ -1,12 +1,14 @@
 package com.xclr8.api.web.controller;
 
 import com.xclr8.api.service.AccountService;
+import com.xclr8.api.service.CreateService;
+import com.xclr8.api.web.request.AccountPatientRequest;
+import com.xclr8.api.web.request.AccountTherapistRequest;
+import com.xclr8.api.web.response.AccountPatientResponse;
 import com.xclr8.api.web.response.AccountResponse;
+import com.xclr8.api.web.response.AccountTherapistResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,6 +18,8 @@ public class AccountController {
 
     @Autowired
     AccountService mAccountService;
+    @Autowired
+    CreateService mCreateService;
 
     /**
      * GET [url]:8080/account
@@ -28,11 +32,11 @@ public class AccountController {
     }
 
     /**
-     * GET [url]:8080/account/hid/[health Id]
+     * GET [url]:8080/account/[health Id]
      * Return all available accounts filtered by health Id from database
      * @return Iterable<AccountResponse>
      */
-    @RequestMapping(value = "/hid/{healthId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{healthId}", method = RequestMethod.GET)
     AccountResponse accByHealthId(@PathVariable String healthId) {
         return mAccountService.findAccByHealthId(healthId);
     }
@@ -45,6 +49,28 @@ public class AccountController {
     @RequestMapping(value = "/email/{email}", method = RequestMethod.GET)
     AccountResponse accByEmail(@PathVariable String email) {
         return mAccountService.findAccByEmail(email);
+    }
+
+    /**
+     * POST [url]:8080/account/create/patient
+     * Creates a patient, account, patient statistics object in the database and updates patient group for the related therapist accordingly
+     * @param patient
+     * @return AccountPatientResponse
+     */
+    @RequestMapping(value = "/create/patient", method = RequestMethod.POST)
+    public AccountPatientResponse createPatient(AccountPatientRequest patient) {
+        return mCreateService.createPatientAccount(patient);
+    }
+
+    /**
+     * POST [url]:8080/account/create/therapist
+     * Creates a therapist and a patient group object in the database
+     * @param therapist
+     * @return AccountTherapistResponse
+     */
+    @RequestMapping(value = "/create/therapist", method = RequestMethod.POST)
+    public AccountTherapistResponse createTherapist(@RequestBody AccountTherapistRequest therapist) {
+        return mCreateService.createTherapistAccount(therapist);
     }
 
     /**

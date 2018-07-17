@@ -76,26 +76,6 @@ public class SessionService {
     }
 
     /**
-     * Remove a session with the given document id from database
-     * @param id
-     * @return true
-     */
-    public boolean deleteSessionsById(String id) {
-        mSessionRespository.deleteById(id);
-        return true;
-    }
-
-    /**
-     * Remove all sessions with the given session group id from database
-     * @param sessionGroupId
-     * @return true
-     */
-    public boolean deleteSessionsBySessionGroupId(String sessionGroupId) {
-        mSessionRespository.deleteBySessionGroupId(sessionGroupId);
-        return true;
-    }
-
-    /**
      * Updates the session summary for the selected session in the database
      * @param sessionRequest
      * @return SessionSummaryResponse
@@ -147,5 +127,25 @@ public class SessionService {
         }
 
         return new SessionNotesResponse().sessionResponse(session) ;
+    }
+
+    /**
+     * Remove a session with the given document id from database
+     * @param id
+     * @return true
+     */
+    public boolean deleteSessionsById(String id) {
+        mSessionRespository.deleteById(id);
+        return true;
+    }
+
+    /**
+     * Remove all sessions with the given session group id from database
+     * @param sessionGroupId
+     * @return true
+     */
+    public boolean deleteSessionsBySessionGroupId(String sessionGroupId) {
+        mSessionRespository.deleteBySessionGroupId(sessionGroupId);
+        return true;
     }
 }

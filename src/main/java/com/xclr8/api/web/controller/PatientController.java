@@ -1,12 +1,12 @@
 package com.xclr8.api.web.controller;
 
+import com.xclr8.api.service.CreateService;
 import com.xclr8.api.service.PatientService;
+import com.xclr8.api.web.request.AccountPatientRequest;
+import com.xclr8.api.web.response.AccountPatientResponse;
 import com.xclr8.api.web.response.PatientResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/patient")
@@ -14,6 +14,8 @@ public class PatientController {
 
     @Autowired
     PatientService mPatientService;
+    @Autowired
+    CreateService mCreateService;
 
     /**
      * GET [url]:8080/patient
@@ -31,7 +33,7 @@ public class PatientController {
      * @param hid
      * @return PatientResponse
      */
-    @RequestMapping(value = "/hid/{hid}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{hid}", method = RequestMethod.GET)
     public PatientResponse patientByHealthId(@PathVariable String hid) {
         return mPatientService.findPatientByHealthId(hid);
     }
@@ -47,23 +49,23 @@ public class PatientController {
     }
 
     /**
-     * GET [url]:8080/patient/fname/[first name]
+     * GET [url]:8080/patient/first-name/[first name]
      * Return patients based on string search of first name from database
      * @param fname
      * @return PatientResponse
      */
-    @RequestMapping(value = "/fname/{fname}", method = RequestMethod.GET)
+    @RequestMapping(value = "/first-name/{fname}", method = RequestMethod.GET)
     public Iterable<PatientResponse> patientByFirstName(@PathVariable String fname) {
         return mPatientService.findPatientByFirstName(".*" + fname + ".*");
     }
 
     /**
-     * GET [url]:8080/patient/lname/[last name]
+     * GET [url]:8080/patient/last-name/[last name]
      * Return patients based on string search of last name from database
      * @param lname
      * @return PatientResponse
      */
-    @RequestMapping(value = "/lname/{lname}", method = RequestMethod.GET)
+    @RequestMapping(value = "/last-name/{lname}", method = RequestMethod.GET)
     public Iterable<PatientResponse> patientByLastName(@PathVariable String lname) {
         return mPatientService.findPatientByLastName(".*" + lname + ".*");
     }
@@ -77,6 +79,17 @@ public class PatientController {
     @RequestMapping(value = "/location/{str}", method = RequestMethod.GET)
     public Iterable<PatientResponse> patientByLocation(@PathVariable String str) {
         return mPatientService.findPatientByLocation(".*" + str + ".*");
+    }
+
+    /**
+     * PUT [url]:8080/patient
+     * Edits a patient object in the database
+     * @param patient
+     * @return AccountPatientResponse
+     */
+    @RequestMapping(value = "", method = RequestMethod.PUT)
+    public AccountPatientResponse editPatient(@RequestBody AccountPatientRequest patient) {
+        return mCreateService.editPatient(patient);
     }
 
     /**

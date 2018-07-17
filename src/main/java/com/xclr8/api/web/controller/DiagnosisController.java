@@ -38,12 +38,12 @@ public class DiagnosisController {
     }
 
     /**
-     * GET [url]:8080/diagnosis/p/[patient health Id]
+     * GET [url]:8080/diagnosis/patient/[patient health Id]
      * Return all available diagnoses filtered by patient health Id from database
      * @param hid
      * @return Iterable<DiagnosisResponse>
      */
-    @RequestMapping(value = "/p/{hid}", method = RequestMethod.GET)
+    @RequestMapping(value = "/patient/{hid}", method = RequestMethod.GET)
     public Iterable<DiagnosisResponse> diagnosesByPatientId(@PathVariable String hid) {
         return mDiagnosisService.findDiagnosisByPatientId(hid);
     }
@@ -69,23 +69,23 @@ public class DiagnosisController {
     }
 
     /**
-     * GET [url]:8080/diagnosis/p/[patient health Id]/inactive
+     * GET [url]:8080/diagnosis/patient/[patient health Id]/inactive
      * Return all inactive diagnoses filtered by patient health Id from database
      * @param hid
      * @return Iterable<DiagnosisResponse>
      */
-    @RequestMapping(value = "/p/{hid}/inactive", method = RequestMethod.GET)
+    @RequestMapping(value = "/patient/{hid}/inactive", method = RequestMethod.GET)
     public Iterable<DiagnosisResponse> inactiveDiagnosesByPatientId(@PathVariable String hid) {
         return mDiagnosisService.findDiagnosisByPatientIdAndStatus(hid, 0);
     }
 
     /**
-     * GET [url]:8080/diagnosis/p/[patient health Id]/active
+     * GET [url]:8080/diagnosis/patient/[patient health Id]/active
      * Return all inactive diagnoses filtered by patient health Id from database
      * @param hid
      * @return Iterable<DiagnosisResponse>
      */
-    @RequestMapping(value = "/p/{hid}/active", method = RequestMethod.GET)
+    @RequestMapping(value = "/patient/{hid}/active", method = RequestMethod.GET)
     public Iterable<DiagnosisResponse> activeDiagnosesByPatientId(@PathVariable String hid) {
         return mDiagnosisService.findDiagnosisByPatientIdAndStatus(hid, 1);
     }
@@ -102,14 +102,14 @@ public class DiagnosisController {
     }
 
     /**
-     * DELETE [url]:8080/diagnosis/[patient health Id]
-     * Remove diagnoses with the given patient health id from database
-     * @param hid
-     * @return
+     * POST [url]:8080/diagnosis/note
+     * Creates a note object in a specific diagnosis in the database
+     * @param noteRequest
+     * @return DiagnosisResponse
      */
-    @RequestMapping(value = "/{hid}", method = RequestMethod.DELETE)
-    public boolean deleteByPatientId(@PathVariable String hid) {
-        return mDiagnosisService.deleteDiagnosisByPatientId(hid);
+    @RequestMapping(value = "/note", method = RequestMethod.POST)
+    public DiagnosisResponse addNote(@RequestBody NoteRequest noteRequest) {
+        return mDiagnosisService.addNote(noteRequest);
     }
 
     /**
@@ -124,17 +124,6 @@ public class DiagnosisController {
     }
 
     /**
-     * POST [url]:8080/diagnosis/note
-     * Creates a note object in a specific diagnosis in the database
-     * @param noteRequest
-     * @return DiagnosisResponse
-     */
-    @RequestMapping(value = "/note", method = RequestMethod.POST)
-    public DiagnosisResponse addNote(@RequestBody NoteRequest noteRequest) {
-        return mDiagnosisService.addNote(noteRequest);
-    }
-
-    /**
      * PUT [url]:8080/diagnosis/note
      * Edits a note object in a specific diagnosis in the database
      * @param noteRequest
@@ -143,5 +132,16 @@ public class DiagnosisController {
     @RequestMapping(value = "/note", method = RequestMethod.PUT)
     public DiagnosisResponse editNote(@RequestBody NoteRequest noteRequest) {
         return mDiagnosisService.editNote(noteRequest);
+    }
+
+    /**
+     * DELETE [url]:8080/diagnosis/[patient health Id]
+     * Remove diagnoses with the given patient health id from database
+     * @param hid
+     * @return
+     */
+    @RequestMapping(value = "/{hid}", method = RequestMethod.DELETE)
+    public boolean deleteByPatientId(@PathVariable String hid) {
+        return mDiagnosisService.deleteDiagnosisByPatientId(hid);
     }
 }

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class MixedService {
+public class CreateService {
     @Autowired
     AccountRepository mAccountRepository;
     @Autowired

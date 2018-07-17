@@ -35,16 +35,6 @@ public class SensorsService {
     }
 
     /**
-     * Remove all sensors information associated with the given patient health id from database
-     * @param pid
-     * @return true
-     */
-    public boolean deleteSensorsByPatientHealthId(String pid) {
-        mSensorsRepository.deleteByPatientId(pid);
-        return true;
-    }
-
-    /**
      * Edits all sensor information associated with the given patient health id from database
      * @param sensorRequest
      * @return SensorsResponse
@@ -57,5 +47,15 @@ public class SensorsService {
         }
 
         return new SensorsResponse().sensorsResponse(sensors);
+    }
+
+    /**
+     * Remove all sensors information associated with the given patient health id from database
+     * @param pid
+     * @return true
+     */
+    public boolean deleteSensorsByPatientHealthId(String pid) {
+        mSensorsRepository.deleteByPatientId(pid);
+        return true;
     }
 }

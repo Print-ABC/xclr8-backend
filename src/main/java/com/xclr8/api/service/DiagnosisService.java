@@ -92,6 +92,32 @@ public class DiagnosisService {
 
 
     /**
+     * Creates a new Note for a Diagnosis object in the database
+     * @param noteRequest
+     * @return DiagnosisResponse object
+     */
+    public DiagnosisResponse addNote(NoteRequest noteRequest){
+        Diagnosis diagnosis = new Diagnosis();
+        Optional<Diagnosis> diagnosisCheck = mDiagnosisRepository.findById(noteRequest.getDiagnosisId());
+
+        if(diagnosisCheck.isPresent()){
+            diagnosis = diagnosisCheck.get();
+
+            Note note = new Note();
+            note.setNoteId(diagnosis.getNotes().size());
+            note.setDate(noteRequest.getDate());
+            note.setText(noteRequest.getText());
+
+            diagnosis.getNotes().add(note);
+            diagnosis = mDiagnosisRepository.save(diagnosis);
+        } else {
+            //Return error
+        }
+
+        return new DiagnosisResponse().diagnosisResponse(diagnosis);
+    }
+
+    /**
      * Edit and save ...
      * @param diagnosisRequest
      * @return DiagnosisEditResponse object
@@ -116,32 +142,6 @@ public class DiagnosisService {
         }
 
         return new DiagnosisEditResponse().diagnosisEditResponse(diagnosis);
-    }
-
-    /**
-     * Creates a new Note for a Diagnosis object in the database
-     * @param noteRequest
-     * @return DiagnosisResponse object
-     */
-    public DiagnosisResponse addNote(NoteRequest noteRequest){
-        Diagnosis diagnosis = new Diagnosis();
-        Optional<Diagnosis> diagnosisCheck = mDiagnosisRepository.findById(noteRequest.getDiagnosisId());
-
-        if(diagnosisCheck.isPresent()){
-            diagnosis = diagnosisCheck.get();
-
-            Note note = new Note();
-            note.setNoteId(diagnosis.getNotes().size());
-            note.setDate(noteRequest.getDate());
-            note.setText(noteRequest.getText());
-
-            diagnosis.getNotes().add(note);
-            diagnosis = mDiagnosisRepository.save(diagnosis);
-        } else {
-            //Return error
-        }
-
-        return new DiagnosisResponse().diagnosisResponse(diagnosis);
     }
 
     /**

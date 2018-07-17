@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/patientGroup")
+@RequestMapping("/patient-group")
 public class PatientGroupController {
 
     @Autowired
     PatientGroupService mPatientGroupService;
 
     /**
-     * GET [url]:8080/patientGroup
+     * GET [url]:8080/patient-group
      * Return all available patient groups from database
      * @return Iterable<PatientGroupResponse>
      */
@@ -26,18 +26,18 @@ public class PatientGroupController {
     }
 
     /**
-     * GET [url]:8080/patientGroup/hid/[patient health Id]
+     * GET [url]:8080/patient-group/group/[patient health Id]
      * Return a PatientGroup with the given patient health Id from database
      * @param hid
      * @return PatientGroupResponse
      */
-    @RequestMapping(value = "/hid/{hid}", method = RequestMethod.GET)
+    @RequestMapping(value = "/group/{hid}", method = RequestMethod.GET)
     public PatientGroupResponse patientGroupByPatientHealthId(@PathVariable String hid) {
         return mPatientGroupService.findPatientGroupByPatientHealthId(hid);
     }
 
     /**
-     * DELETE [url]:8080/patientGroup/[patient health Id]
+     * DELETE [url]:8080/patient-group/[patient health Id]
      * Remove a PatientGroup with the given patient health Id from database
      * @param hid
      * @return true

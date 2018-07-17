@@ -35,17 +35,6 @@ public class SensorsController {
     }
 
     /**
-     * DELETE [url]:8080/sensors/[patient health Id]
-     * Remove all sensor information associated with the given patient health id from database
-     * @param phid
-     * @return true
-     */
-    @RequestMapping(value = "/{phid}", method = RequestMethod.DELETE)
-    public boolean deleteSensorsByPatientHealthId(@PathVariable String phid) {
-        return mSensorsService.deleteSensorsByPatientHealthId(phid);
-    }
-
-    /**
      * PUT [url]:8080/sensors
      * Edits all sensor information associated with the given patient health id from database
      * @param sensorRequest
@@ -54,5 +43,16 @@ public class SensorsController {
     @RequestMapping(value = "", method = RequestMethod.PUT)
     public SensorsResponse editSensors(@RequestBody SensorRequest sensorRequest) {
         return mSensorsService.editSensors(sensorRequest);
+    }
+
+    /**
+     * DELETE [url]:8080/sensors/[patient health Id]
+     * Remove all sensor information associated with the given patient health id from database
+     * @param phid
+     * @return true
+     */
+    @RequestMapping(value = "/{phid}", method = RequestMethod.DELETE)
+    public boolean deleteSensorsByPatientHealthId(@PathVariable String phid) {
+        return mSensorsService.deleteSensorsByPatientHealthId(phid);
     }
 }

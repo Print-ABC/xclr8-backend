@@ -30,23 +30,23 @@ public class SessionController {
     }
 
     /**
-     * GET [url]:8080/session/id/[document id]
+     * GET [url]:8080/session/[document id]
      * Return a session with the matching document id from database
      * @param id
      * @return SessionResponse
      */
-    @RequestMapping(value = "/id/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public SessionResponse sessionById(@PathVariable String id) {
         return mSessionService.findSessionById(id);
     }
 
     /**
-     * GET [url]:8080/session/gid/[session group id]
+     * GET [url]:8080/session/group/[session group id]
      * Return all sessions with the given session group id from database
      * @param gid
      * @return Iterable<SessionResponse>
      */
-    @RequestMapping(value = "/gid/{gid}", method = RequestMethod.GET)
+    @RequestMapping(value = "/group/{gid}", method = RequestMethod.GET)
     public Iterable<SessionResponse> sessionsBySessionGroupId(@PathVariable String gid) {
         return mSessionService.findSessionsBySessionGroupId(gid);
     }
@@ -60,28 +60,6 @@ public class SessionController {
     @RequestMapping(value = "", method = RequestMethod.POST)
     public SessionResponse createSession(@RequestBody SessionRequest sessionRequest) {
         return mSessionService.createSession(sessionRequest);
-    }
-
-    /**
-     * DELETE [url]:8080/session/id/[document id]
-     * Remove a session with the given document id from database
-     * @param id
-     * @return true
-     */
-    @RequestMapping(value = "/id/{id}", method = RequestMethod.DELETE)
-    public boolean deleteById(@PathVariable String id) {
-        return mSessionService.deleteSessionsById(id);
-    }
-
-    /**
-     * DELETE [url]:8080/session/gid/[session group id]
-     * Remove all sessions with the given session group id from database
-     * @param gid
-     * @return true
-     */
-    @RequestMapping(value = "/gid/{gid}", method = RequestMethod.DELETE)
-    public boolean deleteBySessionGroupId(@PathVariable String gid) {
-        return mSessionService.deleteSessionsBySessionGroupId(gid);
     }
 
     /**
@@ -115,5 +93,27 @@ public class SessionController {
     @RequestMapping(value = "/notes", method = RequestMethod.PUT)
     public SessionNotesResponse editSessionNotes(@RequestBody SessionNotesRequest sessionNotesRequest) {
         return mSessionService.editSessionNotes(sessionNotesRequest);
+    }
+
+    /**
+     * DELETE [url]:8080/session/id/[document id]
+     * Remove a session with the given document id from database
+     * @param id
+     * @return true
+     */
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public boolean deleteById(@PathVariable String id) {
+        return mSessionService.deleteSessionsById(id);
+    }
+
+    /**
+     * DELETE [url]:8080/session/group/[session group id]
+     * Remove all sessions with the given session group id from database
+     * @param gid
+     * @return true
+     */
+    @RequestMapping(value = "/group/{gid}", method = RequestMethod.DELETE)
+    public boolean deleteBySessionGroupId(@PathVariable String gid) {
+        return mSessionService.deleteSessionsBySessionGroupId(gid);
     }
 }
