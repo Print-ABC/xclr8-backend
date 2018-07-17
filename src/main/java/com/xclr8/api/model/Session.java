@@ -1,7 +1,7 @@
 package com.xclr8.api.model;
 
-import com.xclr8.api.nestedModel.Exercise;
-import com.xclr8.api.nestedModel.Summary;
+import com.xclr8.api.model.nestedModel.Exercise;
+import com.xclr8.api.model.nestedModel.Summary;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

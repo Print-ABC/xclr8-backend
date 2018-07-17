@@ -13,44 +13,44 @@ public class ExerciseDefaultController {
     ExerciseDefaultService mExerciseDefaultService;
 
     /**
-     * GET [url]:8080/exercise/all
+     * GET [url]:8080/exercise
      * Return all available default exercises from database
      * @return Iterable<ExerciseDefaultResponse>
      */
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public Iterable<ExerciseDefaultResponse> exerciseDefaults() {
         return mExerciseDefaultService.findAllExerciseDefaults();
     }
 
     /**
-     * POST [url]:8080/exercise/create
+     * POST [url]:8080/exercise
      * Creates a Default exercise object in the database
      * @param exerciseDefaultRequest
      * @return ExerciseDefaultResponse
      */
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequestMapping(value = "", method = RequestMethod.POST)
     public ExerciseDefaultResponse createDiagnosis(@RequestBody ExerciseDefaultRequest exerciseDefaultRequest) {
         return mExerciseDefaultService.createDefaultExercise(exerciseDefaultRequest);
     }
 
     /**
-     * DELETE [url]:8080/exercise/delete/[document Id]
+     * DELETE [url]:8080/exercise/[document Id]
      * Remove a exercise by its document id from database
      * @param id
      * @return true
      */
-    @RequestMapping(value = "/delete/id/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public boolean deleteById(@PathVariable String id){
         return mExerciseDefaultService.deleteExerciseById(id);
     }
 
     /**
-     * DELETE [url]:8080/exercise/delete/[exercise name]
+     * DELETE [url]:8080/exercise/name/[exercise name]
      * Remove a exercise by its name from database
      * @param name
      * @return true
      */
-    @RequestMapping(value = "/delete/name/{name}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/name/{name}", method = RequestMethod.DELETE)
     public boolean deleteByExerciseName(@PathVariable String name){
         return mExerciseDefaultService.deleteExerciseByExerciseName(name);
     }

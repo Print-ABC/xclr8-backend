@@ -7,14 +7,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class SessionRequest {
+public class SessionExerciseRequest {
     String id;
-    String patientId;
-    String therapistId;
-    String timestamp;
-    String sessionGroupId;
-    Summary sessionSummary;
     List<Exercise> exercises;
-    String replayPath;
-    String notes;
 }

@@ -14,7 +14,7 @@ public interface ChatRepository extends MongoRepository<Chat, String> {
     @Override
     void deleteById(String id);
 
-    void deleteByPatientHealthId(String patientHealthId);
-
     void deleteByTherapistHealthId(String therapistHealthId);
+
+    void deleteByPatientHealthId(String patientHealthId);
 }

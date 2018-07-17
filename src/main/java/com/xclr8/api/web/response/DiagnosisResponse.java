@@ -1,7 +1,7 @@
 package com.xclr8.api.web.response;
 
 import com.xclr8.api.model.Diagnosis;
-import com.xclr8.api.nestedModel.Note;
+import com.xclr8.api.model.nestedModel.Note;
 import lombok.Data;
 
 import java.util.ArrayList;

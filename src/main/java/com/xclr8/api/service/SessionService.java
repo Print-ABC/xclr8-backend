@@ -2,8 +2,14 @@ package com.xclr8.api.service;
 
 import com.xclr8.api.model.Session;
 import com.xclr8.api.repository.SessionRepository;
+import com.xclr8.api.web.request.SessionExerciseRequest;
+import com.xclr8.api.web.request.SessionNotesRequest;
 import com.xclr8.api.web.request.SessionRequest;
+import com.xclr8.api.web.request.SessionSummaryRequest;
+import com.xclr8.api.web.response.SessionExerciseResponse;
+import com.xclr8.api.web.response.SessionNotesResponse;
 import com.xclr8.api.web.response.SessionResponse;
+import com.xclr8.api.web.response.SessionSummaryResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -64,7 +70,63 @@ public class SessionService {
         session.setExercises(sessionRequest.getExercises());
         session.setReplayPath(sessionRequest.getReplayPath());
         session.setNotes(sessionRequest.getNotes());
+
+        session = mSessionRespository.save(session);
         return new SessionResponse().sessionResponse(session);
+    }
+
+    /**
+     * Updates the session summary for the selected session in the database
+     * @param sessionRequest
+     * @return SessionSummaryResponse
+     */
+    public SessionSummaryResponse editSessionSummary(@RequestBody SessionSummaryRequest sessionRequest) {
+        Session session = new Session();
+        Optional<Session> check = mSessionRespository.findById(sessionRequest.getId());
+        if(check.isPresent()){
+            session = check.get();
+            session.setSessionSummary(sessionRequest.getSessionSummary());
+
+            mSessionRespository.save(session);
+        }
+
+        return new SessionSummaryResponse().sessionResponse(session) ;
+    }
+
+    /**
+     * Updates the exercises for the selected session in the database
+     * @param sessionRequest
+     * @return SessionExerciseResponse
+     */
+    public SessionExerciseResponse editSessionExercises(@RequestBody SessionExerciseRequest sessionRequest) {
+        Session session = new Session();
+        Optional<Session> check = mSessionRespository.findById(sessionRequest.getId());
+        if(check.isPresent()){
+            session = check.get();
+            session.setExercises(sessionRequest.getExercises());
+
+            mSessionRespository.save(session);
+        }
+
+        return new SessionExerciseResponse().sessionResponse(session) ;
+    }
+
+    /**
+     * Updates session notes for the selected session in the database
+     * @param sessionRequest
+     * @return SessionNotesResponse
+     */
+    public SessionNotesResponse editSessionNotes(@RequestBody SessionNotesRequest sessionRequest) {
+        Session session = new Session();
+        Optional<Session> check = mSessionRespository.findById(sessionRequest.getId());
+        if(check.isPresent()){
+            session = check.get();
+            session.setNotes(sessionRequest.getNotes());
+
+            mSessionRespository.save(session);
+        }
+
+        return new SessionNotesResponse().sessionResponse(session) ;
     }
 
     /**
@@ -85,59 +147,5 @@ public class SessionService {
     public boolean deleteSessionsBySessionGroupId(String sessionGroupId) {
         mSessionRespository.deleteBySessionGroupId(sessionGroupId);
         return true;
-    }
-
-    /**
-     * Updates the session summary for the selected session in the database
-     * @param sessionRequest
-     * @return SessionResponse
-     */
-    public SessionResponse editSessionSummary(@RequestBody SessionRequest sessionRequest) {
-        Session session = new Session();
-        Optional<Session> check = mSessionRespository.findById(sessionRequest.getId());
-        if(check.isPresent()){
-            session = check.get();
-            session.setSessionSummary(sessionRequest.getSessionSummary());
-
-            mSessionRespository.save(session);
-        }
-
-        return new SessionResponse().sessionResponse(session) ;
-    }
-
-    /**
-     * Updates the exercises for the selected session in the database
-     * @param sessionRequest
-     * @return SessionResponse
-     */
-    public SessionResponse editSessionExercises(@RequestBody SessionRequest sessionRequest) {
-        Session session = new Session();
-        Optional<Session> check = mSessionRespository.findById(sessionRequest.getId());
-        if(check.isPresent()){
-            session = check.get();
-            session.setExercises(sessionRequest.getExercises());
-
-            mSessionRespository.save(session);
-        }
-
-        return new SessionResponse().sessionResponse(session) ;
-    }
-
-    /**
-     * Updates session notes for the selected session in the database
-     * @param sessionRequest
-     * @return SessionResponse
-     */
-    public SessionResponse editSessionNotes(@RequestBody SessionRequest sessionRequest) {
-        Session session = new Session();
-        Optional<Session> check = mSessionRespository.findById(sessionRequest.getId());
-        if(check.isPresent()){
-            session = check.get();
-            session.setNotes(sessionRequest.getNotes());
-
-            mSessionRespository.save(session);
-        }
-
-        return new SessionResponse().sessionResponse(session) ;
     }
 }

@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class DiagnosisRequest {
+public class DiagnosisEditRequest {
     String id;
     String patientId;
     String subjective;
@@ -15,6 +15,5 @@ public class DiagnosisRequest {
     String plan;
     String diagnosisDate;
     int status;
-    List<Note> notes;
     double complianceThreshold;
 }

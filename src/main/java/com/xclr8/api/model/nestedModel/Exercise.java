@@ -1,6 +1,8 @@
-package com.xclr8.api.nestedModel;
+package com.xclr8.api.model.nestedModel;
 
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class Exercise {
@@ -12,7 +14,7 @@ public class Exercise {
     String exerciseName;
     ExerciseConfig config;
     ExerciseResult result;
-    String bodyPart;
+    List<String> bodyPart;
     //0 = Not completed, 1 = Completed.
     int status;
 }

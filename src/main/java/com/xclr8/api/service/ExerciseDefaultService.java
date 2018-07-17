@@ -31,7 +31,6 @@ public class ExerciseDefaultService {
     public ExerciseDefaultResponse createDefaultExercise(ExerciseDefaultRequest exerciseDefaultRequest){
         ExerciseDefault exerciseDefault = new ExerciseDefault();
         exerciseDefault.setExerciseName(exerciseDefaultRequest.getExerciseName());
-        exerciseDefault.setDefaultSides(exerciseDefaultRequest.getDefaultSides());
         exerciseDefault.setDefaultSets(exerciseDefaultRequest.getDefaultSets());
         exerciseDefault.setDefaultSensitivity(exerciseDefaultRequest.getDefaultSensitivity());
         exerciseDefault.setDefaultReps(exerciseDefaultRequest.getDefaultReps());

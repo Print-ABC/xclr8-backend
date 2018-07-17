@@ -1,7 +1,7 @@
 package com.xclr8.api.service;
 
 import com.xclr8.api.model.Chat;
-import com.xclr8.api.nestedModel.ChatLog;
+import com.xclr8.api.model.nestedModel.ChatLog;
 import com.xclr8.api.repository.ChatRepository;
 import com.xclr8.api.web.request.ChatRequest;
 import com.xclr8.api.web.response.ChatResponse;
@@ -108,22 +108,22 @@ public class ChatService {
     }
 
     /**
-     * Remove chats with matching patient ids from database
-     * @param hid
-     * @return
-     */
-    public boolean deleteByPatientHealthId(String hid) {
-        mChatRepository.deleteByPatientHealthId(hid);
-        return true;
-    }
-
-    /**
      * Remove chats with matching therapist ids from database
      * @param hid
      * @return
      */
     public boolean deleteByTherapistHealthId(String hid) {
         mChatRepository.deleteByTherapistHealthId(hid);
+        return true;
+    }
+
+    /**
+     * Remove chats with matching patient ids from database
+     * @param hid
+     * @return
+     */
+    public boolean deleteByPatientHealthId(String hid) {
+        mChatRepository.deleteByPatientHealthId(hid);
         return true;
     }
 }
