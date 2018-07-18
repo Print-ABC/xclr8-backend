@@ -13,5 +13,5 @@ public class ExerciseResult {
     double maxAngle;
     double speed;
     //Duration saved in seconds
-    int duration;
+    double duration;
 }
