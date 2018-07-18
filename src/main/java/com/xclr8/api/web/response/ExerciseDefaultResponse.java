@@ -32,6 +32,7 @@ public class ExerciseDefaultResponse {
         exerciseDefaultResponse.setDefaultFrequency(exerciseDefault.getDefaultFrequency());
         exerciseDefaultResponse.setDefaultMinAngle(exerciseDefault.getDefaultMinAngle());
         exerciseDefaultResponse.setDefaultMaxAngle(exerciseDefault.getDefaultMaxAngle());
+        exerciseDefaultResponse.setBodyPart(exerciseDefault.getBodyPart());
         exerciseDefaultResponse.setDefaultSensitivity(exerciseDefault.getDefaultSensitivity());
         return exerciseDefaultResponse;
     }
@@ -53,6 +54,7 @@ public class ExerciseDefaultResponse {
             exerciseDefaultResponse.setDefaultMinAngle(ed.getDefaultMinAngle());
             exerciseDefaultResponse.setDefaultMaxAngle(ed.getDefaultMaxAngle());
             exerciseDefaultResponse.setDefaultSensitivity(ed.getDefaultSensitivity());
+            exerciseDefaultResponse.setBodyPart(ed.getBodyPart());
             exerciseDefaultResponses.add(exerciseDefaultResponse);
         }
         return exerciseDefaultResponses;
