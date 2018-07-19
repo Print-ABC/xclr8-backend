@@ -13,4 +13,7 @@ public interface AccountRepository extends MongoRepository<Account, String> {
     Account findByEmail(String email);
 
     void deleteByHealthId(String healthId);
+
+    @Query(value = "{'healthId': { $regex: ?0, $options:'is'}}", count = true)
+    long countByHealthId(String healthId);
 }
