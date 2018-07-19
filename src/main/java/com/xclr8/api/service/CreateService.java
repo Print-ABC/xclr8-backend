@@ -39,10 +39,14 @@ public class CreateService {
         PatientGroup patientGroup = new PatientGroup();
         Sensors sensorSet = new Sensors();
 
+        //Auto generation of health ID
+        long tempId = mAccountRepository.countByHealthId("p" + ".*");
+        String tempHID = "p" + String.valueOf(tempId + 1);
+
         account.setFirstName(accountDetails.getFirstName());
         account.setAccountType(accountDetails.getAccountType());
         account.setEmail(accountDetails.getEmail());
-        account.setHealthId(accountDetails.getHealthId());
+        account.setHealthId(tempHID);
         account.setLastName(accountDetails.getLastName());
         account.setMobileNo(accountDetails.getMobileNo());
         account.setPassword(accountDetails.getPassword());
@@ -54,7 +58,7 @@ public class CreateService {
         patient.setEmergencyNo(accountDetails.getEmergencyNo());
         patient.setFixedLineNo(accountDetails.getFixedLineNo());
         patient.setGender(accountDetails.getGender());
-        patient.setHealthId(accountDetails.getHealthId());
+        patient.setHealthId(tempHID);
         patient.setHeight(accountDetails.getHeight());
         patient.setWeight(accountDetails.getWeight());
         patient.setFirstName(accountDetails.getFirstName());
@@ -66,35 +70,35 @@ public class CreateService {
         patient.setPostalCode(accountDetails.getPostalCode());
         patient.setTherapistId(accountDetails.getTherapistId());
 
-        patientStats.setPatientId(accountDetails.getHealthId());
+        patientStats.setPatientId(tempHID);
         patientStats.setComplianceRating(100);
         patientStats.setComplianceStatus(1);
         patientStats.setImprovementROM(0);
 
         patientGroup = mPatientGroupRepository.findByHealthId(accountDetails.getTherapistId());
         ArrayList<String> patientIdList = new ArrayList<String>(patientGroup.getPatientIdList());
-        patientIdList.add(accountDetails.getHealthId());
+        patientIdList.add(tempHID);
         patientGroup.setPatientIdList(patientIdList);
 
-        sensorSet.setPatientId(accountDetails.getHealthId());
+        sensorSet.setPatientId(tempHID);
         ArrayList<Sensor> sensorList = new ArrayList<>();
         sensorSet.setSensors(sensorList);
 
         account = mAccountRepository.save(account);
 
-        if(account.getHealthId() != accountDetails.getHealthId()){
+        if(account.getHealthId() != tempHID){
             return null;
         }
 
         patient = mPatientRepository.save(patient);
 
-        if (patient.getHealthId() != accountDetails.getHealthId()){
+        if (patient.getHealthId() != tempHID){
             return null;
         }
 
         patientStats = mPatientStatisticsRepository.save(patientStats);
 
-        if (patientStats.getPatientId() != accountDetails.getHealthId()){
+        if (patientStats.getPatientId() != tempHID){
             return null;
         }
 
@@ -108,27 +112,31 @@ public class CreateService {
         Account account = new Account();
         PatientGroup patientGroup = new PatientGroup();
 
+        //Auto generation of health ID
+        long tempId = mAccountRepository.countByHealthId("t" + ".*");
+        String tempHID = "t" + String.valueOf(tempId + 1);
+
         account.setFirstName(accountDetails.getFirstName());
         account.setAccountType(accountDetails.getAccountType());
         account.setEmail(accountDetails.getEmail());
-        account.setHealthId(accountDetails.getHealthId());
+        account.setHealthId(tempHID);
         account.setLastName(accountDetails.getLastName());
         account.setMobileNo(accountDetails.getMobileNo());
         account.setPassword(accountDetails.getPassword());
 
-        patientGroup.setHealthId(accountDetails.getHealthId());
+        patientGroup.setHealthId(tempHID);
         List<String> patientIdList = new ArrayList<>();
         patientGroup.setPatientIdList(patientIdList);
 
         account = mAccountRepository.save(account);
 
-        if (account.getHealthId() != accountDetails.getHealthId()){
+        if (account.getHealthId() != tempHID){
             return null;
         }
 
         patientGroup = mPatientGroupRepository.save(patientGroup);
 
-        if (patientGroup.getHealthId() != accountDetails.getHealthId()){
+        if (patientGroup.getHealthId() != tempHID){
             return null;
         }
 
