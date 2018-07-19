@@ -1,6 +1,9 @@
 package com.xclr8.api.service;
 
 import com.xclr8.api.model.Session;
+import com.xclr8.api.model.nestedModel.Exercise;
+import com.xclr8.api.model.nestedModel.ExerciseResult;
+import com.xclr8.api.model.nestedModel.Summary;
 import com.xclr8.api.repository.SessionRepository;
 import com.xclr8.api.web.request.SessionExerciseRequest;
 import com.xclr8.api.web.request.SessionNotesRequest;
@@ -14,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -66,8 +70,14 @@ public class SessionService {
         session.setTherapistId(sessionRequest.getTherapistId());
         session.setTimestamp(sessionRequest.getTimestamp());
         session.setSessionGroupId(sessionRequest.getSessionGroupId());
-        session.setSessionSummary(sessionRequest.getSessionSummary());
-        session.setExercises(sessionRequest.getExercises());
+        session.setSessionSummary(new Summary());
+
+        ArrayList<Exercise> temp = new ArrayList<>(sessionRequest.getExercises());
+        for (Exercise e : temp){
+            e.setResult(new ExerciseResult());
+        }
+
+        session.setExercises(temp);
         session.setReplayPath(sessionRequest.getReplayPath());
         session.setNotes(sessionRequest.getNotes());
 

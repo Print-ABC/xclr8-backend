@@ -12,7 +12,7 @@ public class Summary {
     double rangeOfMovement;
     double accuracy;
     //Duration stored in seconds
-    int duration;
+    double duration;
 
     //Feedback
     int painLevel;
