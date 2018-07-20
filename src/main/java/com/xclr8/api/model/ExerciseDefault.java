@@ -37,6 +37,9 @@ public class ExerciseDefault {
     @Field
     List<String> bodyPart;
 
+    @Field
+    String exerciseKey;
+
 //    Maybe in the future the defaults could be stored offline
 //    @Field
 //    String checksum;
