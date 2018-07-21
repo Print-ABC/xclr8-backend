@@ -46,16 +46,6 @@ public class PatientStatisticsService {
     }
 
     /**
-     * Remove patient statistics with the given patient health ID from database
-     * @param pid
-     * @return true
-     */
-    public boolean deletePatientStatisticsByPatientId(String pid) {
-        mPatientStatisticsRepository.deleteByPatientId(pid);
-        return true;
-    }
-
-    /**
      * Edits patient statistics with the given patient health ID into database
      * @param patientStatisticsRequest
      * @return PatientStatisticsResponse
@@ -74,5 +64,15 @@ public class PatientStatisticsService {
 
 
         return new PatientStatisticsResponse().patientStatisticsResponse(ps);
+    }
+
+    /**
+     * Remove patient statistics with the given patient health ID from database
+     * @param pid
+     * @return true
+     */
+    public boolean deletePatientStatisticsByPatientId(String pid) {
+        mPatientStatisticsRepository.deleteByPatientId(pid);
+        return true;
     }
 }
