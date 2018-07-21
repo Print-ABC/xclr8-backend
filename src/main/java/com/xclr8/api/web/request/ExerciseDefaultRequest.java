@@ -14,5 +14,6 @@ public class ExerciseDefaultRequest {
     double defaultMinAngle;
     double defaultMaxAngle;
     double defaultSensitivity;
+    String exerciseKey;
     List<String> bodyPart;
 }

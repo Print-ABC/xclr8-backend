@@ -1,5 +1,7 @@
 package com.xclr8.api.web.controller;
 
+import com.xclr8.api.exception.CustomNotFoundException;
+import com.xclr8.api.exception.ExceptionMessage;
 import com.xclr8.api.service.SensorsService;
 import com.xclr8.api.web.request.SensorRequest;
 import com.xclr8.api.web.response.SensorsResponse;
@@ -13,6 +15,8 @@ public class SensorsController {
     @Autowired
     SensorsService mSensorsService;
 
+    ExceptionMessage mExceptionMessage;
+
     /**
      * GET [url]:8080/sensors
      * Return information of all available sensors from database
@@ -20,7 +24,10 @@ public class SensorsController {
      */
     @RequestMapping(value = "", method = RequestMethod.GET)
     public Iterable<SensorsResponse> sensors() {
-        return mSensorsService.findAllSensors();
+        Iterable<SensorsResponse> sensors = mSensorsService.findAllSensors();
+        if(!sensors.iterator().hasNext())
+            throw new CustomNotFoundException(mExceptionMessage.EMPTY.getMsg());
+        return sensors;
     }
 
     /**

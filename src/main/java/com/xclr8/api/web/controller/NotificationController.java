@@ -1,5 +1,7 @@
 package com.xclr8.api.web.controller;
 
+import com.xclr8.api.exception.CustomNotFoundException;
+import com.xclr8.api.exception.ExceptionMessage;
 import com.xclr8.api.service.NotificationService;
 import com.xclr8.api.web.request.NotificationRequest;
 import com.xclr8.api.web.response.NotificationResponse;
@@ -17,6 +19,8 @@ public class NotificationController {
     @Autowired
     NotificationService mNotificationService;
 
+    ExceptionMessage mExceptionMessage;
+
     /**
      * GET [url]:8080/notification
      * Return all available notifications from database
@@ -24,7 +28,10 @@ public class NotificationController {
      */
     @RequestMapping(value = "", method = RequestMethod.GET)
     public Iterable<NotificationResponse> notifications() {
-        return mNotificationService.findAllNotification();
+        Iterable<NotificationResponse> notifications = mNotificationService.findAllNotification();
+        if(!notifications.iterator().hasNext())
+            throw new CustomNotFoundException(mExceptionMessage.EMPTY.getMsg());
+        return notifications;
     }
 
     /**

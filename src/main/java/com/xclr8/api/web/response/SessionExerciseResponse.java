@@ -2,7 +2,6 @@ package com.xclr8.api.web.response;
 
 import com.xclr8.api.model.Session;
 import com.xclr8.api.model.nestedModel.Exercise;
-import com.xclr8.api.model.nestedModel.Summary;
 import lombok.Data;
 
 import java.util.ArrayList;
