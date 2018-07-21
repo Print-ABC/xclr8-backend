@@ -1,5 +1,7 @@
 package com.xclr8.api.web.controller;
 
+import com.xclr8.api.exception.CustomNotFoundException;
+import com.xclr8.api.exception.ExceptionMessage;
 import com.xclr8.api.service.ExerciseDefaultService;
 import com.xclr8.api.web.request.ExerciseDefaultRequest;
 import com.xclr8.api.web.response.ExerciseDefaultResponse;
@@ -12,6 +14,8 @@ public class ExerciseDefaultController {
     @Autowired
     ExerciseDefaultService mExerciseDefaultService;
 
+    ExceptionMessage mExceptionMessage;
+
     /**
      * GET [url]:8080/exercise
      * Return all available default exercises from database
@@ -19,7 +23,10 @@ public class ExerciseDefaultController {
      */
     @RequestMapping(value = "", method = RequestMethod.GET)
     public Iterable<ExerciseDefaultResponse> exerciseDefaults() {
-        return mExerciseDefaultService.findAllExerciseDefaults();
+        Iterable<ExerciseDefaultResponse> exerciseDefaults = mExerciseDefaultService.findAllExerciseDefaults();
+        if(!exerciseDefaults.iterator().hasNext())
+            throw new CustomNotFoundException(mExceptionMessage.EMPTY.getMsg());
+        return exerciseDefaults;
     }
 
     /**

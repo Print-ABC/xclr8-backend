@@ -1,9 +1,6 @@
 package com.xclr8.api.web.request;
 
-import com.xclr8.api.model.nestedModel.Note;
 import lombok.Data;
-
-import java.util.List;
 
 @Data
 public class DiagnosisEditRequest {
