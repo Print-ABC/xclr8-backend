@@ -28,7 +28,7 @@ public class PatientController {
     }
 
     /**
-     * GET [url]:8080/patient/hid/[health Id]
+     * GET [url]:8080/patient/[health Id]
      * Return information of a patient with the given health ID from database
      * @param hid
      * @return PatientResponse
