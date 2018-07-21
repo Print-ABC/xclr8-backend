@@ -1,5 +1,7 @@
 package com.xclr8.api.web.controller;
 
+import com.xclr8.api.exception.CustomNotFoundException;
+import com.xclr8.api.exception.ExceptionMessage;
 import com.xclr8.api.service.DiagnosisService;
 import com.xclr8.api.web.request.DiagnosisEditRequest;
 import com.xclr8.api.web.request.DiagnosisRequest;
@@ -16,6 +18,8 @@ public class DiagnosisController {
     @Autowired
     DiagnosisService mDiagnosisService;
 
+    ExceptionMessage mExceptionMessage;
+
     /**
      * GET [url]:8080/diagnosis
      * Return all available diagnoses from database
@@ -23,7 +27,10 @@ public class DiagnosisController {
      */
     @RequestMapping(value = "", method = RequestMethod.GET)
     public Iterable<DiagnosisResponse> diagnoses() {
-        return mDiagnosisService.findAllDiagnoses();
+        Iterable<DiagnosisResponse> diagnoses = mDiagnosisService.findAllDiagnoses();
+        if(!diagnoses.iterator().hasNext())
+            throw new CustomNotFoundException(mExceptionMessage.EMPTY.getMsg());
+        return diagnoses;
     }
 
     /**

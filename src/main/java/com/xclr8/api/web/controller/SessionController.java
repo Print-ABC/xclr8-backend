@@ -1,5 +1,7 @@
 package com.xclr8.api.web.controller;
 
+import com.xclr8.api.exception.CustomNotFoundException;
+import com.xclr8.api.exception.ExceptionMessage;
 import com.xclr8.api.service.SessionService;
 import com.xclr8.api.web.request.SessionExerciseRequest;
 import com.xclr8.api.web.request.SessionNotesRequest;
@@ -19,6 +21,8 @@ public class SessionController {
     @Autowired
     SessionService mSessionService;
 
+    ExceptionMessage mExceptionMessage;
+
     /**
      * GET [url]:8080/session
      * Return all available sessions from database
@@ -26,7 +30,10 @@ public class SessionController {
      */
     @RequestMapping(value = "", method = RequestMethod.GET)
     public Iterable<SessionResponse> sessions() {
-        return mSessionService.findAllSessions();
+        Iterable<SessionResponse> sessions = mSessionService.findAllSessions();
+        if(!sessions.iterator().hasNext())
+            throw new CustomNotFoundException(mExceptionMessage.EMPTY.getMsg());
+        return sessions;
     }
 
     /**

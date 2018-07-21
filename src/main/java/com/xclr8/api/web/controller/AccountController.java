@@ -1,5 +1,8 @@
 package com.xclr8.api.web.controller;
 
+import com.xclr8.api.exception.CustomBadRequestException;
+import com.xclr8.api.exception.CustomNotFoundException;
+import com.xclr8.api.exception.ExceptionMessage;
 import com.xclr8.api.service.AccountService;
 import com.xclr8.api.service.CreateService;
 import com.xclr8.api.web.request.AccountPatientRequest;
@@ -10,8 +13,6 @@ import com.xclr8.api.web.response.AccountTherapistResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/account")
 public class AccountController {
@@ -21,6 +22,8 @@ public class AccountController {
     @Autowired
     CreateService mCreateService;
 
+    ExceptionMessage mExceptionMessage;
+
     /**
      * GET [url]:8080/account
      * Return all available accounts from database
@@ -28,7 +31,10 @@ public class AccountController {
      */
     @RequestMapping(value = "", method = RequestMethod.GET)
     public Iterable<AccountResponse> accounts() {
-        return mAccountService.findAllAccounts();
+        Iterable<AccountResponse> accounts = mAccountService.findAllAccounts();
+        if(!accounts.iterator().hasNext())
+            throw new CustomNotFoundException(mExceptionMessage.EMPTY.getMsg());
+        return accounts;
     }
 
     /**
@@ -38,7 +44,7 @@ public class AccountController {
      */
     @RequestMapping(value = "/{healthId}", method = RequestMethod.GET)
     AccountResponse accByHealthId(@PathVariable String healthId) {
-        return mAccountService.findAccByHealthId(healthId);
+            return mAccountService.findAccByHealthId(healthId);
     }
 
     /**
@@ -59,6 +65,9 @@ public class AccountController {
      */
     @RequestMapping(value = "/create/patient", method = RequestMethod.POST)
     public AccountPatientResponse createPatient(AccountPatientRequest patient) {
+        if((patient.getEmail() == null) && (patient.getPassword() == null) && (patient.getFirstName() == null)
+                && (patient.getLastName() == null) && (patient.getMobileNo() == null))
+            throw new CustomBadRequestException(mExceptionMessage.REQUEST_BODY_ERROR.getMsg());
         return mCreateService.createPatientAccount(patient);
     }
 

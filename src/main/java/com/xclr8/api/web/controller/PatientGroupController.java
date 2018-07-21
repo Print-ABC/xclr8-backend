@@ -1,5 +1,7 @@
 package com.xclr8.api.web.controller;
 
+import com.xclr8.api.exception.CustomNotFoundException;
+import com.xclr8.api.exception.ExceptionMessage;
 import com.xclr8.api.service.PatientGroupService;
 import com.xclr8.api.web.response.PatientGroupResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,8 @@ public class PatientGroupController {
     @Autowired
     PatientGroupService mPatientGroupService;
 
+    ExceptionMessage mExceptionMessage;
+
     /**
      * GET [url]:8080/patient-group
      * Return all available patient groups from database
@@ -22,7 +26,10 @@ public class PatientGroupController {
      */
     @RequestMapping(value = "", method = RequestMethod.GET)
     public Iterable<PatientGroupResponse> patientGroups() {
-        return mPatientGroupService.findAllPatientGroups();
+        Iterable<PatientGroupResponse> patientGroups = mPatientGroupService.findAllPatientGroups();
+        if(!patientGroups.iterator().hasNext())
+            throw new CustomNotFoundException(mExceptionMessage.EMPTY.getMsg());
+        return patientGroups;
     }
 
     /**

@@ -1,5 +1,8 @@
 package com.xclr8.api.web.controller;
 
+import com.xclr8.api.exception.CustomBadRequestException;
+import com.xclr8.api.exception.CustomNotFoundException;
+import com.xclr8.api.exception.ExceptionMessage;
 import com.xclr8.api.model.Chat;
 import com.xclr8.api.service.ChatService;
 import com.xclr8.api.web.request.ChatRequest;
@@ -14,6 +17,8 @@ public class ChatController {
     @Autowired
     ChatService mChatService;
 
+    ExceptionMessage mExceptionMessage;
+
     /**
      * GET [url]:8080/chat
      * Return all available chats from database
@@ -21,7 +26,10 @@ public class ChatController {
      */
     @RequestMapping(value = "", method = RequestMethod.GET)
     public Iterable<ChatResponse> chats() {
-        return mChatService.findAllChat();
+        Iterable<ChatResponse> chats = mChatService.findAllChat();
+        if(!chats.iterator().hasNext())
+            throw new CustomNotFoundException(mExceptionMessage.EMPTY.getMsg());
+        return chats;
     }
 
     /**
@@ -51,6 +59,9 @@ public class ChatController {
      */
     @RequestMapping(value = "", method = RequestMethod.POST)
     public Chat createText(@RequestBody ChatRequest chat) {
+        if((chat.getId() == null) && (chat.getTherapistHealthId() == null) && (chat.getPatientHealthId() == null)
+                && (chat.getSender() == null) && (chat.getRecipient() == null) && (chat.getText() == null))
+            throw new CustomBadRequestException(mExceptionMessage.REQUEST_BODY_ERROR.getMsg());
         return mChatService.createNewChat(chat);
     }
 
