@@ -36,6 +36,7 @@ public class ExerciseDefaultService {
         exerciseDefault.setDefaultReps(exerciseDefaultRequest.getDefaultReps());
         exerciseDefault.setDefaultMinAngle(exerciseDefaultRequest.getDefaultMinAngle());
         exerciseDefault.setDefaultMaxAngle(exerciseDefaultRequest.getDefaultMaxAngle());
+        exerciseDefault.setExerciseKey(exerciseDefaultRequest.getExerciseKey());
         exerciseDefault.setDefaultFrequency(exerciseDefaultRequest.getDefaultFrequency());
         exerciseDefault.setBodyPart(exerciseDefaultRequest.getBodyPart());
 
