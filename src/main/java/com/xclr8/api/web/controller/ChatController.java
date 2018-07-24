@@ -59,8 +59,8 @@ public class ChatController {
      */
     @RequestMapping(value = "", method = RequestMethod.POST)
     public Chat createText(@RequestBody ChatRequest chat) {
-        if((chat.getId() == null) && (chat.getTherapistHealthId() == null) && (chat.getPatientHealthId() == null)
-                && (chat.getSender() == null) && (chat.getRecipient() == null) && (chat.getText() == null))
+        if((chat.getId() == null) || (chat.getTherapistHealthId() == null) || (chat.getPatientHealthId() == null)
+                || (chat.getSender() == null) || (chat.getRecipient() == null) || (chat.getText() == null))
             throw new CustomBadRequestException(mExceptionMessage.REQUEST_BODY_ERROR.getMsg());
         return mChatService.createNewChat(chat);
     }
