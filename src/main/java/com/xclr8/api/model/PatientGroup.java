@@ -1,5 +1,6 @@
 package com.xclr8.api.model;
 
+import com.xclr8.api.model.nestedModel.PatientGroupPatient;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -19,5 +20,5 @@ public class PatientGroup {
 
     @Field
     //List of health IDs of patients that belong to the group
-    List<String> patientIdList;
+    List<PatientGroupPatient> patientIdList;
 }

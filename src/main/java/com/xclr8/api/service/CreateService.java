@@ -2,6 +2,7 @@ package com.xclr8.api.service;
 
 
 import com.xclr8.api.model.*;
+import com.xclr8.api.model.nestedModel.PatientGroupPatient;
 import com.xclr8.api.model.nestedModel.Sensor;
 import com.xclr8.api.repository.*;
 import com.xclr8.api.web.request.AccountPatientRequest;
@@ -76,8 +77,12 @@ public class CreateService {
         patientStats.setImprovementROM(0);
 
         patientGroup = mPatientGroupRepository.findByHealthId(accountDetails.getTherapistId());
-        ArrayList<String> patientIdList = new ArrayList<String>(patientGroup.getPatientIdList());
-        patientIdList.add(tempHID);
+        ArrayList<PatientGroupPatient> patientIdList = new ArrayList<PatientGroupPatient>(patientGroup.getPatientIdList());
+        PatientGroupPatient temp = new PatientGroupPatient();
+        temp.setHealthId(tempHID);
+        temp.setName(accountDetails.getFirstName() + " " + accountDetails.getLastName());
+        temp.setNumber(accountDetails.getMobileNo());
+        patientIdList.add(temp);
         patientGroup.setPatientIdList(patientIdList);
 
         sensorSet.setPatientId(tempHID);
@@ -125,7 +130,7 @@ public class CreateService {
         account.setPassword(accountDetails.getPassword());
 
         patientGroup.setHealthId(tempHID);
-        List<String> patientIdList = new ArrayList<>();
+        List<PatientGroupPatient> patientIdList = new ArrayList<>();
         patientGroup.setPatientIdList(patientIdList);
 
         account = mAccountRepository.save(account);

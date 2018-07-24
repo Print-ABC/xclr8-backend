@@ -1,6 +1,7 @@
 package com.xclr8.api.web.response;
 
 import com.xclr8.api.model.PatientGroup;
+import com.xclr8.api.model.nestedModel.PatientGroupPatient;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.List;
 @Data
 public class PatientGroupResponse {
     String healthId;
-    List<String> patientIdList;
+    List<PatientGroupPatient> patientIdList;
 
     /**
      * Create a PatientGroupResponse from a PatientGroup object and return it
