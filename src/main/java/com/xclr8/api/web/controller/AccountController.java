@@ -65,8 +65,8 @@ public class AccountController {
      */
     @RequestMapping(value = "/create/patient", method = RequestMethod.POST)
     public AccountPatientResponse createPatient(AccountPatientRequest patient) {
-        if((patient.getEmail() == null) && (patient.getPassword() == null) && (patient.getFirstName() == null)
-                && (patient.getLastName() == null) && (patient.getMobileNo() == null))
+        if((patient.getEmail() == null) || (patient.getPassword() == null) || (patient.getFirstName() == null)
+                || (patient.getLastName() == null) || (patient.getMobileNo() == null))
             throw new CustomBadRequestException(mExceptionMessage.REQUEST_BODY_ERROR.getMsg());
         return mCreateService.createPatientAccount(patient);
     }
